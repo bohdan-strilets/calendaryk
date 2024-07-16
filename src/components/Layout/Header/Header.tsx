@@ -1,5 +1,6 @@
 import { FC } from 'react'
 
+import Button from '@/components/UI/Button'
 import Logo from '@/components/UI/Logo'
 import MenuButton from '@/components/UI/MenuButton'
 
@@ -14,7 +15,9 @@ const Header: FC = () => {
 					<Wrapper>
 						<MenuButton />
 						<Logo />
-						<p>user</p>
+						<Button type="button" width="180px" height="45px">
+							start
+						</Button>
 					</Wrapper>
 				</Container>
 			</header>
