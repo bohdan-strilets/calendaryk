@@ -1,6 +1,7 @@
 import { FC } from 'react'
 
 import Logo from '@/components/UI/Logo'
+import MenuButton from '@/components/UI/MenuButton'
 
 import Container from '../Container'
 import { Line, Wrapper } from './Header.styled'
@@ -11,7 +12,7 @@ const Header: FC = () => {
 			<header>
 				<Container>
 					<Wrapper>
-						<p>menu</p>
+						<MenuButton />
 						<Logo />
 						<p>user</p>
 					</Wrapper>
