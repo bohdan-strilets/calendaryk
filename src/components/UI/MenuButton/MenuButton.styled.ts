@@ -33,12 +33,12 @@ export const Line = styled(motion.div)`
 		background-color: var(--red-color);
 	}
 
-	@media screen and (min-width: ${screenWidth.tablet}) {
+	@media screen and (min-width: ${screenWidth.TABLET}) {
 		width: 33px;
 		margin-bottom: 6px;
 	}
 
-	@media screen and (min-width: ${screenWidth.desktop}) {
+	@media screen and (min-width: ${screenWidth.DESKTOP}) {
 		width: 38px;
 		height: 5px;
 	}

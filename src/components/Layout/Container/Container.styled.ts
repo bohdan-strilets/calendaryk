@@ -5,17 +5,17 @@ import { screenWidth } from '@/utils/screenWidth'
 export const Wrapper = styled.div`
 	margin: 0 auto;
 	padding: 0 15px;
-	width: ${screenWidth.mobile};
+	width: ${screenWidth.MOBILE};
 
-	@media screen and (min-width: ${screenWidth.tablet}) {
-		width: ${screenWidth.tablet};
+	@media screen and (min-width: ${screenWidth.TABLET}) {
+		width: ${screenWidth.TABLET};
 	}
 
-	@media screen and (min-width: ${screenWidth.laptop}) {
-		width: ${screenWidth.laptop};
+	@media screen and (min-width: ${screenWidth.LAPTOP}) {
+		width: ${screenWidth.LAPTOP};
 	}
 
-	@media screen and (min-width: ${screenWidth.desktop}) {
-		width: ${screenWidth.desktop};
+	@media screen and (min-width: ${screenWidth.DESKTOP}) {
+		width: ${screenWidth.DESKTOP};
 	}
 `

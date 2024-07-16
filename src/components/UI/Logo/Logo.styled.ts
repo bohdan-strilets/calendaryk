@@ -22,15 +22,15 @@ export const Button = styled.button`
 export const Image = styled.img`
 	width: 150px;
 
-	@media screen and (min-width: ${screenWidth.tablet}) {
+	@media screen and (min-width: ${screenWidth.TABLET}) {
 		width: 220px;
 	}
 
-	@media screen and (min-width: ${screenWidth.laptop}) {
+	@media screen and (min-width: ${screenWidth.LAPTOP}) {
 		width: 240px;
 	}
 
-	@media screen and (min-width: ${screenWidth.desktop}) {
+	@media screen and (min-width: ${screenWidth.DESKTOP}) {
 		width: 330px;
 	}
 `
