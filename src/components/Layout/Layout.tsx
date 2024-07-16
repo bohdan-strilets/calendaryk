@@ -2,12 +2,16 @@ import { FC } from 'react'
 
 import { LayoutProps } from '@/types/props/LayoutProps'
 
+import Container from './Container'
+import Footer from './Footer'
+import Header from './Header'
+
 const Layout: FC<LayoutProps> = ({ children }) => {
 	return (
 		<>
-			<header></header>
-			<main>{children}</main>
-			<footer></footer>
+			<Header />
+			<Container>{children}</Container>
+			<Footer />
 		</>
 	)
 }

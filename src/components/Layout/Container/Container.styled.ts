@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 
 import { screenWidth } from '@/utils/screenWidth'
 
-export const Container = styled.main`
+export const Wrapper = styled.div`
 	margin: 0 auto;
 	padding: 0 15px;
 	width: ${screenWidth.mobile};
