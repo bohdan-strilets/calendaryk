@@ -1,11 +1,13 @@
 import { FC } from 'react'
 
+import { MenuButtonProps } from '@/types/props/MenuButtonProps'
+
 import { animationProperty, bounce } from './animation'
 import { Button, Line } from './MenuButton.styled'
 
-const MenuButton: FC = () => {
+const MenuButton: FC<MenuButtonProps> = ({ open }) => {
 	return (
-		<Button>
+		<Button type="button" onClick={open}>
 			<Line />
 			<Line />
 			<Line animate={animationProperty} transition={bounce} />
