@@ -3,8 +3,9 @@ import { FC } from 'react'
 import { MenuProps } from '@/types/props/MenuProps'
 
 import CloseButton from '../UI/CloseButton'
+import Copyright from '../UI/Copyright'
 import Logo from '../UI/Logo'
-import { Backdrop, Copyright, Wrapper } from './Menu.styled'
+import { Backdrop, Wrapper } from './Menu.styled'
 import Navigation from './Navigation'
 import UserBar from './UserBar'
 
@@ -28,7 +29,7 @@ const Menu: FC<MenuProps> = ({ close }) => {
 						name="Bohdan Strilets"
 						email="bohdan.strilets@gmail.com"
 					/>
-					<Copyright>© SCHEDULE 2024</Copyright>
+					<Copyright />
 				</div>
 			</Wrapper>
 		</Backdrop>

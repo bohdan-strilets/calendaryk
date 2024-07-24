@@ -1,10 +1,10 @@
 import { FC } from 'react'
 
 import CloseButton from '@/components/UI/CloseButton'
+import Copyright from '@/components/UI/Copyright'
 import Logo from '@/components/UI/Logo'
 import { MenuProps } from '@/types/props/MenuProps'
 
-import { Copyright } from '../Menu.styled'
 import Navigation from '../Navigation'
 import UserBar from '../UserBar'
 import { LogoWrapper, Wrapper } from './MobileMenu.styled'
@@ -31,7 +31,7 @@ const MobileMenu: FC<MenuProps> = ({ close }) => {
 					email="bohdan.strilets@gmail.com"
 				/>
 
-				<Copyright>© SCHEDULE 2024</Copyright>
+				<Copyright />
 			</div>
 		</Wrapper>
 	)
