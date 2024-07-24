@@ -2,16 +2,19 @@ import { AnimatePresence } from 'framer-motion'
 import { FC } from 'react'
 
 import Menu from '@/components/Menu'
+import MobileMenu from '@/components/Menu/MobileMenu'
 import Button from '@/components/UI/Button'
 import Logo from '@/components/UI/Logo'
 import MenuButton from '@/components/UI/MenuButton'
 import useMenu from '@/hooks/useMenu'
+import useResponsive from '@/hooks/useResponsive'
 
 import Container from '../Container'
 import { Line, Wrapper } from './Header.styled'
 
 const Header: FC = () => {
 	const { isOpen, open, close } = useMenu()
+	const { isMaxTablet } = useResponsive()
 
 	return (
 		<>
@@ -28,7 +31,10 @@ const Header: FC = () => {
 			</header>
 			<Line />
 
-			<AnimatePresence>{isOpen && <Menu close={close} />}</AnimatePresence>
+			<AnimatePresence>
+				{!isMaxTablet && isOpen && <Menu close={close} />}
+				{isMaxTablet && isOpen && <MobileMenu close={close} />}
+			</AnimatePresence>
 		</>
 	)
 }

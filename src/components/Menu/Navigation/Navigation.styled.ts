@@ -17,6 +17,7 @@ const bounce = keyframes`
 `
 
 export const List = styled.ul<ListProps>`
+	height: 440px;
 	margin: ${({ margin }) => (margin ? margin : '')};
 `
 
