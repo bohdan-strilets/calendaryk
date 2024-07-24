@@ -9,16 +9,16 @@ import { Backdrop, Wrapper } from './Menu.styled'
 import Navigation from './Navigation'
 import UserBar from './UserBar'
 
-const Menu: FC<MenuProps> = ({ close }) => {
+const Menu: FC<MenuProps> = ({ onClose, onBackdropClick }) => {
 	return (
-		<Backdrop>
+		<Backdrop onClick={onBackdropClick}>
 			<Wrapper
 				initial={{ x: '-100%' }}
 				animate={{ x: ['0%', '1%', '0%'] }}
 				exit={{ x: '-100%' }}
 				transition={{ duration: 0.3 }}
 			>
-				<CloseButton close={close} position={true} top="35px" right="35px" />
+				<CloseButton close={onClose} position={true} top="35px" right="35px" />
 				<div>
 					<Logo variant="light" />
 					<Navigation />

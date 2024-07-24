@@ -1,3 +1,4 @@
 export type MenuProps = {
-	close: () => void
+	onClose: () => void
+	onBackdropClick: (e: React.MouseEvent<HTMLDivElement>) => void
 }

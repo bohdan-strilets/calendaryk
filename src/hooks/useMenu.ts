@@ -3,11 +3,14 @@ import { useState } from 'react'
 const useMenu = () => {
 	const [isOpen, setIsOpen] = useState(false)
 
-	const open = () => setIsOpen(true)
+	const onOpen = () => setIsOpen(true)
+	const onClose = () => setIsOpen(false)
 
-	const close = () => setIsOpen(false)
+	const onBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
+		if (e.target === e.currentTarget) onClose()
+	}
 
-	return { isOpen, open, close }
+	return { isOpen, onOpen, onClose, onBackdropClick }
 }
 
 export default useMenu

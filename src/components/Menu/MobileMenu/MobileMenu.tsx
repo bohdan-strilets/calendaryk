@@ -9,7 +9,7 @@ import Navigation from '../Navigation'
 import UserBar from '../UserBar'
 import { LogoWrapper, Wrapper } from './MobileMenu.styled'
 
-const MobileMenu: FC<MenuProps> = ({ close }) => {
+const MobileMenu: FC<MenuProps> = ({ onClose }) => {
 	return (
 		<Wrapper
 			initial={{ x: '-100%' }}
@@ -17,7 +17,7 @@ const MobileMenu: FC<MenuProps> = ({ close }) => {
 			exit={{ x: '-100%' }}
 			transition={{ duration: 0.3 }}
 		>
-			<CloseButton close={close} position={true} top="35px" right="35px" />
+			<CloseButton close={onClose} position={true} top="35px" right="35px" />
 			<div>
 				<LogoWrapper>
 					<Logo variant="light" />
