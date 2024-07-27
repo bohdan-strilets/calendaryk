@@ -1,7 +1,9 @@
 import { FC } from 'react'
 
+import MainScreen from '@/components/MainScreen'
+
 const HomePage: FC = () => {
-	return <p>HomePage</p>
+	return <MainScreen />
 }
 
 export default HomePage
