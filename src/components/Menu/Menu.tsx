@@ -21,7 +21,7 @@ const Menu: FC<MenuProps> = ({ onClose, onBackdropClick }) => {
 				<CloseButton close={onClose} position={true} top="35px" right="35px" />
 				<div>
 					<Logo variant="light" />
-					<Navigation />
+					<Navigation onClose={onClose} />
 				</div>
 				<div>
 					<UserBar

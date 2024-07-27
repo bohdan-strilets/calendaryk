@@ -1,4 +1,5 @@
 export type NavigationProps = {
+	onClose: () => void
 	margin?: string
 }
 

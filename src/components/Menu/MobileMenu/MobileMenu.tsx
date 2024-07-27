@@ -22,7 +22,7 @@ const MobileMenu: FC<MenuProps> = ({ onClose }) => {
 				<LogoWrapper>
 					<Logo variant="light" />
 				</LogoWrapper>
-				<Navigation />
+				<Navigation onClose={onClose} />
 			</div>
 			<div>
 				<UserBar
