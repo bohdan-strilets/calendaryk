@@ -1,18 +1,17 @@
 import { FC } from 'react'
 
+import SmallCalendar from '../Calendars/SmallCalendar'
 import Greetings from '../Greetings'
-import { GratingsAndCalendarWrapper, Wrapper } from './MainScreen.styled'
+import { Group } from './MainScreen.styled'
 
 const MainScreen: FC = () => {
 	return (
-		<Wrapper>
-			<GratingsAndCalendarWrapper>
+		<div>
+			<Group>
 				<Greetings name="Bohdan" />
-				<div>
-					<p>Small calendar component</p>
-				</div>
-			</GratingsAndCalendarWrapper>
-		</Wrapper>
+				<SmallCalendar />
+			</Group>
+		</div>
 	)
 }
 
