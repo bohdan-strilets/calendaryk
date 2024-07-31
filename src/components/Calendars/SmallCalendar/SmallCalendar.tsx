@@ -20,12 +20,12 @@ const SmallCalendar: FC = () => {
 	return (
 		<div>
 			<Header>{currentMonthName}</Header>
-			<WeekDays currentDay={currentDay} cellWidth="60px" cellHeight="45px" />
+			<WeekDays currentDay={currentDay} cellWidth="80px" cellHeight="50px" />
 			<Month
 				month={weeksFromSelectedMonth}
 				currentDate={currentDate}
-				cellWidth="60px"
-				cellHeight="45px"
+				cellWidth="80px"
+				cellHeight="50px"
 			/>
 		</div>
 	)
