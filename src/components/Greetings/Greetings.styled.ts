@@ -27,10 +27,11 @@ export const Month = styled.p`
 	font-family: var(--second-font);
 	line-height: 1;
 
-	padding: 10px 0;
+	padding: 8px 0;
 
 	background-color: var(--green-color);
 	color: var(--white-color);
+	border-radius: 3px;
 `
 
 export const GreetingMessage = styled.p`
@@ -45,4 +46,8 @@ export const Name = styled.span`
 export const DateInfo = styled.p`
 	font-size: 20px;
 	font-weight: 700;
+`
+
+export const Accent = styled.span`
+	color: var(--red-color);
 `
