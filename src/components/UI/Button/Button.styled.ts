@@ -19,9 +19,17 @@ export const Wrapper = styled.button<WrapperProps>`
 	color: var(--white-color);
 	border-radius: 5px;
 	text-shadow: var(--text-shadow);
-	box-shadow:
-		var(--box-shadow),
-		inset 0px 25px 0px rgba(255, 255, 255, 0.1);
+
+	box-shadow: ${({ height }) => {
+		const heightToNumber = Number.parseInt(height ?? '')
+		const insetShadowHeight = heightToNumber / 2
+
+		if (insetShadowHeight > 0) {
+			return `var(--box-shadow), inset 0px ${insetShadowHeight}px 0px rgba(255, 255, 255, 0.1);`
+		}
+
+		return `var(--box-shadow), inset 0px 25px 0px rgba(255, 255, 255, 0.1);`
+	}};
 
 	cursor: pointer;
 	transition: background-color var(--hover-effect);
