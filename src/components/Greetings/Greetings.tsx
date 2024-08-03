@@ -27,16 +27,14 @@ const Greetings: FC<GreetingsProps> = ({ name }) => {
 				<GreetingMessage>
 					Hello <Name>{name}</Name>
 				</GreetingMessage>
-				<DateInfo>
-					Today is July {day} on the calendar, Saturday.
-					<p>
-						Today is a day off, you have planned <Accent>4</Accent> events for
-						today.
-					</p>
-					<p>
-						Tomorrow at work at <Accent>18:00</Accent>
-					</p>
-				</DateInfo>
+				<DateInfo>Today is July {day} on the calendar, Saturday.</DateInfo>
+				<p>
+					Today is a day off, you have planned <Accent>4</Accent> events for
+					today.
+				</p>
+				<p>
+					Tomorrow at work at <Accent>18:00</Accent>
+				</p>
 			</div>
 		</Wrapper>
 	)
