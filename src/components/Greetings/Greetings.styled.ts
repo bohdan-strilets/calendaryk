@@ -6,6 +6,11 @@ export const Wrapper = styled.div`
 `
 
 export const DateGroup = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
 	margin-right: 35px;
 `
 
@@ -27,7 +32,7 @@ export const Month = styled.p`
 	font-family: var(--second-font);
 	line-height: 1;
 
-	padding: 8px 0;
+	padding: 8px 25px;
 
 	background-color: var(--green-color);
 	color: var(--white-color);
