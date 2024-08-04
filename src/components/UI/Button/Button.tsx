@@ -9,10 +9,17 @@ const Button: FC<ButtonProps> = ({
 	width,
 	height,
 	margin,
+	variant,
 	...props
 }) => {
 	return (
-		<Wrapper width={width} height={height} margin={margin} {...props}>
+		<Wrapper
+			width={width}
+			height={height}
+			margin={margin}
+			variant={variant}
+			{...props}
+		>
 			{children}
 		</Wrapper>
 	)

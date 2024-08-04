@@ -15,7 +15,16 @@ export const Wrapper = styled.button<WrapperProps>`
 	margin: ${({ margin }) => (margin ? margin : '')};
 	padding: 5px;
 
-	background-color: var(--red-color);
+	background-color: ${({ variant }) => {
+		if (variant === 'black') {
+			return 'var(--black-color)'
+		}
+		if (variant === 'green') {
+			return 'var(--green-color)'
+		}
+		return 'var(--red-color)'
+	}};
+
 	color: var(--white-color);
 	border-radius: 5px;
 	text-shadow: var(--text-shadow);
@@ -36,7 +45,8 @@ export const Wrapper = styled.button<WrapperProps>`
 
 	:hover,
 	:focus {
-		background-color: var(--black-color);
+		background-color: ${({ variant }) =>
+			variant === 'black' ? 'var(--red-color)' : 'var(--black-color)'};
 	}
 
 	:active {

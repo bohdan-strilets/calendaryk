@@ -5,9 +5,13 @@ export type ButtonProps = {
 	width?: string
 	height?: string
 	margin?: string
+	variant?: 'red' | 'black' | 'green'
 } & DetailedHTMLProps<
 	ButtonHTMLAttributes<HTMLButtonElement>,
 	HTMLButtonElement
 >
 
-export type WrapperProps = Pick<ButtonProps, 'width' | 'height' | 'margin'>
+export type WrapperProps = Pick<
+	ButtonProps,
+	'width' | 'height' | 'margin' | 'variant'
+>
