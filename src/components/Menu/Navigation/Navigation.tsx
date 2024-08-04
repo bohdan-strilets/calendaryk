@@ -20,7 +20,7 @@ const Navigation: FC<NavigationProps> = ({ margin, onClose }) => {
 				<Item
 					key={id}
 					initial={{ y: '-100%', opacity: 0 }}
-					animate={{ y: '100%', opacity: 1 }}
+					animate={{ y: '0%', opacity: 1 }}
 					exit={{ opacity: 0 }}
 					transition={{ duration: 0.3, delay: index * 0.1 }}
 				>

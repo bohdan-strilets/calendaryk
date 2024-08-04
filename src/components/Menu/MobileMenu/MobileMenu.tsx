@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import { createPortal } from 'react-dom'
 
 import CloseButton from '@/components/UI/CloseButton'
 import Copyright from '@/components/UI/Copyright'
@@ -9,8 +10,10 @@ import Navigation from '../Navigation'
 import UserBar from '../UserBar'
 import { LogoWrapper, Wrapper } from './MobileMenu.styled'
 
+const menuPortal = document.getElementById('menu') as HTMLDivElement
+
 const MobileMenu: FC<MenuProps> = ({ onClose }) => {
-	return (
+	return createPortal(
 		<Wrapper
 			initial={{ x: '-100%' }}
 			animate={{ x: ['0%', '1%', '0%'] }}
@@ -33,7 +36,8 @@ const MobileMenu: FC<MenuProps> = ({ onClose }) => {
 
 				<Copyright />
 			</div>
-		</Wrapper>
+		</Wrapper>,
+		menuPortal
 	)
 }
 

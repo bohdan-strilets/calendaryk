@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import { createPortal } from 'react-dom'
 
 import { MenuProps } from '@/types/props/MenuProps'
 
@@ -9,8 +10,10 @@ import { Backdrop, Wrapper } from './Menu.styled'
 import Navigation from './Navigation'
 import UserBar from './UserBar'
 
+const menuPortal = document.getElementById('menu') as HTMLDivElement
+
 const Menu: FC<MenuProps> = ({ onClose, onBackdropClick }) => {
-	return (
+	return createPortal(
 		<Backdrop onClick={onBackdropClick}>
 			<Wrapper
 				initial={{ x: '-100%' }}
@@ -21,7 +24,7 @@ const Menu: FC<MenuProps> = ({ onClose, onBackdropClick }) => {
 				<CloseButton close={onClose} position={true} top="35px" right="35px" />
 				<div>
 					<Logo variant="light" />
-					<Navigation onClose={onClose} />
+					<Navigation onClose={onClose} margin="30px 0 0 0" />
 				</div>
 				<div>
 					<UserBar
@@ -32,7 +35,8 @@ const Menu: FC<MenuProps> = ({ onClose, onBackdropClick }) => {
 					<Copyright />
 				</div>
 			</Wrapper>
-		</Backdrop>
+		</Backdrop>,
+		menuPortal
 	)
 }
 
