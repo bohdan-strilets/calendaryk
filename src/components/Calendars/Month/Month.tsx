@@ -9,6 +9,9 @@ const Month: FC<MonthProps> = ({
 	currentDate,
 	cellWidth,
 	cellHeight,
+	background,
+	color,
+	borderRadius,
 }) => {
 	return (
 		<div>
@@ -25,6 +28,9 @@ const Month: FC<MonthProps> = ({
 							currentDay={currentDate === day?.getDate()}
 							cellWidth={cellWidth}
 							cellHeight={cellHeight}
+							background={background}
+							color={color}
+							borderRadius={borderRadius}
 						>
 							<p>{day?.getDate()}</p>
 						</DayCell>

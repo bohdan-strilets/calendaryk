@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { MonthYear } from '@/types/types/MonthYear'
 
 const useRenderCalendar = (date: Date) => {
-	const [currentDate, setCurrentDate] = useState(date)
+	const [currentDate] = useState(date)
 
 	const getMonthYear = (): MonthYear => {
 		const year = currentDate.getFullYear()
@@ -61,10 +61,41 @@ const useRenderCalendar = (date: Date) => {
 		return daysOfMonth
 	}
 
+	const getDaysOfMonthInRange = (
+		startDate: Date,
+		endDate: Date
+	): (undefined[] | Date[])[] => {
+		const daysOfMonth: (undefined[] | Date[])[] = []
+		const daysInWeek = 7
+
+		while (startDate <= endDate) {
+			const week: undefined[] | Date[] = []
+			for (let i = 0; i < daysInWeek; i++) {
+				if (
+					startDate.getDay() - 1 === i ||
+					(startDate.getDay() === 0 && i === 6)
+				) {
+					if (startDate > endDate) {
+						week[i] = undefined
+					} else {
+						week[i] = new Date(startDate)
+						startDate.setDate(startDate.getDate() + 1)
+					}
+				} else {
+					week[i] = undefined
+				}
+			}
+			daysOfMonth.push(week)
+		}
+
+		return daysOfMonth
+	}
+
 	return {
 		getDaysOfMonth,
 		getMonthYear,
 		getCurrentDay,
+		getDaysOfMonthInRange,
 	}
 }
 

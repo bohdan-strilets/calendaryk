@@ -26,6 +26,7 @@ const SmallCalendar: FC = () => {
 				currentDate={currentDate}
 				cellWidth="80px"
 				cellHeight="50px"
+				borderRadius={true}
 			/>
 		</div>
 	)

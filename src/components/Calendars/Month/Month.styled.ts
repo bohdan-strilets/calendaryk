@@ -17,8 +17,25 @@ export const DayCell = styled.li<DayCellProps>`
 	width: ${({ cellWidth }) => (cellWidth ? cellWidth : '')};
 	height: ${({ cellHeight }) => (cellHeight ? cellHeight : '')};
 
-	border-radius: 3px;
-	background: ${({ currentDay }) => (currentDay ? 'var(--green-color)' : '')};
-	color: ${({ currentDay }) =>
-		currentDay ? 'var(--white-color)' : ' var(--gray-color)'};
+	border-radius: ${({ borderRadius }) => (borderRadius ? '3px' : '')};
+
+	background-color: ${({ background, currentDay }) => {
+		if (background) {
+			return background
+		}
+		if (currentDay) {
+			return 'var(--green-color)'
+		}
+		return ''
+	}};
+
+	color: ${({ color, currentDay }) => {
+		if (color) {
+			return color
+		}
+		if (currentDay) {
+			return 'var(--white-color)'
+		}
+		return 'var(--gray-color)'
+	}};
 `

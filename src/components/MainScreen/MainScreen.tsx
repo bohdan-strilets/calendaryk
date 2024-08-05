@@ -5,6 +5,7 @@ import Greetings from '../Greetings'
 import QuickMenu from '../QuickMenu'
 import Statistics from '../Statistics'
 import TodoList from '../TodoList'
+import Vacation from '../Vacation'
 import Weather from '../Weather'
 import { Group } from './MainScreen.styled'
 
@@ -19,6 +20,7 @@ const MainScreen: FC = () => {
 			<QuickMenu />
 			<Weather />
 			<Statistics />
+			<Vacation />
 		</div>
 	)
 }
