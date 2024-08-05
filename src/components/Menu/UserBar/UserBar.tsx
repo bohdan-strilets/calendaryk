@@ -4,7 +4,7 @@ import { MdLogout } from 'react-icons/md'
 import Avatar from '@/components/UI/Avatar'
 import Button from '@/components/UI/Button'
 import useResponsive from '@/hooks/useResponsive'
-import { UserBarProps } from '@/types/props/UserBarProps'
+import { UserBarProps } from '@/types/props/menu/UserBarProps'
 
 import { Email, Group, Name, Wrapper } from './UserBar.styled'
 

@@ -5,7 +5,7 @@ import { GoGoal } from 'react-icons/go'
 import { ImCheckboxChecked, ImCheckboxUnchecked } from 'react-icons/im'
 import { MdCreate } from 'react-icons/md'
 
-import { TodoItemProps } from '@/types/props/TodoItemProps'
+import { TodoItemProps } from '@/types/props/todoList/TodoItemProps'
 import { getRandomColorRGBA } from '@/utils/getRandomColorRGBA'
 import { parseDateTime } from '@/utils/parseDateTime'
 

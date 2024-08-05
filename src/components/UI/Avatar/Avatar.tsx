@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { AvatarProps } from '@/types/props/AvatarProps'
+import { AvatarProps } from '@/types/props/ui/AvatarProps'
 
 import { Image } from './Avatar.styled'
 

@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { ContainerProps } from '@/types/props/ContainerProps'
+import { ContainerProps } from '@/types/props/layout/ContainerProps'
 
 import { Wrapper } from './Container.styled'
 

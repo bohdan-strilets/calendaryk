@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { ButtonProps } from '@/types/props/ButtonProps'
+import { ButtonProps } from '@/types/props/ui/ButtonProps'
 
 import { Wrapper } from './Button.styled'
 

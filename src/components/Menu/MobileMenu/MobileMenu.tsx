@@ -4,7 +4,7 @@ import { createPortal } from 'react-dom'
 import CloseButton from '@/components/UI/CloseButton'
 import Copyright from '@/components/UI/Copyright'
 import Logo from '@/components/UI/Logo'
-import { MenuProps } from '@/types/props/MenuProps'
+import { MenuProps } from '@/types/props/menu/MenuProps'
 
 import Navigation from '../Navigation'
 import UserBar from '../UserBar'

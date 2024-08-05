@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { LayoutProps } from '@/types/props/LayoutProps'
+import { LayoutProps } from '@/types/props/layout/LayoutProps'
 
 import Container from './Container'
 import Footer from './Footer'

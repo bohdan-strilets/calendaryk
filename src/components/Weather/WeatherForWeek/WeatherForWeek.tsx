@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { WeatherForWeekProps } from '@/types/props/WeatherForWeekProps'
+import { WeatherForWeekProps } from '@/types/props/weather/WeatherForWeekProps'
 
 import {
 	DayInfo,

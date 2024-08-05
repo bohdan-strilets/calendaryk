@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { motion } from 'framer-motion'
 
-import { DayCellProps } from '@/types/props/MonthProps'
+import { DayCellProps } from '@/types/props/calendars/MonthProps'
 
 export const Week = styled(motion.ul)`
 	display: flex;

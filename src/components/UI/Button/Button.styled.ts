@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-import { WrapperProps } from '@/types/props/ButtonProps'
+import { WrapperProps } from '@/types/props/ui/ButtonProps'
 
 export const Wrapper = styled.button<WrapperProps>`
 	display: flex;

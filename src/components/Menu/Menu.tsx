@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { createPortal } from 'react-dom'
 
-import { MenuProps } from '@/types/props/MenuProps'
+import { MenuProps } from '@/types/props/menu/MenuProps'
 
 import CloseButton from '../UI/CloseButton'
 import Copyright from '../UI/Copyright'

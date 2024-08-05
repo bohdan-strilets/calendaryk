@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { MenuButtonProps } from '@/types/props/MenuButtonProps'
+import { MenuButtonProps } from '@/types/props/ui/MenuButtonProps'
 
 import { animationProperty, bounce } from './animation'
 import { Button, Line } from './MenuButton.styled'

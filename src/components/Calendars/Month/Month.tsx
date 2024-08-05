@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { MonthProps } from '@/types/props/MonthProps'
+import { MonthProps } from '@/types/props/calendars/MonthProps'
 
 import { DayCell, Week } from './Month.styled'
 

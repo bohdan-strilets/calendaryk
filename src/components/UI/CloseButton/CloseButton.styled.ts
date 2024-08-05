@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-import { ButtonProps } from '@/types/props/CloseButtonProps'
+import { ButtonProps } from '@/types/props/ui/CloseButtonProps'
 
 export const Button = styled.button<ButtonProps>`
 	position: ${({ position }) => (position ? 'absolute' : '')};

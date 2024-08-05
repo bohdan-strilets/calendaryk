@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { NavigationProps } from '@/types/props/NavigationProps'
+import { NavigationProps } from '@/types/props/menu/NavigationProps'
 import { navigationItems } from '@/utils/navigationItems'
 
 import { Button, Item, Label, List } from './Navigation.styled'

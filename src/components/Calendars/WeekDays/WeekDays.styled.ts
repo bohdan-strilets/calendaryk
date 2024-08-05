@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-import { DayNameProps } from '@/types/props/WeekDaysProps'
+import { DayNameProps } from '@/types/props/calendars/WeekDaysProps'
 
 export const Wrapper = styled.ul`
 	display: flex;

@@ -1,6 +1,6 @@
 import { FieldError, FieldValues } from 'react-hook-form'
 
-import { TextFieldProps } from '@/types/props/TextFieldProps'
+import { TextFieldProps } from '@/types/props/ui/TextFieldProps'
 
 import { Error, Input, Label, Required, Wrapper } from './TextField.styled'
 

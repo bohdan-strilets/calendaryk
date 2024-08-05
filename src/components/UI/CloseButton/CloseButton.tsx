@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { GrClose } from 'react-icons/gr'
 
-import { CloseButtonProps } from '@/types/props/CloseButtonProps'
+import { CloseButtonProps } from '@/types/props/ui/CloseButtonProps'
 
 import { Button } from './CloseButton.styled'
 

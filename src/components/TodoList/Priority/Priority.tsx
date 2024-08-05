@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { PriorityProps } from '@/types/props/PriorityProps'
+import { PriorityProps } from '@/types/props/todoList/PriorityProps'
 
 import { Label, Wrapper } from './Priority.styled'
 

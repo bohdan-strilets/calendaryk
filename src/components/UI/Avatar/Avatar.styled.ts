@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-import { ImageProps } from '@/types/props/AvatarProps'
+import { ImageProps } from '@/types/props/ui/AvatarProps'
 
 export const Image = styled.div<ImageProps>`
 	width: ${({ width }) => (width ? width : '40px')};

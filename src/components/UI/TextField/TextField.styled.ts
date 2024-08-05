@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-import { InputProps, WrapperProps } from '@/types/props/TextFieldProps'
+import { InputProps, WrapperProps } from '@/types/props/ui/TextFieldProps'
 
 export const Wrapper = styled.label<WrapperProps>`
 	margin: ${({ margin }) => (margin ? margin : '')};

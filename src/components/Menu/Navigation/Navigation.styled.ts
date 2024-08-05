@@ -2,7 +2,7 @@ import { keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
 import { motion } from 'framer-motion'
 
-import { ListProps } from '@/types/props/NavigationProps'
+import { ListProps } from '@/types/props/menu/NavigationProps'
 
 const bounce = keyframes`
   0%, 20%, 50%, 80%, 100% {
