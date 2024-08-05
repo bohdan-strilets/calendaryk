@@ -3,7 +3,7 @@ import { FaCalendarDays, FaChartLine, FaLightbulb } from 'react-icons/fa6'
 import { IoSettings } from 'react-icons/io5'
 import { PiListChecksFill, PiUsersThreeFill } from 'react-icons/pi'
 
-import { navigationPaths } from './navigationPaths'
+import { navigationPaths } from '../data/navigationPaths'
 
 export const navigationItems = [
 	{

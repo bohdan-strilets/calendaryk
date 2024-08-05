@@ -8,7 +8,7 @@ import ProfilePage from './pages/ProfilePage'
 import StatisticsPage from './pages/StatisticsPage'
 import TodoListPage from './pages/TodoListPage'
 import UsersPage from './pages/UsersPage'
-import { navigationPaths } from './utils/navigationPaths'
+import { navigationPaths } from './utils/data/navigationPaths'
 
 const App: FC = () => {
 	return (

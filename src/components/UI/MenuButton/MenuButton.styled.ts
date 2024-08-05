@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { motion } from 'framer-motion'
 
-import { screenWidth } from '@/utils/screenWidth'
+import { screenWidth } from '@/utils/data/screenWidth'
 
 export const Button = styled.button`
 	background-color: transparent;

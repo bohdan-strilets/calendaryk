@@ -1,6 +1,6 @@
 import { useMediaQuery } from 'react-responsive'
 
-import { screenWidth } from '@/utils/screenWidth'
+import { screenWidth } from '@/utils/data/screenWidth'
 
 const useResponsive = () => {
 	const isTablet = useMediaQuery({

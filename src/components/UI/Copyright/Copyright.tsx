@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { getCopyright } from '@/utils/getCopyright'
+import { getCopyright } from '@/utils/functions/getCopyright'
 
 import { Text } from './Copyright.styled'
 

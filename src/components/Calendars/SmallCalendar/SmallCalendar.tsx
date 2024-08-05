@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import useRenderCalendar from '@/hooks/useRenderCalendar'
-import { MonthsOfYear } from '@/utils/monthsOfYear'
+import { MonthsOfYear } from '@/utils/data/monthsOfYear'
 
 import Month from '../Month'
 import WeekDays from '../WeekDays'

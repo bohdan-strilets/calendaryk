@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-import { screenWidth } from '@/utils/screenWidth'
+import { screenWidth } from '@/utils/data/screenWidth'
 
 export const Wrapper = styled.div`
 	width: 320px;

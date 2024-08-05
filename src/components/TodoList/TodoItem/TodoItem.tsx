@@ -6,8 +6,8 @@ import { ImCheckboxChecked, ImCheckboxUnchecked } from 'react-icons/im'
 import { MdCreate } from 'react-icons/md'
 
 import { TodoItemProps } from '@/types/props/todoList/TodoItemProps'
-import { getRandomColorRGBA } from '@/utils/getRandomColorRGBA'
-import { parseDateTime } from '@/utils/parseDateTime'
+import { getRandomColorRGBA } from '@/utils/functions/getRandomColorRGBA'
+import { parseDateTime } from '@/utils/functions/parseDateTime'
 
 import Priority from '../Priority'
 import {

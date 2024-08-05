@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { motion } from 'framer-motion'
 
-import { WrapperProps } from '@/types/props/TodoItemProps'
+import { WrapperProps } from '@/types/props/todoList/TodoItemProps'
 
 export const Wrapper = styled(motion.li)<WrapperProps>`
 	display: flex;

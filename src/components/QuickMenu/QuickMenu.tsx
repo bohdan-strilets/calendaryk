@@ -3,7 +3,7 @@ import { FaCalendarDays, FaChartLine } from 'react-icons/fa6'
 import { PiListChecksFill } from 'react-icons/pi'
 import { useNavigate } from 'react-router-dom'
 
-import { navigationPaths } from '@/utils/navigationPaths'
+import { navigationPaths } from '@/utils/data/navigationPaths'
 
 import { Button, Item, List } from './QuickMenu.styled'
 

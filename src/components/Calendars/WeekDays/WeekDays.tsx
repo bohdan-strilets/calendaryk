@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import { WeekDaysProps } from '@/types/props/calendars/WeekDaysProps'
-import { DaysWeek } from '@/utils/daysWeek'
+import { DaysWeek } from '@/utils/data/daysWeek'
 
 import { DayName, Wrapper } from './WeekDays.styled'
 
