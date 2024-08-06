@@ -6,14 +6,21 @@ import Logo from '@/components/UI/Logo'
 import StudioLogo from '@/components/UI/StudioLogo'
 
 import Container from '../Container'
-import { Content, CopyrightWrapper, Wrapper } from './Footer.styled'
+import {
+	Content,
+	CopyrightWrapper,
+	LogoWrapper,
+	Wrapper,
+} from './Footer.styled'
 
 const Footer: FC = () => {
 	return (
 		<Wrapper>
 			<Container>
 				<Content>
-					<Logo variant="light" />
+					<LogoWrapper>
+						<Logo variant="light" />
+					</LogoWrapper>
 					<CopyrightWrapper>
 						<StudioLogo />
 						<Copyright />

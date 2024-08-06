@@ -1,5 +1,7 @@
 import styled from '@emotion/styled'
 
+import { screenWidth } from '@/utils/data/screenWidth'
+
 export const Wrapper = styled.footer`
 	background-color: var(--black-color);
 	color: var(--white-color);
@@ -7,14 +9,31 @@ export const Wrapper = styled.footer`
 `
 
 export const Content = styled.div`
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+	@media screen and (min-width: ${screenWidth.TABLET}) {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+`
+
+export const LogoWrapper = styled.div`
+	@media screen and (max-width: ${screenWidth.PRE_TABLET}) {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
 `
 
 export const CopyrightWrapper = styled.div`
 	display: flex;
-	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-between;
+
+	margin-bottom: 20px;
+
+	@media screen and (min-width: ${screenWidth.TABLET}) {
+		flex-direction: column;
+		justify-content: center;
+		margin-bottom: 0;
+	}
 `

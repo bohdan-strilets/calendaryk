@@ -4,7 +4,7 @@ import { BsCloudRain } from 'react-icons/bs'
 
 import CurrentTemperature from './CurrentTemperature'
 import LocationInfo from './LocationInfo'
-import { DayWeather, LeftSide, Wrapper } from './Weather.styled'
+import { DayWeather, IconWrapper, LeftSide, Wrapper } from './Weather.styled'
 import WeatherForWeek from './WeatherForWeek'
 import { weather } from './WeatherForWeek/weather'
 
@@ -19,7 +19,9 @@ const Weather: FC = () => {
 						animate={{ x: '0%', opacity: 1 }}
 						transition={{ duration: 0.5 }}
 					>
-						<BsCloudRain size={120} />
+						<IconWrapper>
+							<BsCloudRain />
+						</IconWrapper>
 					</motion.div>
 				</LeftSide>
 				<CurrentTemperature current={25} min={18} max={30} />

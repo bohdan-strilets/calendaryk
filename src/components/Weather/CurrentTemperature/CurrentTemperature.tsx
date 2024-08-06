@@ -1,11 +1,11 @@
 import { FC } from 'react'
 import { IoMdArrowDown, IoMdArrowUp } from 'react-icons/io'
 
-import { CurrentTemperatureProps } from '@/types/props/CurrentTemperatureProps'
+import { CurrentTemperatureProps } from '@/types/props/weather/CurrentTemperatureProps'
 
-import { TemperatureLabel } from '../Weather.styled'
 import {
 	TemperatureDisplay,
+	TemperatureLabel,
 	TemperatureRange,
 	TemperatureRangeWrapper,
 	TemperatureSymbol,
@@ -25,11 +25,11 @@ const CurrentTemperature: FC<CurrentTemperatureProps> = ({
 			</TemperatureDisplay>
 			<TemperatureRangeWrapper>
 				<TemperatureRange>
-					<IoMdArrowDown size={22} color="var(--red-color)" />
+					<IoMdArrowDown size={20} color="var(--red-color)" />
 					<TemperatureLabel>{min}°C</TemperatureLabel>
 				</TemperatureRange>
 				<TemperatureRange margin="0 0 0 30px">
-					<IoMdArrowUp size={22} color="var(--green-color)" />
+					<IoMdArrowUp size={20} color="var(--green-color)" />
 					<TemperatureLabel>{max}°C</TemperatureLabel>
 				</TemperatureRange>
 			</TemperatureRangeWrapper>

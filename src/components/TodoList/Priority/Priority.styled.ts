@@ -1,7 +1,8 @@
 import { css, keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
 
-import { WrapperProps } from '@/types/props/PriorityProps'
+import { WrapperProps } from '@/types/props/todoList/PriorityProps'
+import { screenWidth } from '@/utils/data/screenWidth'
 
 const pulse = keyframes`
   0% {
@@ -19,8 +20,8 @@ const pulse = keyframes`
 `
 
 export const Wrapper = styled.div<WrapperProps>`
+	display: inline-block;
 	padding: 7px 20px 4px 20px;
-	width: 10%;
 
 	border-radius: 3px;
 	box-shadow: inset 0px 15px 0px rgba(255, 255, 255, 0.1);
@@ -41,6 +42,10 @@ export const Wrapper = styled.div<WrapperProps>`
 		css`
 			${pulse} 1.3s infinite
 		`};
+
+	@media screen and (min-width: ${screenWidth.TABLET}) {
+		width: 10%;
+	}
 `
 
 export const Label = styled.p`

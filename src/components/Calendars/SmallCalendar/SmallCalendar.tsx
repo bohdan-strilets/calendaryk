@@ -1,6 +1,7 @@
 import { FC } from 'react'
 
 import useRenderCalendar from '@/hooks/useRenderCalendar'
+import useResponsive from '@/hooks/useResponsive'
 import { MonthsOfYear } from '@/utils/data/monthsOfYear'
 
 import Month from '../Month'
@@ -17,14 +18,20 @@ const SmallCalendar: FC = () => {
 	const currentMonth = date.getMonth()
 	const currentMonthName = MonthsOfYear[currentMonth].name
 
+	const { isTablet } = useResponsive()
+
 	return (
 		<div>
 			<Header>{currentMonthName}</Header>
-			<WeekDays currentDay={currentDay} cellWidth="80px" cellHeight="50px" />
+			<WeekDays
+				currentDay={currentDay}
+				cellWidth={isTablet ? '80px' : '100%'}
+				cellHeight="50px"
+			/>
 			<Month
 				month={weeksFromSelectedMonth}
 				currentDate={currentDate}
-				cellWidth="80px"
+				cellWidth={isTablet ? '80px' : '100%'}
 				cellHeight="50px"
 				borderRadius={true}
 			/>

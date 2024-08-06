@@ -12,9 +12,13 @@ import {
 import { FC } from 'react'
 import { Bar, Chart } from 'react-chartjs-2'
 
+import useResponsive from '@/hooks/useResponsive'
+
 import { Group, Item, Wrapper } from './Statistics.styled'
 
 const Statistics: FC = () => {
+	const { isMaxMobile } = useResponsive()
+
 	ChartJS.register(
 		CategoryScale,
 		LinearScale,
@@ -38,6 +42,9 @@ const Statistics: FC = () => {
 									text: 'Number of days in the current month',
 								},
 								legend: { display: false },
+							},
+							scales: {
+								x: { display: isMaxMobile ? false : true },
 							},
 						}}
 						data={{
@@ -67,6 +74,9 @@ const Statistics: FC = () => {
 								},
 								legend: { display: false },
 							},
+							scales: {
+								x: { display: isMaxMobile ? false : true },
+							},
 						}}
 						data={{
 							labels: ['Brut', 'Net', 'Tax'],
@@ -93,6 +103,9 @@ const Statistics: FC = () => {
 									text: 'Money earned this year',
 								},
 								legend: { display: false },
+							},
+							scales: {
+								x: { display: isMaxMobile ? false : true },
 							},
 						}}
 						data={{
@@ -155,6 +168,9 @@ const Statistics: FC = () => {
 							display: true,
 							text: 'Statistics by hours for the year',
 						},
+					},
+					scales: {
+						x: { display: isMaxMobile ? false : true },
 					},
 				}}
 			/>

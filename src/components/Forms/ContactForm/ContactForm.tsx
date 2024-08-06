@@ -3,12 +3,15 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 
 import Button from '@/components/UI/Button'
 import TextField from '@/components/UI/TextField'
+import useResponsive from '@/hooks/useResponsive'
 import { ContactFormInputs } from '@/types/inputs/ContactFormInputs'
 import { validation } from '@/validation/ContactFormSchema'
 
 import { Wrapper } from './ContactForm.styled'
 
 const ContactForm: FC = () => {
+	const { isMaxMobile } = useResponsive()
+
 	const {
 		register,
 		handleSubmit,
@@ -25,7 +28,7 @@ const ContactForm: FC = () => {
 				register={register}
 				name="name"
 				type="text"
-				width="320px"
+				width={isMaxMobile ? '290px' : '320px'}
 				height="40px"
 				margin="0 0 15px 0"
 				placeholder="User name"
@@ -36,7 +39,7 @@ const ContactForm: FC = () => {
 				register={register}
 				name="email"
 				type="email"
-				width="320px"
+				width={isMaxMobile ? '290px' : '320px'}
 				height="40px"
 				margin="0 0 15px 0"
 				placeholder="user.name@gmail.com"

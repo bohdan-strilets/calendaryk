@@ -1,6 +1,7 @@
 import { FC } from 'react'
 
-import { GreetingsProps } from '@/types/props/GreetingsProps'
+import useResponsive from '@/hooks/useResponsive'
+import { GreetingsProps } from '@/types/props/greetings/GreetingsProps'
 
 import {
 	Accent,
@@ -8,32 +9,52 @@ import {
 	DateInfo,
 	Day,
 	GreetingMessage,
+	GreetingsWrapper,
 	Month,
 	Name,
 	Wrapper,
 } from './Greetings.styled'
 
 const Greetings: FC<GreetingsProps> = ({ name }) => {
+	const { isMaxMobile } = useResponsive()
 	const currentDate = new Date()
 	const day = currentDate.getDate()
 
 	return (
 		<Wrapper>
-			<DateGroup>
-				<Day>{day}</Day>
-				<Month>July</Month>
-			</DateGroup>
+			{isMaxMobile && (
+				<GreetingsWrapper>
+					<DateGroup>
+						<Day>{day}</Day>
+						<Month>July</Month>
+					</DateGroup>
+					<GreetingMessage>
+						Hello <Name>{name}</Name>
+					</GreetingMessage>
+				</GreetingsWrapper>
+			)}
+
+			{!isMaxMobile && (
+				<DateGroup>
+					<Day>{day}</Day>
+					<Month>July</Month>
+				</DateGroup>
+			)}
+
 			<div>
-				<GreetingMessage>
-					Hello <Name>{name}</Name>
-				</GreetingMessage>
+				{!isMaxMobile && (
+					<GreetingMessage>
+						Hello <Name>{name}</Name>
+					</GreetingMessage>
+				)}
+
 				<DateInfo>Today is July {day} on the calendar, Saturday.</DateInfo>
 				<p>
-					Today is a day off, you have planned <Accent>4</Accent> events for
-					today.
+					Today is a <Accent>day off</Accent>, you have planned{' '}
+					<Accent>4</Accent> events for today.
 				</p>
 				<p>
-					Tomorrow at work at <Accent>18:00</Accent>
+					Tomorrow at <Accent>work</Accent> at <Accent>18:00</Accent>
 				</p>
 			</div>
 		</Wrapper>

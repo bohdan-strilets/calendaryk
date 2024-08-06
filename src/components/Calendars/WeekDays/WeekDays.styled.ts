@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 
 import { DayNameProps } from '@/types/props/calendars/WeekDaysProps'
+import { screenWidth } from '@/utils/data/screenWidth'
 
 export const Wrapper = styled.ul`
 	display: flex;
@@ -30,9 +31,13 @@ export const DayName = styled.li<DayNameProps>`
 		left: 50%;
 		transform: translate(-50%);
 
-		width: 50%;
+		width: 70%;
 		height: 2px;
 
 		background-color: var(--green-color);
+
+		@media screen and (min-width: ${screenWidth.TABLET}) {
+			width: 50%;
+		}
 	}
 `
