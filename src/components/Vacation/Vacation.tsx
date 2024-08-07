@@ -18,7 +18,7 @@ import {
 } from './Vacation.styled'
 
 const Vacation: FC = () => {
-	const { isTablet } = useResponsive()
+	const { isTablet, isLaptop } = useResponsive()
 
 	return (
 		<Wrapper>
@@ -30,7 +30,7 @@ const Vacation: FC = () => {
 					startRange={new Date(2024, 7, 26)}
 					endRange={new Date(2024, 8, 1)}
 					cellWidth={isTablet ? '80px' : '100%'}
-					cellHeight="50px"
+					cellHeight={isLaptop ? '50px' : '40px'}
 					background="rgba(0, 0, 0, 0.5)"
 					color="var(--white-color)"
 					borderRadius={false}

@@ -49,7 +49,6 @@ export const Wrapper = styled.div<WrapperProps>`
 	}
 
 	@media screen and (min-width: ${screenWidth.LAPTOP}) {
-		width: 10%;
 		padding-left: 20px;
 		padding-right: 20px;
 	}

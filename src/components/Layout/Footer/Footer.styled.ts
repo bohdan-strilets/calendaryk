@@ -49,5 +49,12 @@ export const CopyrightWrapper = styled.div`
 
 	@media screen and (min-width: ${screenWidth.LAPTOP}) {
 		flex-direction: row;
+		justify-content: space-evenly;
+		width: 100%;
+	}
+
+	@media screen and (min-width: ${screenWidth.DESKTOP}) {
+		flex-direction: column;
+		justify-content: center;
 	}
 `

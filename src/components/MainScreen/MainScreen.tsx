@@ -12,13 +12,17 @@ import Weather from '../Weather'
 import { Group } from './MainScreen.styled'
 
 const MainScreen: FC = () => {
-	const { isTablet, isLaptop } = useResponsive()
+	const { isTablet, isLaptop, isMaxTablet, isMaxLaptop, isDesktop } =
+		useResponsive()
 
 	const getCellWidth = () => {
-		if (isTablet) {
+		if (isTablet && isMaxTablet) {
 			return '50px'
 		}
-		if (isLaptop) {
+		if (isLaptop && isMaxLaptop) {
+			return '60px'
+		}
+		if (isDesktop) {
 			return '80px'
 		}
 		return '100%'
@@ -30,7 +34,7 @@ const MainScreen: FC = () => {
 				<Greetings name="Bohdan" />
 				<SmallCalendar
 					cellWidth={getCellWidth()}
-					cellHeight={isTablet ? '40px' : '50px'}
+					cellHeight={isLaptop ? '50px' : '40px'}
 					borderRadius={true}
 				/>
 			</Group>

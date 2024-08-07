@@ -32,6 +32,10 @@ export const Image = styled.img`
 	}
 
 	@media screen and (min-width: ${screenWidth.LAPTOP}) {
+		width: 400px;
+	}
+
+	@media screen and (min-width: ${screenWidth.DESKTOP}) {
 		width: 600px;
 	}
 `
@@ -98,6 +102,10 @@ export const TimerValue = styled.p`
 	}
 
 	@media screen and (min-width: ${screenWidth.LAPTOP}) {
+		font-size: 62px;
+	}
+
+	@media screen and (min-width: ${screenWidth.DESKTOP}) {
 		font-size: 88px;
 	}
 `
@@ -112,7 +120,7 @@ export const TimerLabel = styled.p`
 		font-size: 12px;
 	}
 
-	@media screen and (min-width: ${screenWidth.LAPTOP}) {
+	@media screen and (min-width: ${screenWidth.DESKTOP}) {
 		font-size: 16px;
 	}
 `
