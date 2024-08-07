@@ -1,6 +1,7 @@
 import { FC } from 'react'
 
 import TodoItem from './TodoItem'
+import { List } from './TodoList.styled'
 
 export const todos = [
 	{
@@ -31,11 +32,11 @@ export const todos = [
 
 const TodoList: FC = () => {
 	return (
-		<ul>
+		<List>
 			{todos.map((todo, index) => (
 				<TodoItem todo={todo} index={index} key={todo.id} />
 			))}
-		</ul>
+		</List>
 	)
 }
 
