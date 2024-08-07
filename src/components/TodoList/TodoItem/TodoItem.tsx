@@ -26,7 +26,7 @@ const TodoItem: FC<TodoItemProps> = ({ todo, index }) => {
 	const { createdAt, isCompleted, priority, targetDate, task } = todo
 	const goalDate = parseDateTime(targetDate)
 	const cratedDate = parseDateTime(createdAt)
-	const { isMaxMobile } = useResponsive()
+	const { isMaxTablet } = useResponsive()
 
 	return (
 		<Wrapper
@@ -42,7 +42,7 @@ const TodoItem: FC<TodoItemProps> = ({ todo, index }) => {
 				<DateTime>{goalDate.time}</DateTime>
 			</TargetDateWrapper>
 			<TaskWrapper>
-				{!isMaxMobile && <GoGoal size={22} color="var(--red-color)" />}
+				{!isMaxTablet && <GoGoal size={22} color="var(--red-color)" />}
 				<TaskText>{task}</TaskText>
 			</TaskWrapper>
 			<PriorityWrapper>

@@ -16,13 +16,13 @@ import {
 } from './Greetings.styled'
 
 const Greetings: FC<GreetingsProps> = ({ name }) => {
-	const { isMaxMobile } = useResponsive()
+	const { isMaxTablet } = useResponsive()
 	const currentDate = new Date()
 	const day = currentDate.getDate()
 
 	return (
 		<Wrapper>
-			{isMaxMobile && (
+			{isMaxTablet && (
 				<GreetingsWrapper>
 					<DateGroup>
 						<Day>{day}</Day>
@@ -34,7 +34,7 @@ const Greetings: FC<GreetingsProps> = ({ name }) => {
 				</GreetingsWrapper>
 			)}
 
-			{!isMaxMobile && (
+			{!isMaxTablet && (
 				<DateGroup>
 					<Day>{day}</Day>
 					<Month>July</Month>
@@ -42,7 +42,7 @@ const Greetings: FC<GreetingsProps> = ({ name }) => {
 			)}
 
 			<div>
-				{!isMaxMobile && (
+				{!isMaxTablet && (
 					<GreetingMessage>
 						Hello <Name>{name}</Name>
 					</GreetingMessage>

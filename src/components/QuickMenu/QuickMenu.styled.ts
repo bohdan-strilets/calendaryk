@@ -20,8 +20,12 @@ export const Item = styled(motion.li)`
 	height: 70px;
 
 	@media screen and (min-width: ${screenWidth.TABLET}) {
-		width: 33%;
+		width: 32%;
 		height: 100px;
+	}
+
+	@media screen and (min-width: ${screenWidth.LAPTOP}) {
+		width: 33%;
 	}
 `
 

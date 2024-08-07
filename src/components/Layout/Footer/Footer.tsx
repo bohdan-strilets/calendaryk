@@ -9,6 +9,7 @@ import Container from '../Container'
 import {
 	Content,
 	CopyrightWrapper,
+	Group,
 	LogoWrapper,
 	Wrapper,
 } from './Footer.styled'
@@ -18,13 +19,15 @@ const Footer: FC = () => {
 		<Wrapper>
 			<Container>
 				<Content>
-					<LogoWrapper>
-						<Logo variant="light" />
-					</LogoWrapper>
-					<CopyrightWrapper>
-						<StudioLogo />
-						<Copyright />
-					</CopyrightWrapper>
+					<Group>
+						<LogoWrapper>
+							<Logo variant="light" />
+						</LogoWrapper>
+						<CopyrightWrapper>
+							<StudioLogo />
+							<Copyright />
+						</CopyrightWrapper>
+					</Group>
 					<ContactForm />
 				</Content>
 			</Container>

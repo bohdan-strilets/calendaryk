@@ -17,7 +17,7 @@ import useResponsive from '@/hooks/useResponsive'
 import { Group, Item, Wrapper } from './Statistics.styled'
 
 const Statistics: FC = () => {
-	const { isMaxMobile } = useResponsive()
+	const { isMaxTablet } = useResponsive()
 
 	ChartJS.register(
 		CategoryScale,
@@ -44,7 +44,7 @@ const Statistics: FC = () => {
 								legend: { display: false },
 							},
 							scales: {
-								x: { display: isMaxMobile ? false : true },
+								x: { display: isMaxTablet ? false : true },
 							},
 						}}
 						data={{
@@ -75,7 +75,7 @@ const Statistics: FC = () => {
 								legend: { display: false },
 							},
 							scales: {
-								x: { display: isMaxMobile ? false : true },
+								x: { display: isMaxTablet ? false : true },
 							},
 						}}
 						data={{
@@ -105,7 +105,7 @@ const Statistics: FC = () => {
 								legend: { display: false },
 							},
 							scales: {
-								x: { display: isMaxMobile ? false : true },
+								x: { display: isMaxTablet ? false : true },
 							},
 						}}
 						data={{
@@ -170,7 +170,7 @@ const Statistics: FC = () => {
 						},
 					},
 					scales: {
-						x: { display: isMaxMobile ? false : true },
+						x: { display: isMaxTablet ? false : true },
 					},
 				}}
 			/>

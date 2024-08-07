@@ -1,14 +1,20 @@
 import { FC } from 'react'
 
 import useRenderCalendar from '@/hooks/useRenderCalendar'
-import useResponsive from '@/hooks/useResponsive'
+import { SmallCalendarProps } from '@/types/props/calendars/SmallCalendarProps'
 import { MonthsOfYear } from '@/utils/data/monthsOfYear'
 
 import Month from '../Month'
 import WeekDays from '../WeekDays'
 import { Header } from './SmallCalendar.styled'
 
-const SmallCalendar: FC = () => {
+const SmallCalendar: FC<SmallCalendarProps> = ({
+	cellWidth,
+	cellHeight,
+	borderRadius,
+	background,
+	color,
+}) => {
 	const date = new Date()
 	const { getDaysOfMonth, getCurrentDay } = useRenderCalendar(date)
 
@@ -18,22 +24,22 @@ const SmallCalendar: FC = () => {
 	const currentMonth = date.getMonth()
 	const currentMonthName = MonthsOfYear[currentMonth].name
 
-	const { isTablet } = useResponsive()
-
 	return (
 		<div>
 			<Header>{currentMonthName}</Header>
 			<WeekDays
 				currentDay={currentDay}
-				cellWidth={isTablet ? '80px' : '100%'}
-				cellHeight="50px"
+				cellWidth={cellWidth}
+				cellHeight={cellHeight}
 			/>
 			<Month
 				month={weeksFromSelectedMonth}
 				currentDate={currentDate}
-				cellWidth={isTablet ? '80px' : '100%'}
-				cellHeight="50px"
-				borderRadius={true}
+				cellWidth={cellWidth}
+				cellHeight={cellHeight}
+				borderRadius={borderRadius}
+				background={background}
+				color={color}
 			/>
 		</div>
 	)

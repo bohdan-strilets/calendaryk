@@ -8,6 +8,7 @@ import {
 	AccentText,
 	DataWrapper,
 	Image,
+	ImageWrapper,
 	Text,
 	TimerCell,
 	TimerLabel,
@@ -21,7 +22,9 @@ const Vacation: FC = () => {
 
 	return (
 		<Wrapper>
-			<Image src={vacationPng} alt="Vacation image - vector" />
+			<ImageWrapper>
+				<Image src={vacationPng} alt="Vacation image - vector" />
+			</ImageWrapper>
 			<DataWrapper>
 				<CalendarSegment
 					startRange={new Date(2024, 7, 26)}

@@ -4,14 +4,18 @@ import { motion } from 'framer-motion'
 import { screenWidth } from '@/utils/data/screenWidth'
 
 export const Wrapper = styled.div`
-	font-size: 40 px;
+	font-size: 28px;
 	text-transform: uppercase;
 
 	margin-bottom: 10px;
 
 	@media screen and (min-width: ${screenWidth.TABLET}) {
-		font-size: 44px;
+		font-size: 34px;
 		margin-bottom: 0;
+	}
+
+	@media screen and (min-width: ${screenWidth.LAPTOP}) {
+		font-size: 44px;
 	}
 `
 
@@ -19,6 +23,10 @@ export const Image = styled.img`
 	width: 280px;
 
 	@media screen and (min-width: ${screenWidth.TABLET}) {
+		width: 200px;
+	}
+
+	@media screen and (min-width: ${screenWidth.LAPTOP}) {
 		width: 240px;
 	}
 `

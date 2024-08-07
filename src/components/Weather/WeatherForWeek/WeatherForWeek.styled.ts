@@ -20,6 +20,11 @@ export const DayInfo = styled(motion.li)`
 
 	@media screen and (min-width: ${screenWidth.TABLET}) {
 		width: 150px;
+		padding: 25px 15px;
+	}
+
+	@media screen and (min-width: ${screenWidth.LAPTOP}) {
+		width: 150px;
 		padding: 55px 35px;
 	}
 `

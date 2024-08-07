@@ -22,6 +22,10 @@ export const Wrapper = styled(motion.li)<WrapperProps>`
 		justify-content: space-between;
 
 		margin-bottom: 20px;
+		padding: 12px;
+	}
+
+	@media screen and (min-width: ${screenWidth.LAPTOP}) {
 		padding: 20px;
 	}
 `
@@ -30,11 +34,13 @@ export const TargetDateWrapper = styled.div`
 	margin-bottom: 5px;
 
 	@media screen and (min-width: ${screenWidth.TABLET}) {
+		margin-bottom: 0;
+	}
+
+	@media screen and (min-width: ${screenWidth.LAPTOP}) {
 		display: flex;
 		align-items: center;
 		width: 20%;
-
-		margin-bottom: 0;
 	}
 `
 
@@ -49,13 +55,17 @@ export const TaskWrapper = styled.div`
 	margin-bottom: 5px;
 
 	@media screen and (min-width: ${screenWidth.TABLET}) {
-		width: 45%;
+		width: 40%;
 		margin-bottom: 0;
+	}
+
+	@media screen and (min-width: ${screenWidth.LAPTOP}) {
+		width: 45%;
 	}
 `
 
 export const TaskText = styled.p`
-	@media screen and (min-width: ${screenWidth.TABLET}) {
+	@media screen and (min-width: ${screenWidth.LAPTOP}) {
 		margin-left: 15px;
 	}
 `
@@ -68,6 +78,7 @@ export const PriorityWrapper = styled.div`
 	margin-bottom: 5px;
 
 	@media screen and (min-width: ${screenWidth.TABLET}) {
+		width: 14%;
 		margin-bottom: 0;
 	}
 `
@@ -78,10 +89,18 @@ export const CreatedDateWrapper = styled.div`
 
 	@media screen and (min-width: ${screenWidth.TABLET}) {
 		justify-content: flex-end;
-		width: 10%;
+		width: 15%;
 	}
 `
 
 export const CreatedDateText = styled.div`
 	margin-left: 10px;
+
+	@media screen and (min-width: ${screenWidth.TABLET}) {
+		margin-left: 5px;
+	}
+
+	@media screen and (min-width: ${screenWidth.LAPTOP}) {
+		margin-left: 10px;
+	}
 `

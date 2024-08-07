@@ -9,16 +9,21 @@ export const Wrapper = styled(motion.div)`
 	align-items: center;
 	justify-content: center;
 
-	padding: 10px 0;
+	padding: 40px 0;
 	margin: 15px 0;
 
 	background-color: #050505;
 	border-top-right-radius: 5px;
 
 	@media screen and (min-width: ${screenWidth.TABLET}) {
-		width: 30%;
+		width: 40%;
 		height: 100%;
 		padding: 0;
+		margin: 0;
+	}
+
+	@media screen and (min-width: ${screenWidth.LAPTOP}) {
+		width: 30%;
 	}
 `
 
@@ -32,6 +37,10 @@ export const TemperatureDisplay = styled.p`
 	margin-bottom: 15px;
 
 	@media screen and (min-width: ${screenWidth.TABLET}) {
+		font-size: 76px;
+	}
+
+	@media screen and (min-width: ${screenWidth.LAPTOP}) {
 		font-size: 120px;
 	}
 `
@@ -43,8 +52,12 @@ export const TemperatureSymbol = styled.span`
 	font-size: 20px;
 
 	@media screen and (min-width: ${screenWidth.TABLET}) {
-		right: -18%;
+		right: -32%;
 		font-size: 30px;
+	}
+
+	@media screen and (min-width: ${screenWidth.LAPTOP}) {
+		right: -18%;
 	}
 `
 
@@ -67,6 +80,10 @@ export const TemperatureLabel = styled.p`
 	margin-left: 5px;
 
 	@media screen and (min-width: ${screenWidth.TABLET}) {
+		font-size: 18px;
+	}
+
+	@media screen and (min-width: ${screenWidth.LAPTOP}) {
 		font-size: 20px;
 	}
 `

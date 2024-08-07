@@ -5,7 +5,7 @@ import { screenWidth } from '@/utils/data/screenWidth'
 export const Wrapper = styled.div`
 	margin-bottom: 20px;
 
-	@media screen and (min-width: ${screenWidth.TABLET}) {
+	@media screen and (min-width: ${screenWidth.LAPTOP}) {
 		display: flex;
 		align-items: center;
 		margin-bottom: 0;
@@ -14,8 +14,19 @@ export const Wrapper = styled.div`
 
 export const GreetingsWrapper = styled.div`
 	display: flex;
-	align-items: center;
+	align-items: flex-end;
 	justify-content: space-between;
+
+	margin-bottom: 10px;
+
+	@media screen and (min-width: ${screenWidth.TABLET}) {
+		justify-content: start;
+		margin-bottom: 20px;
+	}
+
+	@media screen and (min-width: ${screenWidth.LAPTOP}) {
+		margin-bottom: 0;
+	}
 `
 
 export const DateGroup = styled.div`
@@ -23,14 +34,15 @@ export const DateGroup = styled.div`
 	flex-direction: column;
 	align-items: center;
 
-	margin-bottom: 10px;
-
 	@media screen and (min-width: ${screenWidth.TABLET}) {
 		align-items: center;
 		justify-content: center;
 
+		margin-right: 15px;
+	}
+
+	@media screen and (min-width: ${screenWidth.LAPTOP}) {
 		margin-right: 35px;
-		margin-bottom: 0;
 	}
 `
 
@@ -43,6 +55,10 @@ export const Day = styled.p`
 	color: var(--gray-color);
 
 	@media screen and (min-width: ${screenWidth.TABLET}) {
+		font-size: 66px;
+	}
+
+	@media screen and (min-width: ${screenWidth.LAPTOP}) {
 		font-size: 98px;
 	}
 `
@@ -63,6 +79,11 @@ export const Month = styled.p`
 	border-radius: 3px;
 
 	@media screen and (min-width: ${screenWidth.TABLET}) {
+		font-size: 24px;
+		padding: 6px 15px;
+	}
+
+	@media screen and (min-width: ${screenWidth.LAPTOP}) {
 		font-size: 32px;
 		padding: 8px 25px;
 	}
@@ -71,12 +92,14 @@ export const Month = styled.p`
 export const GreetingMessage = styled.p`
 	font-size: 26px;
 	font-weight: 700;
-
-	margin-bottom: 10px;
+	line-height: 1;
 
 	@media screen and (min-width: ${screenWidth.TABLET}) {
+		font-size: 34px;
+	}
+
+	@media screen and (min-width: ${screenWidth.LAPTOP}) {
 		font-size: 42px;
-		margin-bottom: 0;
 	}
 `
 

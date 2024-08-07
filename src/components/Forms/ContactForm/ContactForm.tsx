@@ -10,7 +10,7 @@ import { validation } from '@/validation/ContactFormSchema'
 import { Wrapper } from './ContactForm.styled'
 
 const ContactForm: FC = () => {
-	const { isMaxMobile } = useResponsive()
+	const { isMaxTablet } = useResponsive()
 
 	const {
 		register,
@@ -28,7 +28,7 @@ const ContactForm: FC = () => {
 				register={register}
 				name="name"
 				type="text"
-				width={isMaxMobile ? '290px' : '320px'}
+				width={isMaxTablet ? '290px' : '320px'}
 				height="40px"
 				margin="0 0 15px 0"
 				placeholder="User name"
@@ -39,7 +39,7 @@ const ContactForm: FC = () => {
 				register={register}
 				name="email"
 				type="email"
-				width={isMaxMobile ? '290px' : '320px'}
+				width={isMaxTablet ? '290px' : '320px'}
 				height="40px"
 				margin="0 0 15px 0"
 				placeholder="user.name@gmail.com"

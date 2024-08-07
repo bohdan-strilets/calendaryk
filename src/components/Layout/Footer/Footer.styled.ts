@@ -16,6 +16,16 @@ export const Content = styled.div`
 	}
 `
 
+export const Group = styled.div`
+	@media screen and (min-width: ${screenWidth.LAPTOP}) {
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+
+		width: 100%;
+	}
+`
+
 export const LogoWrapper = styled.div`
 	@media screen and (max-width: ${screenWidth.PRE_TABLET}) {
 		display: flex;
@@ -35,5 +45,9 @@ export const CopyrightWrapper = styled.div`
 		flex-direction: column;
 		justify-content: center;
 		margin-bottom: 0;
+	}
+
+	@media screen and (min-width: ${screenWidth.LAPTOP}) {
+		flex-direction: row;
 	}
 `

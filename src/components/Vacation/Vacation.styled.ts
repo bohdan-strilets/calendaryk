@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
 	background: linear-gradient(to right, #11998e, #38ef7d);
 	border-radius: 5px;
 
-	@media screen and (min-width: ${screenWidth.TABLET}) {
+	@media screen and (min-width: ${screenWidth.LAPTOP}) {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -16,10 +16,22 @@ export const Wrapper = styled.div`
 	}
 `
 
+export const ImageWrapper = styled.div`
+	@media screen and (min-width: ${screenWidth.TABLET}) and (max-width: ${screenWidth.PRE_LAPTOP}) {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+`
+
 export const Image = styled.img`
 	width: 280px;
 
 	@media screen and (min-width: ${screenWidth.TABLET}) {
+		width: 300px;
+	}
+
+	@media screen and (min-width: ${screenWidth.LAPTOP}) {
 		width: 600px;
 	}
 `
@@ -62,6 +74,10 @@ export const TimerCell = styled.div`
 
 	@media screen and (min-width: ${screenWidth.TABLET}) {
 		margin-right: 20px;
+
+		:last-child {
+			margin-right: 0;
+		}
 	}
 `
 
@@ -77,8 +93,12 @@ export const TimerValue = styled.p`
 	color: #38ef7d;
 
 	@media screen and (min-width: ${screenWidth.TABLET}) {
-		font-size: 88px;
+		font-size: 44px;
 		padding: 15px;
+	}
+
+	@media screen and (min-width: ${screenWidth.LAPTOP}) {
+		font-size: 88px;
 	}
 `
 
@@ -89,6 +109,10 @@ export const TimerLabel = styled.p`
 	text-align: center;
 
 	@media screen and (min-width: ${screenWidth.TABLET}) {
+		font-size: 12px;
+	}
+
+	@media screen and (min-width: ${screenWidth.LAPTOP}) {
 		font-size: 16px;
 	}
 `

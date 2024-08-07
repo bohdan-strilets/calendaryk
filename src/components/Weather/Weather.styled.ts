@@ -48,6 +48,10 @@ export const IconWrapper = styled.div`
 
 	@media screen and (min-width: ${screenWidth.TABLET}) {
 		justify-content: center;
+		font-size: 60px;
+	}
+
+	@media screen and (min-width: ${screenWidth.LAPTOP}) {
 		font-size: 120px;
 	}
 `
