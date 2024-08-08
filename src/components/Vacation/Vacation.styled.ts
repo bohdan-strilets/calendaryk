@@ -4,7 +4,7 @@ import { screenWidth } from '@/utils/data/screenWidth'
 
 export const Wrapper = styled.div`
 	padding: 5px;
-	background: linear-gradient(to right, #11998e, #38ef7d);
+	background: var(--green-gradient);
 	border-radius: 5px;
 
 	@media screen and (min-width: ${screenWidth.LAPTOP}) {

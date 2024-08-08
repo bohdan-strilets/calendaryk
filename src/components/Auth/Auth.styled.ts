@@ -20,7 +20,7 @@ export const LeftSide = styled(motion.div)`
 	width: 100%;
 	height: 570px;
 
-	background: linear-gradient(to right, #11998e, #38ef7d);
+	background: var(--green-gradient);
 
 	border-radius: 5px;
 	color: var(--white-color);
