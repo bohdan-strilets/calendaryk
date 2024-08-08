@@ -6,4 +6,5 @@ export const navigationPaths = {
 	STATISTICS: 'statistics',
 	USERS: 'users',
 	ABOUT_US: 'about-us',
+	AUTH: 'auth',
 }

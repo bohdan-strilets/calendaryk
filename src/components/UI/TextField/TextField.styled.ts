@@ -3,6 +3,11 @@ import styled from '@emotion/styled'
 import { InputProps, WrapperProps } from '@/types/props/ui/TextFieldProps'
 
 export const Wrapper = styled.label<WrapperProps>`
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	justify-content: center;
+
 	margin: ${({ margin }) => (margin ? margin : '')};
 `
 
