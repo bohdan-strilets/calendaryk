@@ -2,12 +2,13 @@ import { FC } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 import Button from '@/components/UI/Button'
+import ButtonLink from '@/components/UI/ButtonLink'
 import TextField from '@/components/UI/TextField'
 import useResponsive from '@/hooks/useResponsive'
 import { LoginFormInputs } from '@/types/inputs/LoginFormInputs'
 import { validation } from '@/validation/LoginFormSchema'
 
-import { FormTitle, Text } from './LoginForm.styled'
+import { FormTitle } from './LoginForm.styled'
 
 const LoginForm: FC = () => {
 	const { isMaxMobile, isMaxTablet, isMaxLaptop } = useResponsive()
@@ -65,7 +66,7 @@ const LoginForm: FC = () => {
 				<Button type="submit" height="45px" margin="0 0 40px 0">
 					login
 				</Button>
-				<Text>Forgot your password?</Text>
+				<ButtonLink>Forgot your password?</ButtonLink>
 			</form>
 		</div>
 	)
