@@ -66,7 +66,7 @@ const LoginForm: FC = () => {
 				<Button type="submit" height="45px" margin="0 0 40px 0">
 					login
 				</Button>
-				<ButtonLink>Forgot your password?</ButtonLink>
+				<ButtonLink textAlign="center">Forgot your password?</ButtonLink>
 			</form>
 		</div>
 	)
