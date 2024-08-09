@@ -1,4 +1,3 @@
-import { ReactNode } from 'react'
 import {
 	FieldErrors,
 	FieldValues,
@@ -21,7 +20,7 @@ export type CheckboxProps<T extends FieldValues> = {
 	setValue: UseFormSetValue<T>
 	watch: UseFormWatch<T>
 	name: Path<T>
-	children: ReactNode | string
+	label?: string
 	rules?: InputRules<T>
 	errors?: FieldErrors<T>
 	margin?: string
@@ -30,6 +29,7 @@ export type CheckboxProps<T extends FieldValues> = {
 export type CustomCheckboxProps = Pick<
 	InputRules<FieldValues>,
 	'isChecked' | 'disabled'
->
+> &
+	Pick<CheckboxProps<FieldValues>, 'label'>
 
 export type WrapperProps = Pick<CheckboxProps<FieldValues>, 'margin'>

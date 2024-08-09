@@ -1,3 +1,4 @@
+import { useAnimation } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { FieldError, FieldValues, Path, PathValue } from 'react-hook-form'
 import { HiCheck } from 'react-icons/hi'
@@ -11,12 +12,13 @@ const Checkbox = <T extends FieldValues>({
 	setValue,
 	watch,
 	name,
-	children,
+	label,
 	rules,
 	errors,
 	margin,
 }: CheckboxProps<T>) => {
 	const [isChecked, setIsChecked] = useState(rules?.isChecked)
+	const controls = useAnimation()
 
 	const error = errors?.[name] as FieldError | undefined
 	const disabled = rules?.disabled
@@ -31,6 +33,11 @@ const Checkbox = <T extends FieldValues>({
 			const newCheckedState = !isChecked as PathValue<T, Path<T>>
 			setIsChecked(newCheckedState)
 			setValue(name, newCheckedState)
+
+			controls.start({
+				scale: [1, 1.05, 1],
+				transition: { duration: 0.2 },
+			})
 		}
 	}
 
@@ -39,13 +46,16 @@ const Checkbox = <T extends FieldValues>({
 			<Group>
 				<Input {...register(name, rules)} type="checkbox" />
 				<CustomCheckbox
+					initial={{ scale: 1 }}
+					animate={controls}
 					isChecked={isChecked}
 					disabled={disabled}
 					className="checkbox"
+					label={label}
 				>
 					{isChecked && <HiCheck size={20} />}
 				</CustomCheckbox>
-				{children && <div>{children}</div>}
+				{label && <p>{label}</p>}
 			</Group>
 
 			{error && <Error>{error.message}</Error>}

@@ -1,10 +1,11 @@
 import { FC } from 'react'
+import { useForm } from 'react-hook-form'
 import { BsClockFill } from 'react-icons/bs'
 import { FaCalendarAlt } from 'react-icons/fa'
 import { GoGoal } from 'react-icons/go'
-import { ImCheckboxChecked, ImCheckboxUnchecked } from 'react-icons/im'
 import { MdCreate } from 'react-icons/md'
 
+import Checkbox from '@/components/UI/Checkbox'
 import useResponsive from '@/hooks/useResponsive'
 import { TodoItemProps } from '@/types/props/todoList/TodoItemProps'
 import { getRandomColorRGBA } from '@/utils/functions/getRandomColorRGBA'
@@ -28,6 +29,13 @@ const TodoItem: FC<TodoItemProps> = ({ todo, index }) => {
 	const cratedDate = parseDateTime(createdAt)
 	const { isMaxTablet } = useResponsive()
 
+	const {
+		register,
+		setValue,
+		watch,
+		formState: { errors },
+	} = useForm({ defaultValues: { [`isCompleted-${index}`]: isCompleted } })
+
 	return (
 		<Wrapper
 			initial={{ y: '-100%', opacity: 0 }}
@@ -47,11 +55,14 @@ const TodoItem: FC<TodoItemProps> = ({ todo, index }) => {
 			</TaskWrapper>
 			<PriorityWrapper>
 				<Priority priority={priority} />
-				{isCompleted ? (
-					<ImCheckboxChecked color="var(--green-color)" />
-				) : (
-					<ImCheckboxUnchecked color="var(--green-color)" />
-				)}
+				<Checkbox
+					name={`isCompleted-${index}`}
+					register={register}
+					setValue={setValue}
+					watch={watch}
+					rules={{ isChecked: isCompleted }}
+					errors={errors}
+				/>
 			</PriorityWrapper>
 			<CreatedDateWrapper>
 				<MdCreate />

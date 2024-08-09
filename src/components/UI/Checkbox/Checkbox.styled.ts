@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { motion } from 'framer-motion'
 
 import {
 	CustomCheckboxProps,
@@ -31,14 +32,14 @@ export const Group = styled.div`
 	cursor: pointer;
 `
 
-export const CustomCheckbox = styled.p<CustomCheckboxProps>`
+export const CustomCheckbox = styled(motion.p)<CustomCheckboxProps>`
 	display: flex;
 	align-items: center;
 	justify-content: center;
 
 	min-width: 20px;
 	height: 20px;
-	margin-right: 10px;
+	margin-right: ${({ label }) => (label ? '10px' : '')};
 
 	color: var(--white-color);
 	background-color: ${({ isChecked }) => (isChecked ? 'var(--red-color)' : '')};
