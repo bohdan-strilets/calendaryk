@@ -45,6 +45,7 @@ export const CustomCheckbox = styled(motion.p)<CustomCheckboxProps>`
 	background-color: ${({ isChecked }) => (isChecked ? 'var(--red-color)' : '')};
 	border: 2px solid var(--red-color);
 	border-radius: 3px;
+	box-shadow: inset 0px 10px 0px rgba(255, 255, 255, 0.2);
 
 	opacity: ${({ disabled }) => (disabled ? 0.3 : 1)};
 
