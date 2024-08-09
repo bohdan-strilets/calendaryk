@@ -1,17 +1,20 @@
 import { FC } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 
 import Button from '@/components/UI/Button'
 import ButtonLink from '@/components/UI/ButtonLink'
 import TextField from '@/components/UI/TextField'
 import useResponsive from '@/hooks/useResponsive'
 import { LoginFormInputs } from '@/types/inputs/LoginFormInputs'
+import { navigationPaths } from '@/utils/data/navigationPaths'
 import { validation } from '@/validation/LoginFormSchema'
 
 import { FormTitle } from './LoginForm.styled'
 
 const LoginForm: FC = () => {
 	const { isMaxMobile, isMaxTablet, isMaxLaptop } = useResponsive()
+	const navigate = useNavigate()
 
 	const {
 		register,
@@ -67,7 +70,12 @@ const LoginForm: FC = () => {
 				<Button type="submit" height="45px" margin="0 0 40px 0">
 					login
 				</Button>
-				<ButtonLink textAlign="center">Forgot your password?</ButtonLink>
+				<ButtonLink
+					textAlign="center"
+					onClick={() => navigate(navigationPaths.FORGOT_PASSWORD)}
+				>
+					Forgot your password?
+				</ButtonLink>
 			</form>
 		</div>
 	)
