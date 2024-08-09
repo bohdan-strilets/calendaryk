@@ -63,6 +63,7 @@ const LoginForm: FC = () => {
 					errors={errors}
 					rules={{ required: true, minLength: 6, maxLength: 12 }}
 				/>
+
 				<Button type="submit" height="45px" margin="0 0 40px 0">
 					login
 				</Button>
