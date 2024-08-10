@@ -7,7 +7,7 @@ const useModal = () => {
 	const POPUP_NAME = 'modal'
 
 	const modalNames = {
-		TEST_MODAL: 'test-modal',
+		FORGOT_PASSWORD: 'forgot-password',
 	}
 
 	const openModal = useCallback(

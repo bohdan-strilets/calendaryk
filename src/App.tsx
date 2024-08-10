@@ -4,7 +4,6 @@ import { Route, Routes } from 'react-router-dom'
 import AboutUsPage from './pages/AboutUsPage'
 import AuthPage from './pages/AuthPage'
 import CalendarPage from './pages/CalendarPage'
-import ForgotPasswordPage from './pages/ForgotPasswordPage'
 import HomePage from './pages/HomePage'
 import ProfilePage from './pages/ProfilePage'
 import StatisticsPage from './pages/StatisticsPage'
@@ -17,10 +16,6 @@ const App: FC = () => {
 		<>
 			<Routes>
 				<Route path={navigationPaths.AUTH} element={<AuthPage />} />
-				<Route
-					path={navigationPaths.FORGOT_PASSWORD}
-					element={<ForgotPasswordPage />}
-				/>
 
 				<Route path={navigationPaths.HOME} element={<HomePage />} />
 				<Route path={navigationPaths.CALENDAR} element={<CalendarPage />} />
