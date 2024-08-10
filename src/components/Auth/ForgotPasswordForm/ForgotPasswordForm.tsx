@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { toast } from 'react-toastify'
 
 import Button from '@/components/UI/Button'
 import TextField from '@/components/UI/TextField'
@@ -17,6 +18,7 @@ const ForgotPasswordForm: FC = () => {
 
 	const onSubmit: SubmitHandler<ForgotPasswordInputs> = (data) => {
 		console.log(data)
+		toast.success('The letter has been sent successfully.', {})
 	}
 
 	return (
