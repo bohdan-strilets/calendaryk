@@ -28,6 +28,17 @@ const PasswordField = <T extends FieldValues>({
 		}
 	}
 
+	const isError = () => {
+		if (errors) {
+			const numberErrors = Object.keys(errors).length
+			if (numberErrors > 0) {
+				return true
+			} else {
+				return false
+			}
+		}
+	}
+
 	return (
 		<Wrapper>
 			<TextField<T>
@@ -43,7 +54,12 @@ const PasswordField = <T extends FieldValues>({
 				rules={rules}
 				padding="0 40px 0 10px"
 			/>
-			<Button type="button" onClick={changeType} label={label}>
+			<Button
+				type="button"
+				onClick={changeType}
+				label={label}
+				isError={isError()}
+			>
 				{type === 'password' ? <BsEyeFill /> : <BsEyeSlashFill />}
 			</Button>
 		</Wrapper>

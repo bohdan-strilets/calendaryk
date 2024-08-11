@@ -8,8 +8,21 @@ export const Wrapper = styled.div`
 
 export const Button = styled.button<ButtonProps>`
 	position: absolute;
-	bottom: ${({ label }) => (label ? '19%' : '32%')};
 	right: 2%;
+	bottom: ${({ label, isError }) => {
+		if (label && !isError) {
+			return '19%'
+		}
+		if (label && isError) {
+			return '42%'
+		}
+		if (!label && !isError) {
+			return '32%'
+		}
+		if (!label && isError) {
+			return '57%'
+		}
+	}};
 
 	display: flex;
 	align-items: center;

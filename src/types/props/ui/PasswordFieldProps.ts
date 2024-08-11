@@ -19,4 +19,6 @@ export type PasswordFieldProps<T extends FieldValues> = {
 	margin?: string
 }
 
-export type ButtonProps = Pick<PasswordFieldProps<FieldValues>, 'label'>
+export type ButtonProps = Pick<PasswordFieldProps<FieldValues>, 'label'> & {
+	isError?: boolean
+}
