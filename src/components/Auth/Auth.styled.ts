@@ -18,7 +18,7 @@ export const LeftSide = styled(motion.div)`
 	justify-content: center;
 
 	width: 100%;
-	height: 570px;
+	height: 670px;
 
 	background: var(--green-gradient);
 
@@ -59,7 +59,7 @@ export const RightSide = styled(motion.div)`
 	justify-content: center;
 
 	width: 100%;
-	height: 570px;
+	height: 670px;
 
 	background-color: var(--white-color);
 
