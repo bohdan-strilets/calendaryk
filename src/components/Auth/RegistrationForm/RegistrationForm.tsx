@@ -4,11 +4,10 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import Button from '@/components/UI/Button'
 import PasswordField from '@/components/UI/PasswordField'
 import TextField from '@/components/UI/TextField'
+import Title from '@/components/UI/Title'
 import useResponsive from '@/hooks/useResponsive'
 import { RegistrationFormInputs } from '@/types/inputs/RegistrationFormInputs'
 import { validation } from '@/validation/RegistrationFormSchema'
-
-import { FormTitle } from './RegistrationForm.styled'
 
 const RegistrationForm: FC = () => {
 	const { isMaxMobile, isMaxTablet, isMaxLaptop } = useResponsive()
@@ -38,7 +37,9 @@ const RegistrationForm: FC = () => {
 
 	return (
 		<div>
-			<FormTitle>registration</FormTitle>
+			<Title fontSize={40} textAlign="center" type="h1" variant="gray">
+				registration
+			</Title>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<TextField<RegistrationFormInputs>
 					register={register}

@@ -5,12 +5,11 @@ import Button from '@/components/UI/Button'
 import ButtonLink from '@/components/UI/ButtonLink'
 import PasswordField from '@/components/UI/PasswordField'
 import TextField from '@/components/UI/TextField'
+import Title from '@/components/UI/Title'
 import useModal from '@/hooks/useModal'
 import useResponsive from '@/hooks/useResponsive'
 import { LoginFormInputs } from '@/types/inputs/LoginFormInputs'
 import { validation } from '@/validation/LoginFormSchema'
-
-import { FormTitle } from './LoginForm.styled'
 
 const LoginForm: FC = () => {
 	const { isMaxMobile, isMaxTablet, isMaxLaptop } = useResponsive()
@@ -41,7 +40,9 @@ const LoginForm: FC = () => {
 
 	return (
 		<div>
-			<FormTitle>login</FormTitle>
+			<Title fontSize={40} textAlign="center" type="h1" variant="gray">
+				login
+			</Title>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<TextField<LoginFormInputs>
 					register={register}
