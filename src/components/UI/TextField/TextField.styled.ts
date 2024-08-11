@@ -18,7 +18,7 @@ export const Label = styled.p`
 export const Input = styled.input<InputProps>`
 	width: ${({ width }) => (width ? width : '100%')};
 	height: ${({ height }) => (height ? height : '30px')};
-	padding: 0 10px;
+	padding: ${({ padding }) => (padding ? padding : '0 10px')};
 
 	border-bottom: 3px solid transparent;
 	border-radius: 3px;

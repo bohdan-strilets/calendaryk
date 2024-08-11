@@ -3,6 +3,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 
 import Button from '@/components/UI/Button'
 import ButtonLink from '@/components/UI/ButtonLink'
+import PasswordField from '@/components/UI/PasswordField'
 import TextField from '@/components/UI/TextField'
 import useModal from '@/hooks/useModal'
 import useResponsive from '@/hooks/useResponsive'
@@ -54,11 +55,10 @@ const LoginForm: FC = () => {
 					errors={errors}
 					rules={{ required: true }}
 				/>
-				<TextField<LoginFormInputs>
+				<PasswordField
 					register={register}
 					label="Password"
 					name="password"
-					type="password"
 					width={getFieldWidth()}
 					height="50px"
 					margin="0 0 20px 0"
