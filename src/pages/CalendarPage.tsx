@@ -1,7 +1,13 @@
 import { FC } from 'react'
 
+import Calendar from '@/components/Calendars/Calendar'
+
 const CalendarPage: FC = () => {
-	return <p>CalendarPage</p>
+	return (
+		<>
+			<Calendar />
+		</>
+	)
 }
 
 export default CalendarPage

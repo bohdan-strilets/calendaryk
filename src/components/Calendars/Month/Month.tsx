@@ -2,7 +2,8 @@ import { FC } from 'react'
 
 import { MonthProps } from '@/types/props/calendars/MonthProps'
 
-import { DayCell, Week } from './Month.styled'
+import DayCell from '../DayCell'
+import { Week } from './Month.styled'
 
 const Month: FC<MonthProps> = ({
 	month,
@@ -25,15 +26,14 @@ const Month: FC<MonthProps> = ({
 					{week.map((day, index) => (
 						<DayCell
 							key={index}
-							currentDay={currentDate === day?.getDate()}
-							cellWidth={cellWidth}
-							cellHeight={cellHeight}
+							currentDate={currentDate}
+							day={day}
+							width={cellWidth}
+							height={cellHeight}
 							background={background}
 							color={color}
-							borderRadius={borderRadius}
-						>
-							<p>{day?.getDate()}</p>
-						</DayCell>
+							isBorderRadius={borderRadius}
+						/>
 					))}
 				</Week>
 			))}
