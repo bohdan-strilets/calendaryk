@@ -1,18 +1,24 @@
 import { keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
 
+import { CircleProps, WrapperProps } from '@/types/props/ui/LoaderProps'
+
 const swap = keyframes`
   0%, 100% {
-    transform: translateX(5px);
+    transform: translateX(3px);
     z-index: 1;
   }
   50% {
-    transform: translateX(60px);
+    transform: translateX(-40px);
+    z-index: 0;
+  }
+  75% {
+    transform: translateX(40px);
     z-index: 0;
   }
 `
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<WrapperProps>`
 	position: relative;
 
 	display: flex;
@@ -20,18 +26,19 @@ export const Wrapper = styled.div`
 	justify-content: center;
 
 	height: 100%;
+	margin: ${({ margin }) => (margin ? margin : '')};
 `
 
-export const Circle = styled.div`
+export const Circle = styled.div<CircleProps>`
 	position: absolute;
 
-	width: 12px;
-	height: 12px;
+	width: ${({ size }) => (size ? `${size}px` : '8px')};
+	height: ${({ size }) => (size ? `${size}px` : '8px')};
 
 	background-color: var(--red-color);
-	border-radius: 3px;
+	border-radius: 2px;
 
-	animation: ${swap} 1s ease-in-out infinite alternate;
+	animation: ${swap} 2s ease-in-out infinite alternate;
 
 	&:nth-of-type(1) {
 		animation-delay: -0.2s;

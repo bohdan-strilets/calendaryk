@@ -110,8 +110,13 @@ const RegistrationForm: FC = () => {
 					errors={errors}
 					rules={{ required: true, minLength: 6, maxLength: 12 }}
 				/>
-				{loading && <Loader />}
-				<Button type="submit" height="45px" margin="0 0 40px 0">
+				{loading && <Loader margin="25px 0 25px 0" />}
+				<Button
+					type="submit"
+					height="45px"
+					margin="0 0 40px 0"
+					disabled={loading}
+				>
 					registration
 				</Button>
 			</form>
