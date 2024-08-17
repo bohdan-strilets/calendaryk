@@ -28,11 +28,25 @@ export const AuthSlice = createSlice({
 					state.token = action.payload?.tokens.accessToken
 					state.isLoggedIn = true
 					state.loading = false
-
 					setUser(action.payload.user)
 				}
 			)
 			.addCase(operations.registration.rejected, (state) => {
+				state.loading = false
+			})
+			.addCase(operations.login.pending, (state) => {
+				state.loading = true
+			})
+			.addCase(
+				operations.login.fulfilled,
+				(state, action: PayloadAction<SuccessReturns>) => {
+					state.token = action.payload?.tokens.accessToken
+					state.isLoggedIn = true
+					state.loading = false
+					setUser(action.payload.user)
+				}
+			)
+			.addCase(operations.login.rejected, (state) => {
 				state.loading = false
 			})
 	},

@@ -1,19 +1,32 @@
+import { unwrapResult } from '@reduxjs/toolkit'
 import { FC } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 import Button from '@/components/UI/Button'
 import ButtonLink from '@/components/UI/ButtonLink'
+import Loader from '@/components/UI/Loader'
 import PasswordField from '@/components/UI/PasswordField'
 import TextField from '@/components/UI/TextField'
 import Title from '@/components/UI/Title'
+import { useAppDispatch } from '@/hooks/useAppDispatch'
+import { useAppSelector } from '@/hooks/useAppSelector'
 import useModal from '@/hooks/useModal'
 import useResponsive from '@/hooks/useResponsive'
+import operations from '@/store/auth/authOperations'
+import { getLoading } from '@/store/auth/authSelectors'
 import { LoginFormInputs } from '@/types/inputs/LoginFormInputs'
+import { navigationPaths } from '@/utils/data/navigationPaths'
+import { isApiError } from '@/utils/functions/isApiError'
 import { validation } from '@/validation/LoginFormSchema'
 
 const LoginForm: FC = () => {
 	const { isMaxMobile, isMaxTablet, isMaxLaptop } = useResponsive()
 	const { openModal, modalNames } = useModal()
+	const navigate = useNavigate()
+	const dispatch = useAppDispatch()
+	const loading = useAppSelector(getLoading)
 
 	const {
 		register,
@@ -21,8 +34,16 @@ const LoginForm: FC = () => {
 		formState: { errors },
 	} = useForm<LoginFormInputs>(validation)
 
-	const onSubmit: SubmitHandler<LoginFormInputs> = (data) => {
-		console.log(data)
+	const onSubmit: SubmitHandler<LoginFormInputs> = async (data) => {
+		try {
+			const result = await dispatch(operations.login(data))
+			unwrapResult(result)
+			navigate(navigationPaths.HOME)
+		} catch (error) {
+			if (isApiError(error)) {
+				toast.error(error.message)
+			}
+		}
 	}
 
 	const getFieldWidth = () => {
@@ -66,8 +87,13 @@ const LoginForm: FC = () => {
 					errors={errors}
 					rules={{ required: true, minLength: 6, maxLength: 12 }}
 				/>
-
-				<Button type="submit" height="45px" margin="0 0 40px 0">
+				{loading && <Loader margin="25px 0 25px 0" />}
+				<Button
+					type="submit"
+					height="45px"
+					margin="0 0 40px 0"
+					disabled={loading}
+				>
 					login
 				</Button>
 				<ButtonLink
