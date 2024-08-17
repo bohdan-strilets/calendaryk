@@ -1,16 +1,23 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
 
 import { AuthSliceState, SuccessReturns } from '@/types/redux/AuthSliceState'
 
 import { setUser } from '../user/userSlice'
 import operations from './authOperations'
 import { sliceName } from './config'
-
 const initialState: AuthSliceState = {
 	token: null,
 	isLoggedIn: false,
 	isRefreshing: false,
 	loading: false,
+}
+
+const persistConfig = {
+	key: sliceName,
+	storage,
+	whitelist: ['token'],
 }
 
 export const AuthSlice = createSlice({
@@ -52,4 +59,4 @@ export const AuthSlice = createSlice({
 	},
 })
 
-export const authReducer = AuthSlice.reducer
+export const authReducer = persistReducer(persistConfig, AuthSlice.reducer)
