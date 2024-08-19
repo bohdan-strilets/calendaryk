@@ -1,6 +1,8 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
+import { useAppDispatch } from './hooks/useAppDispatch'
+import { useAppSelector } from './hooks/useAppSelector'
 import AboutUsPage from './pages/AboutUsPage'
 import AuthPage from './pages/AuthPage'
 import CalendarPage from './pages/CalendarPage'
@@ -9,9 +11,21 @@ import ProfilePage from './pages/ProfilePage'
 import StatisticsPage from './pages/StatisticsPage'
 import TodoListPage from './pages/TodoListPage'
 import UsersPage from './pages/UsersPage'
+import { getIsLoggedIn, getToken } from './store/auth/authSelectors'
+import operations from './store/user/userOperations'
 import { navigationPaths } from './utils/data/navigationPaths'
 
 const App: FC = () => {
+	const dispatch = useAppDispatch()
+	const token = useAppSelector(getToken)
+	const isLoggedIn = useAppSelector(getIsLoggedIn)
+
+	useEffect(() => {
+		if (token) {
+			dispatch(operations.getCurrentUser())
+		}
+	}, [token, isLoggedIn, dispatch])
+
 	return (
 		<>
 			<Routes>

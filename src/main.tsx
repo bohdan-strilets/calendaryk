@@ -15,14 +15,14 @@ import { persistor, store } from './store/store.ts'
 ReactDOM.createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>
 		<BrowserRouter>
-			<Layout>
-				<Provider store={store}>
+			<Provider store={store}>
+				<Layout>
 					<PersistGate loading={<Loader />} persistor={persistor}>
 						<App />
 						<ToastifyWrapper />
 					</PersistGate>
-				</Provider>
-			</Layout>
+				</Layout>
+			</Provider>
 		</BrowserRouter>
 	</React.StrictMode>
 )
