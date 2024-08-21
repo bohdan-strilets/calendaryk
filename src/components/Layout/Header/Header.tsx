@@ -12,6 +12,7 @@ import { useAppSelector } from '@/hooks/useAppSelector'
 import useMenu from '@/hooks/useMenu'
 import useResponsive from '@/hooks/useResponsive'
 import { getIsLoggedIn } from '@/store/auth/authSelectors'
+import { getUser } from '@/store/user/userSelectors'
 import { navigationPaths } from '@/utils/data/navigationPaths'
 
 import Container from '../Container'
@@ -22,6 +23,10 @@ const Header: FC = () => {
 	const { isMaxTablet } = useResponsive()
 	const navigate = useNavigate()
 	const isLoggedIn = useAppSelector(getIsLoggedIn)
+	const user = useAppSelector(getUser)
+
+	const name = `${user?.firstName} ${user?.lastName}`
+	const avatar = user?.avatarUrls?.at(-1)
 
 	return (
 		<>
@@ -30,11 +35,12 @@ const Header: FC = () => {
 					<Wrapper>
 						<MenuButton open={onOpen} />
 						<Logo variant="dark" />
-						{isLoggedIn ? (
+						{isLoggedIn && user ? (
 							<UserBar
-								avatar="https://img.freepik.com/free-photo/3d-illustration-teenager-with-funny-face-glasses_1142-50955.jpg?t=st=1721237072~exp=1721240672~hmac=e84f496283b7df26ebf24097e50947f557458567326e1cc0906b73246ccfa40d&w=826"
-								name="Bohdan Strilets"
-								email="bohdan.strilets@gmail.com"
+								avatar={avatar ?? ''}
+								name={name}
+								email={user?.email}
+								variant="dark"
 							/>
 						) : (
 							<Button

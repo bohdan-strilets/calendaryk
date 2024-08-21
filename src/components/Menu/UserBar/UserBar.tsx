@@ -3,13 +3,16 @@ import { MdLogout } from 'react-icons/md'
 
 import Avatar from '@/components/UI/Avatar'
 import Button from '@/components/UI/Button'
+import { useAppDispatch } from '@/hooks/useAppDispatch'
 import useResponsive from '@/hooks/useResponsive'
+import { logout } from '@/store/auth/authSlice'
 import { UserBarProps } from '@/types/props/menu/UserBarProps'
 
 import { Email, Group, Name, Wrapper } from './UserBar.styled'
 
-const UserBar: FC<UserBarProps> = ({ name, email, avatar }) => {
+const UserBar: FC<UserBarProps> = ({ name, email, avatar, variant }) => {
 	const { isLaptop } = useResponsive()
+	const dispatch = useAppDispatch()
 
 	return (
 		<Wrapper>
@@ -22,16 +25,16 @@ const UserBar: FC<UserBarProps> = ({ name, email, avatar }) => {
 					margin="0 10px 0 0"
 				/>
 				<div>
-					<Name>{name}</Name>
+					<Name variant={variant}>{name}</Name>
 					<Email>{email}</Email>
 				</div>
 			</Group>
 			{isLaptop ? (
-				<Button width="30px" height="85px">
+				<Button width="30px" height="85px" onClick={() => dispatch(logout())}>
 					<MdLogout size={22} />
 				</Button>
 			) : (
-				<Button width="100%" height="35px">
+				<Button width="100%" height="35px" onClick={() => dispatch(logout())}>
 					<MdLogout size={22} />
 				</Button>
 			)}

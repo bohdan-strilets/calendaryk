@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
@@ -24,8 +24,15 @@ export const AuthSlice = createSlice({
 	name: sliceName,
 	initialState,
 	reducers: {
-		setIsLoggedIn(state, action) {
+		setIsLoggedIn(state, action: PayloadAction<boolean>) {
 			state.isLoggedIn = action.payload
+		},
+		setIsRefreshing(state, action: PayloadAction<boolean>) {
+			state.isRefreshing = action.payload
+		},
+		logout(state) {
+			state.token = null
+			state.isLoggedIn = false
 		},
 	},
 	extraReducers: (builder) => {
@@ -63,6 +70,6 @@ export const AuthSlice = createSlice({
 	},
 })
 
-export const { setIsLoggedIn } = AuthSlice.actions
+export const { setIsLoggedIn, setIsRefreshing, logout } = AuthSlice.actions
 
 export const authReducer = persistReducer(persistConfig, AuthSlice.reducer)

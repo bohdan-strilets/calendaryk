@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 
+import { NameProps } from '@/types/props/menu/UserBarProps'
 import { screenWidth } from '@/utils/data/screenWidth'
 
 export const Wrapper = styled.div`
@@ -32,10 +33,11 @@ export const Group = styled.div`
 	}
 `
 
-export const Name = styled.p`
+export const Name = styled.p<NameProps>`
 	font-family: var(--second-font);
 	font-size: 22px;
-	color: var(--white-color);
+	color: ${({ variant }) =>
+		variant === 'light' ? 'var(--white-color)' : 'var(--black-color)'};
 
 	@media screen and (min-width: ${screenWidth.DESKTOP}) {
 		font-size: 28px;

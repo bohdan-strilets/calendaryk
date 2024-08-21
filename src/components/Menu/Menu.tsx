@@ -1,8 +1,14 @@
 import { FC } from 'react'
 import { createPortal } from 'react-dom'
+import { useNavigate } from 'react-router-dom'
 
+import { useAppSelector } from '@/hooks/useAppSelector'
+import { getIsLoggedIn } from '@/store/auth/authSelectors'
+import { getUser } from '@/store/user/userSelectors'
 import { MenuProps } from '@/types/props/menu/MenuProps'
+import { navigationPaths } from '@/utils/data/navigationPaths'
 
+import Button from '../UI/Button'
 import CloseButton from '../UI/CloseButton'
 import Copyright from '../UI/Copyright'
 import Logo from '../UI/Logo'
@@ -13,6 +19,13 @@ import UserBar from './UserBar'
 const menuPortal = document.getElementById('menu') as HTMLDivElement
 
 const Menu: FC<MenuProps> = ({ onClose, onBackdropClick }) => {
+	const navigate = useNavigate()
+	const isLoggedIn = useAppSelector(getIsLoggedIn)
+	const user = useAppSelector(getUser)
+
+	const name = `${user?.firstName} ${user?.lastName}`
+	const avatar = user?.avatarUrls?.at(-1)
+
 	return createPortal(
 		<Backdrop onClick={onBackdropClick}>
 			<Wrapper
@@ -27,11 +40,23 @@ const Menu: FC<MenuProps> = ({ onClose, onBackdropClick }) => {
 					<Navigation onClose={onClose} margin="30px 0 0 0" />
 				</div>
 				<div>
-					<UserBar
-						avatar="https://img.freepik.com/free-photo/3d-illustration-teenager-with-funny-face-glasses_1142-50955.jpg?t=st=1721237072~exp=1721240672~hmac=e84f496283b7df26ebf24097e50947f557458567326e1cc0906b73246ccfa40d&w=826"
-						name="Bohdan Strilets"
-						email="bohdan.strilets@gmail.com"
-					/>
+					{isLoggedIn && user ? (
+						<UserBar
+							avatar={avatar ?? ''}
+							name={name}
+							email={user?.email}
+							variant="light"
+						/>
+					) : (
+						<Button
+							type="button"
+							height="45px"
+							onClick={() => navigate(navigationPaths.AUTH)}
+							margin="0 0 30px"
+						>
+							start
+						</Button>
+					)}
 					<Copyright />
 				</div>
 			</Wrapper>

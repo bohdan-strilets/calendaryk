@@ -3,7 +3,6 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { UserSliceState } from '@/types/redux/UserSliceState'
 import { User } from '@/types/types/User'
 
-import { setIsLoggedIn } from '../auth/authSlice'
 import { sliceName } from './config'
 import operations from './userOperations'
 
@@ -28,7 +27,6 @@ const UserSlice = createSlice({
 			.addCase(operations.getCurrentUser.fulfilled, (state, action) => {
 				state.user = action.payload.data
 				state.loading = false
-				setIsLoggedIn(true)
 			})
 			.addCase(operations.getCurrentUser.rejected, (state) => {
 				state.loading = false
