@@ -33,7 +33,7 @@ api.interceptors.response.use(
 			try {
 				const { data } = await api.get('auth/refresh-token')
 				const dataToLocalStorage = {
-					token: data.tokens.accessToken,
+					token: data.data.tokens.accessToken,
 					_persist: '{"version":-1,"rehydrated":true}',
 				}
 

@@ -11,20 +11,19 @@ import ProfilePage from './pages/ProfilePage'
 import StatisticsPage from './pages/StatisticsPage'
 import TodoListPage from './pages/TodoListPage'
 import UsersPage from './pages/UsersPage'
-import { getIsLoggedIn, getToken } from './store/auth/authSelectors'
+import { getToken } from './store/auth/authSelectors'
 import operations from './store/user/userOperations'
 import { navigationPaths } from './utils/data/navigationPaths'
 
 const App: FC = () => {
 	const dispatch = useAppDispatch()
 	const token = useAppSelector(getToken)
-	const isLoggedIn = useAppSelector(getIsLoggedIn)
 
 	useEffect(() => {
 		if (token) {
 			dispatch(operations.getCurrentUser())
 		}
-	}, [token, isLoggedIn, dispatch])
+	}, [])
 
 	return (
 		<>

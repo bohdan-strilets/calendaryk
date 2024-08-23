@@ -4,7 +4,6 @@ import storage from 'redux-persist/lib/storage'
 
 import { AuthSliceState } from '@/types/redux/AuthSliceState'
 
-import { setUser } from '../user/userSlice'
 import operations from './authOperations'
 import { sliceName } from './config'
 const initialState: AuthSliceState = {
@@ -42,12 +41,10 @@ export const AuthSlice = createSlice({
 			})
 			.addCase(operations.registration.fulfilled, (state, action) => {
 				const token = action.payload?.data?.tokens.accessToken
-				const user = action.payload.data?.user
 
 				state.token = token
 				state.isLoggedIn = true
 				state.loading = false
-				setUser(user)
 			})
 			.addCase(operations.registration.rejected, (state) => {
 				state.loading = false
@@ -57,12 +54,10 @@ export const AuthSlice = createSlice({
 			})
 			.addCase(operations.login.fulfilled, (state, action) => {
 				const token = action.payload?.data?.tokens.accessToken
-				const user = action.payload.data?.user
 
 				state.token = token
 				state.isLoggedIn = true
 				state.loading = false
-				setUser(user)
 			})
 			.addCase(operations.login.rejected, (state) => {
 				state.loading = false

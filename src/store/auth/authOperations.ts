@@ -7,14 +7,16 @@ import { AuthResponse } from '@/types/types/AuthResponse'
 import { ResponseApi } from '@/types/types/ResponseApi'
 import { handleApiError } from '@/utils/functions/handleApiError'
 
+import { setUser } from '../user/userSlice'
 import { endpoints, operationNames } from './config'
 
 const registration = createAsyncThunk<
 	ResponseApi<AuthResponse>,
 	RegistrationDto
->(operationNames.REGISTRATION, async (dto, { rejectWithValue }) => {
+>(operationNames.REGISTRATION, async (dto, { rejectWithValue, dispatch }) => {
 	try {
 		const { data } = await api.post(endpoints.REGISTRATION, dto)
+		dispatch(setUser(data.data.user))
 		return data
 	} catch (error: unknown) {
 		return handleApiError(error, rejectWithValue)
@@ -23,9 +25,10 @@ const registration = createAsyncThunk<
 
 const login = createAsyncThunk<ResponseApi<AuthResponse>, LoginDto>(
 	operationNames.LOGIN,
-	async (dto, { rejectWithValue }) => {
+	async (dto, { rejectWithValue, dispatch }) => {
 		try {
 			const { data } = await api.post(endpoints.LOGIN, dto)
+			dispatch(setUser(data.data.user))
 			return data
 		} catch (error) {
 			return handleApiError(error, rejectWithValue)
