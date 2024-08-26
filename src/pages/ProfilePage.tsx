@@ -1,7 +1,13 @@
 import { FC } from 'react'
 
+import Profile from '@/components/Profile'
+
 const ProfilePage: FC = () => {
-	return <p>ProfilePage</p>
+	return (
+		<>
+			<Profile />
+		</>
+	)
 }
 
 export default ProfilePage
