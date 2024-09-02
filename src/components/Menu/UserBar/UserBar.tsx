@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import { MdLogout } from 'react-icons/md'
+import { useNavigate } from 'react-router-dom'
 
 import Avatar from '@/components/UI/Avatar'
 import Button from '@/components/UI/Button'
@@ -7,15 +8,17 @@ import { useAppDispatch } from '@/hooks/useAppDispatch'
 import useResponsive from '@/hooks/useResponsive'
 import { logout } from '@/store/auth/authSlice'
 import { UserBarProps } from '@/types/props/menu/UserBarProps'
+import { navigationPaths } from '@/utils/data/navigationPaths'
 
 import { Email, Group, Name, Wrapper } from './UserBar.styled'
 
 const UserBar: FC<UserBarProps> = ({ name, email, avatar, variant }) => {
 	const { isLaptop } = useResponsive()
 	const dispatch = useAppDispatch()
+	const navigate = useNavigate()
 
 	return (
-		<Wrapper>
+		<Wrapper onClick={() => navigate(navigationPaths.PROFILE)}>
 			<Group>
 				<Avatar
 					imageUrl={avatar}

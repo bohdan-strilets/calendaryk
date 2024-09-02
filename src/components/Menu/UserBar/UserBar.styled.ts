@@ -5,6 +5,7 @@ import { screenWidth } from '@/utils/data/screenWidth'
 
 export const Wrapper = styled.div`
 	width: 320px;
+	cursor: pointer;
 
 	@media screen and (min-width: ${screenWidth.TABLET}) {
 		width: 400px;
