@@ -20,7 +20,7 @@ import { Line, Wrapper } from './Header.styled'
 
 const Header: FC = () => {
 	const { isOpen, onOpen, onClose, onBackdropClick } = useMenu()
-	const { isMaxTablet } = useResponsive()
+	const { isMaxTablet, isMaxMobile } = useResponsive()
 	const navigate = useNavigate()
 	const isLoggedIn = useAppSelector(getIsLoggedIn)
 	const user = useAppSelector(getUser)
@@ -36,12 +36,21 @@ const Header: FC = () => {
 						<MenuButton open={onOpen} />
 						<Logo variant="dark" />
 						{isLoggedIn && user ? (
-							<UserBar
-								avatar={avatar ?? ''}
-								name={name}
-								email={user?.email}
-								variant="dark"
-							/>
+							isMaxMobile ? (
+								<UserBar
+									avatar={avatar ?? ''}
+									name={name}
+									email={user?.email}
+									variant="short"
+								/>
+							) : (
+								<UserBar
+									avatar={avatar ?? ''}
+									name={name}
+									email={user?.email}
+									variant="dark"
+								/>
+							)
 						) : (
 							<Button
 								type="button"

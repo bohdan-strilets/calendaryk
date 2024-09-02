@@ -1,9 +1,12 @@
 import { FC } from 'react'
 import { createPortal } from 'react-dom'
+import { MdLogout } from 'react-icons/md'
 import { useNavigate } from 'react-router-dom'
 
+import { useAppDispatch } from '@/hooks/useAppDispatch'
 import { useAppSelector } from '@/hooks/useAppSelector'
 import { getIsLoggedIn } from '@/store/auth/authSelectors'
+import { logout } from '@/store/auth/authSlice'
 import { getUser } from '@/store/user/userSelectors'
 import { MenuProps } from '@/types/props/menu/MenuProps'
 import { navigationPaths } from '@/utils/data/navigationPaths'
@@ -22,6 +25,7 @@ const Menu: FC<MenuProps> = ({ onClose, onBackdropClick }) => {
 	const navigate = useNavigate()
 	const isLoggedIn = useAppSelector(getIsLoggedIn)
 	const user = useAppSelector(getUser)
+	const dispatch = useAppDispatch()
 
 	const name = `${user?.firstName} ${user?.lastName}`
 	const avatar = user?.avatarUrls?.at(-1)
@@ -37,16 +41,26 @@ const Menu: FC<MenuProps> = ({ onClose, onBackdropClick }) => {
 				<CloseButton close={onClose} position={true} top="35px" right="35px" />
 				<div>
 					<Logo variant="light" />
-					<Navigation onClose={onClose} margin="30px 0 0 0" />
+					<Navigation onClose={onClose} margin="0 0 35px 0" />
 				</div>
 				<div>
 					{isLoggedIn && user ? (
-						<UserBar
-							avatar={avatar ?? ''}
-							name={name}
-							email={user?.email}
-							variant="light"
-						/>
+						<>
+							<UserBar
+								avatar={avatar ?? ''}
+								name={name}
+								email={user?.email}
+								variant="light"
+							/>
+							<Button
+								width="100%"
+								height="35px"
+								margin="15px 0"
+								onClick={() => dispatch(logout())}
+							>
+								<MdLogout size={22} />
+							</Button>
+						</>
 					) : (
 						<Button
 							type="button"
@@ -57,6 +71,7 @@ const Menu: FC<MenuProps> = ({ onClose, onBackdropClick }) => {
 							start
 						</Button>
 					)}
+
 					<Copyright />
 				</div>
 			</Wrapper>
