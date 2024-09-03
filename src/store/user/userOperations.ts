@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
 import api from '@/api/api'
+import { EmailDto } from '@/types/dto/EmailDto'
 import { ResponseApi } from '@/types/types/ResponseApi'
 import { User } from '@/types/types/User'
 import { handleApiError } from '@/utils/functions/handleApiError'
@@ -21,6 +22,18 @@ const getCurrentUser = createAsyncThunk<ResponseApi<User>>(
 	}
 )
 
-const operations = { getCurrentUser }
+const requestRepeatActivation = createAsyncThunk<ResponseApi, EmailDto>(
+	operationNames.REQUEST_REPEAT_ACTIVATION,
+	async (dto, { rejectWithValue }) => {
+		try {
+			const { data } = await api.post(endpoints.REQUEST_REPEAT_ACTIVATION, dto)
+			return data
+		} catch (error: unknown) {
+			return handleApiError(error, rejectWithValue)
+		}
+	}
+)
+
+const operations = { getCurrentUser, requestRepeatActivation }
 
 export default operations

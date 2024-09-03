@@ -1,3 +1,4 @@
+import { unwrapResult } from '@reduxjs/toolkit'
 import { FC } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
@@ -6,7 +7,10 @@ import { toast } from 'react-toastify'
 import Button from '@/components/UI/Button'
 import ButtonGoBack from '@/components/UI/ButtonGoBack'
 import TextField from '@/components/UI/TextField'
+import { useAppDispatch } from '@/hooks/useAppDispatch'
+import operations from '@/store/user/userOperations'
 import { ResendEmailFormInputs } from '@/types/inputs/ResendEmailFormInputs'
+import { isApiError } from '@/utils/functions/isApiError'
 import { validation } from '@/validation/ResendEmailFormSchema'
 
 import { TextWrapper } from './ResendEmailForm.styled'
@@ -18,10 +22,18 @@ const ResendEmailForm: FC = () => {
 		formState: { errors },
 	} = useForm<ResendEmailFormInputs>(validation)
 	const navigate = useNavigate()
+	const dispatch = useAppDispatch()
 
-	const onSubmit: SubmitHandler<ResendEmailFormInputs> = (data) => {
-		console.log(data)
-		toast.success('The letter has been sent successfully.', {})
+	const onSubmit: SubmitHandler<ResendEmailFormInputs> = async (data) => {
+		try {
+			const result = await dispatch(operations.requestRepeatActivation(data))
+			unwrapResult(result)
+			toast.success('The letter has been sent successfully.', {})
+		} catch (error) {
+			if (isApiError(error)) {
+				toast.error(error.message)
+			}
+		}
 	}
 
 	return (
