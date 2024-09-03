@@ -1,8 +1,10 @@
 import { FC } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 import Button from '@/components/UI/Button'
+import ButtonGoBack from '@/components/UI/ButtonGoBack'
 import TextField from '@/components/UI/TextField'
 import { ResendEmailFormInputs } from '@/types/inputs/ResendEmailFormInputs'
 import { validation } from '@/validation/ResendEmailFormSchema'
@@ -15,6 +17,7 @@ const ResendEmailForm: FC = () => {
 		handleSubmit,
 		formState: { errors },
 	} = useForm<ResendEmailFormInputs>(validation)
+	const navigate = useNavigate()
 
 	const onSubmit: SubmitHandler<ResendEmailFormInputs> = (data) => {
 		console.log(data)
@@ -23,6 +26,11 @@ const ResendEmailForm: FC = () => {
 
 	return (
 		<>
+			<ButtonGoBack
+				label="registration information"
+				margin="0 0 30px 0"
+				onClick={() => navigate(-1)}
+			/>
 			<TextWrapper>
 				<p style={{ marginBottom: '10px' }}>
 					It looks like you haven’t activated your account yet. No worries—just
