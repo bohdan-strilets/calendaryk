@@ -3,6 +3,8 @@ import styled from '@emotion/styled'
 import { ButtonProps } from '@/types/props/ui/ButtonLinkProps'
 
 export const Button = styled.button<ButtonProps>`
+	display: inline-block;
+
 	text-decoration: underline;
 	text-align: ${({ textAlign }) => (textAlign ? textAlign : 'start')};
 

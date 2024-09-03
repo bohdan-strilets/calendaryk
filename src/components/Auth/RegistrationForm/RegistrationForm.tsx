@@ -11,6 +11,7 @@ import TextField from '@/components/UI/TextField'
 import Title from '@/components/UI/Title'
 import { useAppDispatch } from '@/hooks/useAppDispatch'
 import { useAppSelector } from '@/hooks/useAppSelector'
+import useModal from '@/hooks/useModal'
 import useResponsive from '@/hooks/useResponsive'
 import operations from '@/store/auth/authOperations'
 import { getLoading } from '@/store/auth/authSelectors'
@@ -24,6 +25,7 @@ const RegistrationForm: FC = () => {
 	const navigate = useNavigate()
 	const dispatch = useAppDispatch()
 	const loading = useAppSelector(getLoading)
+	const { openModal, modalNames } = useModal()
 
 	const {
 		register,
@@ -38,6 +40,7 @@ const RegistrationForm: FC = () => {
 
 			toast.success('Registration was successful')
 			navigate(navigationPaths.HOME)
+			openModal(modalNames.WELCOME)
 		} catch (error) {
 			if (isApiError(error)) {
 				toast.error(error.message)

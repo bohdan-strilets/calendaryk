@@ -39,7 +39,7 @@ const Profile: FC = () => {
 					</Item>
 					<Item>
 						<p>Date of birth:</p>
-						<p>{user?.dateBirth.toString()}</p>
+						<p>{user?.dateBirth ? user?.dateBirth.toString() : ''}</p>
 					</Item>
 				</List>
 
