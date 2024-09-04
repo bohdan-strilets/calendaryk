@@ -1,14 +1,18 @@
 import { unwrapResult } from '@reduxjs/toolkit'
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 import Button from '@/components/UI/Button'
 import ButtonGoBack from '@/components/UI/ButtonGoBack'
+import Loader from '@/components/UI/Loader'
+import SmallTimer from '@/components/UI/SmallTimer'
 import TextField from '@/components/UI/TextField'
 import { useAppDispatch } from '@/hooks/useAppDispatch'
+import { useAppSelector } from '@/hooks/useAppSelector'
 import operations from '@/store/user/userOperations'
+import { getLoading } from '@/store/user/userSelectors'
 import { ResendEmailFormInputs } from '@/types/inputs/ResendEmailFormInputs'
 import { isApiError } from '@/utils/functions/isApiError'
 import { validation } from '@/validation/ResendEmailFormSchema'
@@ -16,19 +20,27 @@ import { validation } from '@/validation/ResendEmailFormSchema'
 import { TextWrapper } from './ResendEmailForm.styled'
 
 const ResendEmailForm: FC = () => {
+	const [showTimer, setShowTimer] = useState(false)
+
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 	} = useForm<ResendEmailFormInputs>(validation)
+
 	const navigate = useNavigate()
 	const dispatch = useAppDispatch()
+	const loading = useAppSelector(getLoading)
 
 	const onSubmit: SubmitHandler<ResendEmailFormInputs> = async (data) => {
 		try {
 			const result = await dispatch(operations.requestRepeatActivation(data))
 			unwrapResult(result)
 			toast.success('The letter has been sent successfully.', {})
+			setShowTimer(true)
+			setTimeout(() => {
+				setShowTimer(false)
+			}, 61000)
 		} catch (error) {
 			if (isApiError(error)) {
 				toast.error(error.message)
@@ -71,9 +83,17 @@ const ResendEmailForm: FC = () => {
 					errors={errors}
 					rules={{ required: true }}
 				/>
-				<Button type="submit" height="45px" margin="0 0 40px 0">
+				{loading && <Loader margin="25px 0 25px 0" />}
+				<Button type="submit" height="45px" disabled={loading || showTimer}>
 					Resend Activation Email
 				</Button>
+				{showTimer && (
+					<SmallTimer
+						numberSeconds={60}
+						message="Send again in"
+						textAlign="center"
+					/>
+				)}
 			</form>
 		</>
 	)
