@@ -34,6 +34,22 @@ const requestRepeatActivation = createAsyncThunk<ResponseApi, EmailDto>(
 	}
 )
 
-const operations = { getCurrentUser, requestRepeatActivation }
+const requestResetPassword = createAsyncThunk<ResponseApi, EmailDto>(
+	operationNames.REQUEST_RESET_PASSWORD,
+	async (dto, { rejectWithValue }) => {
+		try {
+			const { data } = await api.post(endpoints.REQUEST_RESET_PASSWORD, dto)
+			return data
+		} catch (error: unknown) {
+			return handleApiError(error, rejectWithValue)
+		}
+	}
+)
+
+const operations = {
+	getCurrentUser,
+	requestRepeatActivation,
+	requestResetPassword,
+}
 
 export default operations

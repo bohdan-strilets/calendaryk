@@ -31,6 +31,7 @@ const UserSlice = createSlice({
 			.addCase(operations.getCurrentUser.rejected, (state) => {
 				state.loading = false
 			})
+
 			.addCase(operations.requestRepeatActivation.pending, (state) => {
 				state.loading = true
 			})
@@ -38,6 +39,16 @@ const UserSlice = createSlice({
 				state.loading = false
 			})
 			.addCase(operations.requestRepeatActivation.rejected, (state) => {
+				state.loading = false
+			})
+
+			.addCase(operations.requestResetPassword.pending, (state) => {
+				state.loading = true
+			})
+			.addCase(operations.requestResetPassword.fulfilled, (state) => {
+				state.loading = false
+			})
+			.addCase(operations.requestResetPassword.rejected, (state) => {
 				state.loading = false
 			})
 	},
