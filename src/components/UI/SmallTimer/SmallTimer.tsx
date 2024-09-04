@@ -1,6 +1,7 @@
 import { AnimatePresence } from 'framer-motion'
-import { FC, useEffect, useState } from 'react'
+import { FC } from 'react'
 
+import useTimer from '@/hooks/useTimer'
 import { SmallTimerProps } from '@/types/props/ui/SmallTimerProps'
 import { formatTime } from '@/utils/functions/formatTime'
 
@@ -11,17 +12,7 @@ const SmallTimer: FC<SmallTimerProps> = ({
 	message,
 	textAlign,
 }) => {
-	const [timeLeft, setTimeLeft] = useState(numberSeconds ?? 10)
-
-	useEffect(() => {
-		if (timeLeft <= 0) return
-
-		const timerId = setTimeout(() => {
-			setTimeLeft(timeLeft - 1)
-		}, 1000)
-
-		return () => clearTimeout(timerId)
-	}, [timeLeft])
+	const { timeLeft } = useTimer(numberSeconds)
 
 	return (
 		<AnimatePresence mode="wait">

@@ -1,5 +1,5 @@
 import { unwrapResult } from '@reduxjs/toolkit'
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
@@ -11,6 +11,7 @@ import SmallTimer from '@/components/UI/SmallTimer'
 import TextField from '@/components/UI/TextField'
 import { useAppDispatch } from '@/hooks/useAppDispatch'
 import { useAppSelector } from '@/hooks/useAppSelector'
+import useTimer from '@/hooks/useTimer'
 import operations from '@/store/user/userOperations'
 import { getLoading } from '@/store/user/userSelectors'
 import { ResendEmailFormInputs } from '@/types/inputs/ResendEmailFormInputs'
@@ -20,8 +21,6 @@ import { validation } from '@/validation/ResendEmailFormSchema'
 import { TextWrapper } from './ResendEmailForm.styled'
 
 const ResendEmailForm: FC = () => {
-	const [showTimer, setShowTimer] = useState(false)
-
 	const {
 		register,
 		handleSubmit,
@@ -31,16 +30,14 @@ const ResendEmailForm: FC = () => {
 	const navigate = useNavigate()
 	const dispatch = useAppDispatch()
 	const loading = useAppSelector(getLoading)
+	const { showTimer, startTimer } = useTimer(60)
 
 	const onSubmit: SubmitHandler<ResendEmailFormInputs> = async (data) => {
 		try {
 			const result = await dispatch(operations.requestRepeatActivation(data))
 			unwrapResult(result)
 			toast.success('The letter has been sent successfully.', {})
-			setShowTimer(true)
-			setTimeout(() => {
-				setShowTimer(false)
-			}, 61000)
+			startTimer()
 		} catch (error) {
 			if (isApiError(error)) {
 				toast.error(error.message)
