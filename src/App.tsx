@@ -8,6 +8,7 @@ import AuthPage from './pages/AuthPage'
 import CalendarPage from './pages/CalendarPage'
 import HomePage from './pages/HomePage'
 import ProfilePage from './pages/ProfilePage'
+import ResetPasswordPage from './pages/ResetPasswordPage'
 import StatisticsPage from './pages/StatisticsPage'
 import TodoListPage from './pages/TodoListPage'
 import UsersPage from './pages/UsersPage'
@@ -29,6 +30,10 @@ const App: FC = () => {
 		<>
 			<Routes>
 				<Route path={navigationPaths.AUTH} element={<AuthPage />} />
+				<Route
+					path={navigationPaths.RESET_PASSWORD}
+					element={<ResetPasswordPage />}
+				/>
 
 				<Route path={navigationPaths.HOME} element={<HomePage />} />
 				<Route path={navigationPaths.CALENDAR} element={<CalendarPage />} />

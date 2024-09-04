@@ -7,4 +7,5 @@ export const navigationPaths = {
 	USERS: 'users',
 	ABOUT_US: 'about-us',
 	AUTH: 'auth',
+	RESET_PASSWORD: 'auth/reset-password',
 }

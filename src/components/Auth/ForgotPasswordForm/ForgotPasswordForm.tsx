@@ -33,7 +33,7 @@ const ForgotPasswordForm: FC = () => {
 		try {
 			const result = await dispatch(operations.requestResetPassword(data))
 			unwrapResult(result)
-			toast.success('The letter has been sent successfully.', {})
+			toast.success('The letter has been sent successfully.')
 			startTimer()
 		} catch (error) {
 			if (isApiError(error)) {

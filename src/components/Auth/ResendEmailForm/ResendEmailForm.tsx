@@ -36,7 +36,7 @@ const ResendEmailForm: FC = () => {
 		try {
 			const result = await dispatch(operations.requestRepeatActivation(data))
 			unwrapResult(result)
-			toast.success('The letter has been sent successfully.', {})
+			toast.success('The letter has been sent successfully.')
 			startTimer()
 		} catch (error) {
 			if (isApiError(error)) {
