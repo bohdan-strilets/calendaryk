@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom'
 import { useAppDispatch } from './hooks/useAppDispatch'
 import { useAppSelector } from './hooks/useAppSelector'
 import AboutUsPage from './pages/AboutUsPage'
+import ActivationSuccessPage from './pages/ActivationSuccessPage'
 import AuthPage from './pages/AuthPage'
 import CalendarPage from './pages/CalendarPage'
 import HomePage from './pages/HomePage'
@@ -33,6 +34,10 @@ const App: FC = () => {
 				<Route
 					path={navigationPaths.RESET_PASSWORD}
 					element={<ResetPasswordPage />}
+				/>
+				<Route
+					path={navigationPaths.ACTIVATION_SUCCESS}
+					element={<ActivationSuccessPage />}
 				/>
 
 				<Route path={navigationPaths.HOME} element={<HomePage />} />
