@@ -4,6 +4,7 @@ import { MdDelete, MdEmail } from 'react-icons/md'
 import { RiImage2Fill, RiLockPasswordFill } from 'react-icons/ri'
 
 import { useAppSelector } from '@/hooks/useAppSelector'
+import useModal from '@/hooks/useModal'
 import { getUser } from '@/store/user/userSelectors'
 import { parseDateTime } from '@/utils/functions/parseDateTime'
 
@@ -31,6 +32,8 @@ const Profile: FC = () => {
 	const name = `${user?.firstName} ${user?.lastName}`
 	const dateBirth = user?.dateBirth?.toString()
 	const parsedDateBirth = dateBirth ? parseDateTime(dateBirth).date : '-'
+
+	const { openModal, modalNames } = useModal()
 
 	return (
 		user && (
@@ -114,7 +117,10 @@ const Profile: FC = () => {
 					<Avatar imageUrl={avatarUrl ?? ''} width="100%" height="280px" />
 					<Controllers>
 						<ControllerItem>
-							<ControllerBtn type="button">
+							<ControllerBtn
+								type="button"
+								onClick={() => openModal(modalNames.CHANGED_PROFILE)}
+							>
 								<FaUserEdit />
 								<ControllerBtnLabel>Changed profile</ControllerBtnLabel>
 							</ControllerBtn>
