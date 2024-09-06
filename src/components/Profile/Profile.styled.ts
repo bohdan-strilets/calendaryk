@@ -53,3 +53,48 @@ export const Property = styled.p`
 export const Value = styled.p`
 	color: var(--gray-color);
 `
+
+export const Controllers = styled.ul`
+	margin-top: 30px;
+`
+
+export const ControllerItem = styled.li`
+	width: 100%;
+	height: 50px;
+
+	border-bottom: 1px solid #ccc;
+
+	:last-child {
+		border-bottom: none;
+	}
+`
+
+export const ControllerBtn = styled.button`
+	display: flex;
+	align-items: center;
+
+	width: 100%;
+	height: 100%;
+	padding: 0 10px;
+
+	background-color: transparent;
+
+	cursor: pointer;
+	transition:
+		background-color var(--hover-effect),
+		color var(--hover-effect);
+
+	:hover,
+	:focus {
+		color: var(--white-color);
+		background-color: var(--black-color);
+	}
+
+	:active {
+		transform: scale(0.99);
+	}
+`
+
+export const ControllerBtnLabel = styled.span`
+	margin-left: 20px;
+`

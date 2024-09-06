@@ -1,4 +1,7 @@
 import { FC } from 'react'
+import { FaUserEdit } from 'react-icons/fa'
+import { MdDelete, MdEmail } from 'react-icons/md'
+import { RiImage2Fill, RiLockPasswordFill } from 'react-icons/ri'
 
 import { useAppSelector } from '@/hooks/useAppSelector'
 import { getUser } from '@/store/user/userSelectors'
@@ -7,6 +10,10 @@ import { parseDateTime } from '@/utils/functions/parseDateTime'
 import Avatar from '../UI/Avatar'
 import Title from '../UI/Title'
 import {
+	ControllerBtn,
+	ControllerBtnLabel,
+	ControllerItem,
+	Controllers,
 	Id,
 	Item,
 	LeftSide,
@@ -105,6 +112,38 @@ const Profile: FC = () => {
 
 				<RightSide>
 					<Avatar imageUrl={avatarUrl ?? ''} width="100%" height="280px" />
+					<Controllers>
+						<ControllerItem>
+							<ControllerBtn type="button">
+								<FaUserEdit />
+								<ControllerBtnLabel>Changed profile</ControllerBtnLabel>
+							</ControllerBtn>
+						</ControllerItem>
+						<ControllerItem>
+							<ControllerBtn type="button">
+								<MdEmail />
+								<ControllerBtnLabel>Changed email</ControllerBtnLabel>
+							</ControllerBtn>
+						</ControllerItem>
+						<ControllerItem>
+							<ControllerBtn type="button">
+								<RiLockPasswordFill />
+								<ControllerBtnLabel>Changed password</ControllerBtnLabel>
+							</ControllerBtn>
+						</ControllerItem>
+						<ControllerItem>
+							<ControllerBtn type="button">
+								<RiImage2Fill />
+								<ControllerBtnLabel>Upload new avatar</ControllerBtnLabel>
+							</ControllerBtn>
+						</ControllerItem>
+						<ControllerItem>
+							<ControllerBtn type="button">
+								<MdDelete />
+								<ControllerBtnLabel>Delete profile</ControllerBtnLabel>
+							</ControllerBtn>
+						</ControllerItem>
+					</Controllers>
 				</RightSide>
 			</Wrapper>
 		)
