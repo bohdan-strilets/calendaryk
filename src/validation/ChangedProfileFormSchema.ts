@@ -13,10 +13,11 @@ export const ChangedProfileFormSchema = yup.object().shape({
 		.string()
 		.min(2, 'Minimum last name length is 2 characters')
 		.max(70, 'Maximum last name length is 70 characters'),
-	dateBirth: yup.string(),
-	gender: yup
-		.mixed<Gender>()
-		.oneOf(Object.values(Gender), 'Please select one of the available options'),
+	dateBirth: yup
+		.date()
+		.max(new Date(), 'Date of birth cannot be in the future')
+		.typeError('Invalid date format'),
+	gender: yup.string().oneOf(Object.values(Gender), 'Invalid gender value'),
 })
 
 export const validation = {

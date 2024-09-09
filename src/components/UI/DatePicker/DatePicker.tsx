@@ -1,5 +1,5 @@
 import { AnimatePresence } from 'framer-motion'
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { ImCalendar } from 'react-icons/im'
 
@@ -15,9 +15,9 @@ import { yearOptions } from '@/utils/dropdownOptions/yearOptions'
 
 import Button from '../Button'
 import DropdownList from '../DropdownList'
-import { Group, Input, Label, Picker } from './DatePicker.styled'
+import { Group, Input, Label, Picker, Wrapper } from './DatePicker.styled'
 
-const DatePicker: FC<DatePickerProps> = ({ label }) => {
+const DatePicker: FC<DatePickerProps> = ({ label, onDateChange, margin }) => {
 	const { selectedDate, selectDate } = useCalendar()
 	const { isOpen, toggle, divRef } = useClickOutside()
 	const { isTablet, isMaxLaptop } = useResponsive()
@@ -43,8 +43,15 @@ const DatePicker: FC<DatePickerProps> = ({ label }) => {
 	const date = new Date(`${selectedYear}-${selectedMonth + 1}-01`)
 	const selectedDateByUser = `${selectedDay} ${monthName} ${selectedYear}`
 
+	useEffect(() => {
+		if (onDateChange) {
+			const date = new Date(selectedYear, selectedMonth, selectedDay)
+			onDateChange(date)
+		}
+	}, [selectedDate, onDateChange])
+
 	return (
-		<div ref={divRef}>
+		<Wrapper ref={divRef} margin={margin}>
 			{label && <Label>{label}</Label>}
 			<Input>
 				<Group onClick={toggle}>
@@ -106,7 +113,7 @@ const DatePicker: FC<DatePickerProps> = ({ label }) => {
 					)}
 				</AnimatePresence>
 			</Input>
-		</div>
+		</Wrapper>
 	)
 }
 

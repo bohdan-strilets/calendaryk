@@ -2,7 +2,12 @@ import styled from '@emotion/styled'
 import { motion } from 'framer-motion'
 import { ImCalendar } from 'react-icons/im'
 
+import { WrapperProps } from '@/types/props/ui/DatePickerProps'
 import { screenWidth } from '@/utils/data/screenWidth'
+
+export const Wrapper = styled.div<WrapperProps>`
+	margin: ${({ margin }) => (margin ? margin : '')};
+`
 
 export const Label = styled.p`
 	font-weight: 600;
