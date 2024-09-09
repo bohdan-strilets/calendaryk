@@ -61,6 +61,17 @@ const UserSlice = createSlice({
 			.addCase(operations.resetPassword.rejected, (state) => {
 				state.loading = false
 			})
+
+			.addCase(operations.changeProfile.pending, (state) => {
+				state.loading = true
+			})
+			.addCase(operations.changeProfile.fulfilled, (state, action) => {
+				state.user = action.payload.data
+				state.loading = false
+			})
+			.addCase(operations.changeProfile.rejected, (state) => {
+				state.loading = false
+			})
 	},
 })
 

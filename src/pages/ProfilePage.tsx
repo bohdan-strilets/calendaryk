@@ -12,7 +12,7 @@ const ProfilePage: FC = () => {
 	return (
 		<>
 			<Profile />
-			<AnimatePresence>
+			<AnimatePresence mode="wait">
 				{checkQueryParam(modalNames.CHANGED_PROFILE) && (
 					<Modal title="Edit user profile">
 						<ChangedProfileForm />
