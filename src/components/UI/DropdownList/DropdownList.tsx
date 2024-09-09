@@ -65,7 +65,7 @@ const DropdownList = <T extends FieldValues>({
 			<Input {...register(name, rules)} onClick={toggle}>
 				{selected ? selected.label : placeholder}
 				<ArrowIconWrapper opened={isOpen}>
-					<IoMdArrowDropdown />
+					<IoMdArrowDropdown className="arrow-dropdown" />
 				</ArrowIconWrapper>
 			</Input>
 			<AnimatePresence mode="wait">

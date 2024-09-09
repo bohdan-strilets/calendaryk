@@ -42,6 +42,13 @@ export const Input = styled.div`
 	border-bottom: 3px solid transparent;
 	border-radius: 3px;
 	box-shadow: var(--box-shadow);
+
+	cursor: pointer;
+
+	:hover .arrow-dropdown,
+	:focus .arrow-dropdown {
+		color: var(--green-color);
+	}
 `
 
 export const ArrowIconWrapper = styled.div<ArrowIconWrapperProps>`
