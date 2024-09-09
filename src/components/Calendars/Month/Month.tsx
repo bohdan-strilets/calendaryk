@@ -13,6 +13,9 @@ const Month: FC<MonthProps> = ({
 	background,
 	color,
 	borderRadius,
+	selectDate,
+	selectedDay,
+	isInteractive,
 }) => {
 	return (
 		<div>
@@ -33,6 +36,9 @@ const Month: FC<MonthProps> = ({
 							background={background}
 							color={color}
 							isBorderRadius={borderRadius}
+							selectDate={selectDate}
+							selectedDay={selectedDay}
+							isInteractive={isInteractive}
 						/>
 					))}
 				</Week>

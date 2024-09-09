@@ -12,15 +12,30 @@ const DayCell: FC<DeyCellProps> = ({
 	background,
 	color,
 	isBorderRadius,
+	selectDate,
+	selectedDay,
+	isInteractive,
 }) => {
+	const dayNumberMonth = day?.getDate()
+
+	const onCellClick = (date?: Date) => {
+		if (date && selectDate) {
+			selectDate(date)
+		}
+	}
+
 	return (
 		<Day
-			currentDay={currentDate === day?.getDate()}
+			currentDay={currentDate === dayNumberMonth}
 			width={width}
 			height={height}
 			background={background}
 			color={color}
 			isBorderRadius={isBorderRadius}
+			onClick={() => onCellClick(day)}
+			style={day === undefined ? { background: 'transparent' } : {}}
+			selectedDay={selectedDay === dayNumberMonth}
+			isInteractive={isInteractive}
 		>
 			<p>{day?.getDate()}</p>
 		</Day>

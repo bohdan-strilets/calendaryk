@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
+import DatePicker from '@/components/UI/DatePicker'
 import TextField from '@/components/UI/TextField'
 import { ChangedProfileFormInputs } from '@/types/inputs/ChangedProfileFormInputs'
 import { validation } from '@/validation/ChangedProfileFormSchema'
@@ -39,6 +40,7 @@ const ChangedProfileForm: FC = () => {
 				errors={errors}
 				rules={{ minLength: 2, maxLength: 70 }}
 			/>
+			<DatePicker label="Date of birth" placeholder="01.01.1990" />
 		</form>
 	)
 }

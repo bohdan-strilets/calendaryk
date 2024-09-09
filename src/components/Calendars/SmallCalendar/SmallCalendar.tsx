@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 
 import useRenderCalendar from '@/hooks/useRenderCalendar'
 import { SmallCalendarProps } from '@/types/props/calendars/SmallCalendarProps'
@@ -9,18 +9,29 @@ import WeekDays from '../WeekDays'
 import { Header } from './SmallCalendar.styled'
 
 const SmallCalendar: FC<SmallCalendarProps> = ({
+	selectedDate,
 	cellWidth,
 	cellHeight,
 	borderRadius,
 	background,
 	color,
+	selectDate,
+	isCurrentDay,
+	selectedDay,
+	isInteractive,
 }) => {
-	const date = new Date()
-	const { getDaysOfMonth, getCurrentDay } = useRenderCalendar(date)
+	const date = selectedDate ? selectedDate : new Date()
+
+	const { getDaysOfMonth, getCurrentDay, setSelectedDate } =
+		useRenderCalendar(date)
+
+	useEffect(() => {
+		setSelectedDate()
+	}, [date])
 
 	const weeksFromSelectedMonth = getDaysOfMonth()
-	const currentDay = getCurrentDay()
-	const currentDate = date.getDate()
+	const currentDay = isCurrentDay ? getCurrentDay() : undefined
+	const currentDate = isCurrentDay ? date.getDate() : undefined
 	const currentMonth = date.getMonth()
 	const currentMonthName = MonthsOfYear[currentMonth].name
 
@@ -40,6 +51,9 @@ const SmallCalendar: FC<SmallCalendarProps> = ({
 				borderRadius={borderRadius}
 				background={background}
 				color={color}
+				selectDate={selectDate}
+				selectedDay={selectedDay}
+				isInteractive={isInteractive}
 			/>
 		</div>
 	)

@@ -6,4 +6,7 @@ export type MonthProps = {
 	background?: string
 	color?: string
 	borderRadius?: boolean
+	selectDate?: (date: Date) => void
+	selectedDay?: number
+	isInteractive?: boolean
 }

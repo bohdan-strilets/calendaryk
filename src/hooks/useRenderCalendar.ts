@@ -46,12 +46,20 @@ const useRenderCalendar = (date: Date) => {
 		setCurrentDate(prevMonth)
 	}
 
+	const setSelectedDate = () => {
+		const month = date.getMonth()
+		const year = date.getFullYear()
+		const newDate = new Date(year, month)
+		setCurrentDate(newDate)
+	}
+
 	const getDaysOfMonth = (): (undefined[] | Date[])[] => {
 		const daysOfMonth: (undefined[] | Date[])[] = []
 		const daysInWeek = 7
 		const numberDaysInMonth = getNumberDaysInMonth()
 		const startWeekOn = getStartWeek()
 		const monthYear = getMonthYear()
+
 		let day = 1
 
 		const numberOfWeeks = Math.ceil(
@@ -112,6 +120,7 @@ const useRenderCalendar = (date: Date) => {
 		getDaysOfMonthInRange,
 		nextMonth,
 		prevMonth,
+		setSelectedDate,
 		currentDate,
 	}
 }

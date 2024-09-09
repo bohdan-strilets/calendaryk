@@ -6,11 +6,20 @@ export type DeyCellProps = {
 	background?: string
 	color?: string
 	isBorderRadius?: boolean
+	selectDate?: (date: Date) => void
+	selectedDay?: number
+	isInteractive?: boolean
 }
 
 export type DayProps = Pick<
 	DeyCellProps,
-	'width' | 'height' | 'background' | 'color' | 'isBorderRadius'
+	| 'width'
+	| 'height'
+	| 'background'
+	| 'color'
+	| 'isBorderRadius'
+	| 'isInteractive'
 > & {
 	currentDay?: boolean
+	selectedDay?: boolean
 }

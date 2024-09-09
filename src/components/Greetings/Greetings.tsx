@@ -80,6 +80,8 @@ const Greetings: FC<GreetingsProps> = ({ name }) => {
 				cellWidth={getCellWidth()}
 				cellHeight={isLaptop ? '50px' : '40px'}
 				borderRadius={true}
+				isCurrentDay={true}
+				selectedDate={new Date()}
 			/>
 		</Wrapper>
 	)
