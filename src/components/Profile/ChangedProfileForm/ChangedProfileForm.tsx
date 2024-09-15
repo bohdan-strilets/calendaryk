@@ -23,6 +23,7 @@ const ChangedProfileForm: FC = () => {
 	const loading = useAppSelector(getLoading)
 	const user = useAppSelector(getUser)
 	const { closeModal } = useModal()
+	const dateBirth = user?.dateBirth ? new Date(user?.dateBirth) : new Date()
 
 	const {
 		register,
@@ -45,14 +46,27 @@ const ChangedProfileForm: FC = () => {
 	}, [user, reset])
 
 	const handleDateChange = (date: Date) => {
-		setValue('dateBirth', date)
+		setValue('dateBirth', date.toISOString())
 	}
 
 	const onSubmit: SubmitHandler<ChangedProfileFormInputs> = async (data) => {
-		console.log(data)
-
 		try {
-			const result = await dispatch(operations.changeProfile(data))
+			const normalizedDate = data.dateBirth
+				? new Date(data.dateBirth)
+				: new Date()
+
+			const year = normalizedDate.getFullYear()
+			const month = String(normalizedDate.getMonth() + 1).padStart(2, '0')
+			const day = String(normalizedDate.getDate()).padStart(2, '0')
+
+			const formattedDate = `${year}-${month}-${day}`
+
+			const dto = {
+				...data,
+				dateBirth: formattedDate,
+			}
+
+			const result = await dispatch(operations.changeProfile(dto))
 			unwrapResult(result)
 			closeModal()
 			toast.success('Profile changed successfully.')
@@ -88,9 +102,11 @@ const ChangedProfileForm: FC = () => {
 				rules={{ minLength: 2, maxLength: 70 }}
 			/>
 			<DatePicker
-				label="Date of birth"
 				onDateChange={handleDateChange}
+				placeholder="Select date"
+				label="Date of birth"
 				margin="0 0 20px 0"
+				defaultValue={dateBirth}
 			/>
 			<DropdownList
 				options={genderOptions}

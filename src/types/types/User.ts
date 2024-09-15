@@ -4,7 +4,7 @@ export type User = {
 	_id: string
 	firstName: string
 	lastName: string
-	dateBirth: Date
+	dateBirth: string
 	email: string
 	gender: Gender
 	avatarUrls: string[]

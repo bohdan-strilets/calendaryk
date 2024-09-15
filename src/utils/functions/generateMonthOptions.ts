@@ -6,7 +6,7 @@ export const generateMonthOptions = (): DropdownOption[] => {
 	const options: DropdownOption[] = []
 
 	MonthsOfYear.map(({ id, name }) => {
-		const numberMonth = id.toString().padStart(2, '0')
+		const numberMonth = id.toString()
 		const option = { id, value: numberMonth, label: name }
 		options.push(option)
 	})

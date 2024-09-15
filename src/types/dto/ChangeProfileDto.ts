@@ -3,6 +3,6 @@ import { Gender } from '../enums/Gender'
 export type ChangeProfileDto = {
 	firstName?: string
 	lastName?: string
-	dateBirth?: Date
+	dateBirth?: string
 	gender?: Gender
 }

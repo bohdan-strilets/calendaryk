@@ -48,3 +48,28 @@ export const Picker = styled(motion.div)`
 		justify-content: space-between;
 	}
 `
+
+export const CurrentSelect = styled.p`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	font-weight: 700;
+
+	width: 100%;
+	height: 50px;
+	margin-bottom: 20px;
+
+	color: var(--white-color);
+	background-color: var(--green-color);
+	border-radius: 3px;
+	box-shadow: var(--box-shadow);
+`
+
+export const ControllersList = styled.ul`
+	@media screen and (min-width: ${screenWidth.TABLET}) {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+`
