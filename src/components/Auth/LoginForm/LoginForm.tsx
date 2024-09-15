@@ -16,7 +16,7 @@ import useModal from '@/hooks/useModal'
 import useResponsive from '@/hooks/useResponsive'
 import operations from '@/store/auth/authOperations'
 import { getLoading } from '@/store/auth/authSelectors'
-import { LoginFormInputs } from '@/types/inputs/LoginFormInputs'
+import { SignInFormFields } from '@/types/inputs/SignInFormFields'
 import { navigationPaths } from '@/utils/data/navigationPaths'
 import { isApiError } from '@/utils/functions/isApiError'
 import { validation } from '@/validation/LoginFormSchema'
@@ -32,9 +32,9 @@ const LoginForm: FC = () => {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<LoginFormInputs>(validation)
+	} = useForm<SignInFormFields>(validation)
 
-	const onSubmit: SubmitHandler<LoginFormInputs> = async (data) => {
+	const onSubmit: SubmitHandler<SignInFormFields> = async (data) => {
 		try {
 			const result = await dispatch(operations.login(data))
 			unwrapResult(result)
@@ -65,7 +65,7 @@ const LoginForm: FC = () => {
 				login
 			</Title>
 			<form onSubmit={handleSubmit(onSubmit)}>
-				<TextField<LoginFormInputs>
+				<TextField<SignInFormFields>
 					register={register}
 					label="Email"
 					name="email"

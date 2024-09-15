@@ -13,10 +13,10 @@ import { useAppDispatch } from '@/hooks/useAppDispatch'
 import { useAppSelector } from '@/hooks/useAppSelector'
 import operations from '@/store/user/userOperations'
 import { getLoading } from '@/store/user/userSelectors'
-import { ResetPasswordFormInputs } from '@/types/inputs/ResetPasswordFormInputs'
+import { PasswordResetFields } from '@/types/inputs/PasswordResetFields'
 import { navigationPaths } from '@/utils/data/navigationPaths'
 import { isApiError } from '@/utils/functions/isApiError'
-import { validation } from '@/validation/ResetPasswordFormSchema'
+import { validation } from '@/validation/ResetPasswordSchema '
 
 import { FormWrapper } from './ResetPasswordForm.styled'
 
@@ -25,13 +25,13 @@ const ResetPasswordForm: FC = () => {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<ResetPasswordFormInputs>(validation)
+	} = useForm<PasswordResetFields>(validation)
 
 	const navigate = useNavigate()
 	const dispatch = useAppDispatch()
 	const loading = useAppSelector(getLoading)
 
-	const onSubmit: SubmitHandler<ResetPasswordFormInputs> = async (data) => {
+	const onSubmit: SubmitHandler<PasswordResetFields> = async (data) => {
 		const dto = {
 			email: data.email,
 			password: data.passwordAgain,
@@ -55,7 +55,7 @@ const ResetPasswordForm: FC = () => {
 				Create new password
 			</Title>
 			<FormWrapper onSubmit={handleSubmit(onSubmit)}>
-				<TextField<ResetPasswordFormInputs>
+				<TextField<PasswordResetFields>
 					register={register}
 					label="Email"
 					name="email"

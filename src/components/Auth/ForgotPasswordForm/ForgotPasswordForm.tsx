@@ -12,9 +12,9 @@ import { useAppSelector } from '@/hooks/useAppSelector'
 import useTimer from '@/hooks/useTimer'
 import operations from '@/store/user/userOperations'
 import { getLoading } from '@/store/user/userSelectors'
-import { ForgotPasswordInputs } from '@/types/inputs/ForgotPasswordInputs'
+import { PasswordRecoveryFields } from '@/types/inputs/PasswordRecoveryFields'
 import { isApiError } from '@/utils/functions/isApiError'
-import { validation } from '@/validation/ForgotPasswordSchema'
+import { validation } from '@/validation/PasswordRecoverySchema'
 
 import { List, TextWrapper } from './ForgotPasswordForm.styled'
 
@@ -23,13 +23,13 @@ const ForgotPasswordForm: FC = () => {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<ForgotPasswordInputs>(validation)
+	} = useForm<PasswordRecoveryFields>(validation)
 
 	const dispatch = useAppDispatch()
 	const loading = useAppSelector(getLoading)
 	const { showTimer, startTimer } = useTimer(60)
 
-	const onSubmit: SubmitHandler<ForgotPasswordInputs> = async (data) => {
+	const onSubmit: SubmitHandler<PasswordRecoveryFields> = async (data) => {
 		try {
 			const result = await dispatch(operations.requestResetPassword(data))
 			unwrapResult(result)
@@ -73,7 +73,7 @@ const ForgotPasswordForm: FC = () => {
 			</TextWrapper>
 
 			<form onSubmit={handleSubmit(onSubmit)}>
-				<TextField<ForgotPasswordInputs>
+				<TextField<PasswordRecoveryFields>
 					register={register}
 					label="Email"
 					name="email"

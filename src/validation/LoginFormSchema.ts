@@ -1,7 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 
-import { LoginFormInputs } from '@/types/inputs/LoginFormInputs'
+import { SignInFormFields } from '@/types/inputs/SignInFormFields'
 
 export const LoginFormSchema = yup.object().shape({
 	email: yup
@@ -16,5 +16,5 @@ export const LoginFormSchema = yup.object().shape({
 })
 
 export const validation = {
-	resolver: yupResolver<LoginFormInputs>(LoginFormSchema),
+	resolver: yupResolver<SignInFormFields>(LoginFormSchema),
 }

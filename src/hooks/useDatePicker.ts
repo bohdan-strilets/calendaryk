@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
-import { DatePickerInputs } from '@/types/inputs/DatePickerInputs'
+import { DatePickerFields } from '@/types/inputs/DatePickerFields'
 import { DatePicker } from '@/types/params/DatePicker'
 import { MonthsOfYear } from '@/utils/data/monthsOfYear'
 
@@ -54,7 +54,7 @@ export const useDatePicker = ({
 		watch,
 		reset,
 		formState: { errors },
-	} = useForm<DatePickerInputs>()
+	} = useForm<DatePickerFields>()
 
 	useEffect(() => {
 		if (selectedDate) {

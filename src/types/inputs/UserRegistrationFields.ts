@@ -1,4 +1,4 @@
-export type RegistrationFormInputs = {
+export type UserRegistrationFields = {
 	firstName: string
 	lastName: string
 	email: string

@@ -13,10 +13,10 @@ import { useAppSelector } from '@/hooks/useAppSelector'
 import useModal from '@/hooks/useModal'
 import operations from '@/store/user/userOperations'
 import { getLoading, getUser } from '@/store/user/userSelectors'
-import { ChangedProfileFormInputs } from '@/types/inputs/ChangedProfileFormInputs'
+import { ProfileEditFormFields } from '@/types/inputs/ProfileEditFormFields'
 import { genderOptions } from '@/utils/dropdownOptions/genderOptions'
 import { isApiError } from '@/utils/functions/isApiError'
-import { validation } from '@/validation/ChangedProfileFormSchema'
+import { validation } from '@/validation/EditProfileFormSchema'
 
 const ChangedProfileForm: FC = () => {
 	const dispatch = useAppDispatch()
@@ -32,7 +32,7 @@ const ChangedProfileForm: FC = () => {
 		watch,
 		reset,
 		formState: { errors },
-	} = useForm<ChangedProfileFormInputs>(validation)
+	} = useForm<ProfileEditFormFields>(validation)
 
 	useEffect(() => {
 		const defaultValue = {
@@ -49,7 +49,7 @@ const ChangedProfileForm: FC = () => {
 		setValue('dateBirth', date.toISOString())
 	}
 
-	const onSubmit: SubmitHandler<ChangedProfileFormInputs> = async (data) => {
+	const onSubmit: SubmitHandler<ProfileEditFormFields> = async (data) => {
 		try {
 			const normalizedDate = data.dateBirth
 				? new Date(data.dateBirth)
@@ -79,7 +79,7 @@ const ChangedProfileForm: FC = () => {
 
 	return (
 		<form onSubmit={handleSubmit(onSubmit)}>
-			<TextField<ChangedProfileFormInputs>
+			<TextField<ProfileEditFormFields>
 				register={register}
 				label="First name"
 				name="firstName"
@@ -90,7 +90,7 @@ const ChangedProfileForm: FC = () => {
 				errors={errors}
 				rules={{ minLength: 2, maxLength: 70 }}
 			/>
-			<TextField<ChangedProfileFormInputs>
+			<TextField<ProfileEditFormFields>
 				register={register}
 				label="Last name"
 				name="lastName"

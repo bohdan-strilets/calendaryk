@@ -14,9 +14,9 @@ import { useAppSelector } from '@/hooks/useAppSelector'
 import useTimer from '@/hooks/useTimer'
 import operations from '@/store/user/userOperations'
 import { getLoading } from '@/store/user/userSelectors'
-import { ResendEmailFormInputs } from '@/types/inputs/ResendEmailFormInputs'
+import { VerificationEmailFields } from '@/types/inputs/VerificationEmailFields'
 import { isApiError } from '@/utils/functions/isApiError'
-import { validation } from '@/validation/ResendEmailFormSchema'
+import { validation } from '@/validation/ResendEmailDataSchema'
 
 import { TextWrapper } from './ResendEmailForm.styled'
 
@@ -25,14 +25,14 @@ const ResendEmailForm: FC = () => {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<ResendEmailFormInputs>(validation)
+	} = useForm<VerificationEmailFields>(validation)
 
 	const navigate = useNavigate()
 	const dispatch = useAppDispatch()
 	const loading = useAppSelector(getLoading)
 	const { showTimer, startTimer } = useTimer(60)
 
-	const onSubmit: SubmitHandler<ResendEmailFormInputs> = async (data) => {
+	const onSubmit: SubmitHandler<VerificationEmailFields> = async (data) => {
 		try {
 			const result = await dispatch(operations.requestRepeatActivation(data))
 			unwrapResult(result)
@@ -69,7 +69,7 @@ const ResendEmailForm: FC = () => {
 			</TextWrapper>
 
 			<form onSubmit={handleSubmit(onSubmit)}>
-				<TextField<ResendEmailFormInputs>
+				<TextField<VerificationEmailFields>
 					register={register}
 					label="Email"
 					name="email"

@@ -1,9 +1,9 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 
-import { ResetPasswordFormInputs } from '@/types/inputs/ResetPasswordFormInputs'
+import { PasswordResetFields } from '@/types/inputs/PasswordResetFields'
 
-export const ResetPasswordFormSchema = yup.object().shape({
+export const ResetPasswordSchema = yup.object().shape({
 	email: yup
 		.string()
 		.email('Invalid email format')
@@ -20,5 +20,5 @@ export const ResetPasswordFormSchema = yup.object().shape({
 })
 
 export const validation = {
-	resolver: yupResolver<ResetPasswordFormInputs>(ResetPasswordFormSchema),
+	resolver: yupResolver<PasswordResetFields>(ResetPasswordSchema),
 }

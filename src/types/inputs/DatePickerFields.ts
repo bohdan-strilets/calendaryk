@@ -1,4 +1,4 @@
-export type DatePickerInputs = {
+export type DatePickerFields = {
 	yearList: string
 	monthList: string
 }

@@ -1,6 +1,6 @@
 import { Gender } from '../enums/Gender'
 
-export type ChangedProfileFormInputs = {
+export type ProfileEditFormFields = {
 	firstName?: string
 	lastName?: string
 	dateBirth?: string

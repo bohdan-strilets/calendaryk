@@ -15,7 +15,7 @@ import useModal from '@/hooks/useModal'
 import useResponsive from '@/hooks/useResponsive'
 import operations from '@/store/auth/authOperations'
 import { getLoading } from '@/store/auth/authSelectors'
-import { RegistrationFormInputs } from '@/types/inputs/RegistrationFormInputs'
+import { UserRegistrationFields } from '@/types/inputs/UserRegistrationFields'
 import { navigationPaths } from '@/utils/data/navigationPaths'
 import { isApiError } from '@/utils/functions/isApiError'
 import { validation } from '@/validation/RegistrationFormSchema'
@@ -31,9 +31,9 @@ const RegistrationForm: FC = () => {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<RegistrationFormInputs>(validation)
+	} = useForm<UserRegistrationFields>(validation)
 
-	const onSubmit: SubmitHandler<RegistrationFormInputs> = async (data) => {
+	const onSubmit: SubmitHandler<UserRegistrationFields> = async (data) => {
 		try {
 			const result = await dispatch(operations.registration(data))
 			unwrapResult(result)
@@ -67,7 +67,7 @@ const RegistrationForm: FC = () => {
 				registration
 			</Title>
 			<form onSubmit={handleSubmit(onSubmit)}>
-				<TextField<RegistrationFormInputs>
+				<TextField<UserRegistrationFields>
 					register={register}
 					label="First name"
 					name="firstName"
@@ -79,7 +79,7 @@ const RegistrationForm: FC = () => {
 					errors={errors}
 					rules={{ required: true, minLength: 2, maxLength: 70 }}
 				/>
-				<TextField<RegistrationFormInputs>
+				<TextField<UserRegistrationFields>
 					register={register}
 					label="Last name"
 					name="lastName"
@@ -91,7 +91,7 @@ const RegistrationForm: FC = () => {
 					errors={errors}
 					rules={{ required: true, minLength: 2, maxLength: 70 }}
 				/>
-				<TextField<RegistrationFormInputs>
+				<TextField<UserRegistrationFields>
 					register={register}
 					label="Email"
 					name="email"

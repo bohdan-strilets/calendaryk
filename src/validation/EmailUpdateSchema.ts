@@ -1,9 +1,9 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 
-import { ResendEmailFormInputs } from '@/types/inputs/ResendEmailFormInputs'
+import { EmailUpdateFields } from '@/types/inputs/EmailUpdateFields'
 
-export const ResendEmailFormSchema = yup.object().shape({
+export const EmailUpdateSchema = yup.object().shape({
 	email: yup
 		.string()
 		.email('Invalid email format')
@@ -11,5 +11,5 @@ export const ResendEmailFormSchema = yup.object().shape({
 })
 
 export const validation = {
-	resolver: yupResolver<ResendEmailFormInputs>(ResendEmailFormSchema),
+	resolver: yupResolver<EmailUpdateFields>(EmailUpdateSchema),
 }

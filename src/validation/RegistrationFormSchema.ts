@@ -1,7 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 
-import { RegistrationFormInputs } from '@/types/inputs/RegistrationFormInputs'
+import { UserRegistrationFields } from '@/types/inputs/UserRegistrationFields'
 
 export const RegistrationFormSchema = yup.object().shape({
 	firstName: yup
@@ -26,5 +26,5 @@ export const RegistrationFormSchema = yup.object().shape({
 })
 
 export const validation = {
-	resolver: yupResolver<RegistrationFormInputs>(RegistrationFormSchema),
+	resolver: yupResolver<UserRegistrationFields>(RegistrationFormSchema),
 }

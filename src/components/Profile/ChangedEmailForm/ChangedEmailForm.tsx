@@ -11,9 +11,9 @@ import { useAppSelector } from '@/hooks/useAppSelector'
 import useModal from '@/hooks/useModal'
 import operations from '@/store/user/userOperations'
 import { getEmail, getLoading } from '@/store/user/userSelectors'
-import { UpdateEmailFormFields } from '@/types/inputs/UpdateEmailFormFields'
+import { EmailUpdateFields } from '@/types/inputs/EmailUpdateFields'
 import { isApiError } from '@/utils/functions/isApiError'
-import { validation } from '@/validation/EmailChangeFormSchema'
+import { validation } from '@/validation/EmailUpdateSchema'
 
 const ChangedEmailForm: FC = () => {
 	const dispatch = useAppDispatch()
@@ -26,9 +26,9 @@ const ChangedEmailForm: FC = () => {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<UpdateEmailFormFields>(validation)
+	} = useForm<EmailUpdateFields>(validation)
 
-	const onSubmit: SubmitHandler<UpdateEmailFormFields> = async (data) => {
+	const onSubmit: SubmitHandler<EmailUpdateFields> = async (data) => {
 		if (data.email.toLowerCase() === userEmail?.toLowerCase()) {
 			toast.success('You have entered the email that is currently in use.')
 			return
@@ -61,7 +61,7 @@ const ChangedEmailForm: FC = () => {
 				email. If you encounter any difficulties or have any questions, feel
 				free to contact our support team.
 			</p>
-			<TextField<UpdateEmailFormFields>
+			<TextField<EmailUpdateFields>
 				register={register}
 				label="Enter the new email address"
 				name="email"

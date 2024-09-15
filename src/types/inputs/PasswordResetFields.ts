@@ -1,4 +1,4 @@
-export type ResetPasswordFormInputs = {
+export type PasswordResetFields = {
 	email: string
 	password: string
 	passwordAgain: string
