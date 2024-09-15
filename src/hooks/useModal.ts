@@ -12,6 +12,7 @@ const useModal = () => {
 		RESEND_EMAIL: 'resend-email',
 		CHANGED_PROFILE: 'changed-profile',
 		CHANGED_EMAIL: 'changed-email',
+		CHANGED_PASSWORD: 'changed-password',
 	}
 
 	const openModal = useCallback(

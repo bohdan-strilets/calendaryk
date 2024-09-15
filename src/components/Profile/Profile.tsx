@@ -135,7 +135,10 @@ const Profile: FC = () => {
 							</ControllerBtn>
 						</ControllerItem>
 						<ControllerItem>
-							<ControllerBtn type="button">
+							<ControllerBtn
+								type="button"
+								onClick={() => openModal(modalNames.CHANGED_PASSWORD)}
+							>
 								<RiLockPasswordFill />
 								<ControllerBtnLabel>Changed password</ControllerBtnLabel>
 							</ControllerBtn>

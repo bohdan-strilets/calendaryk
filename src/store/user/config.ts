@@ -7,6 +7,7 @@ export const operationNames = {
 	RESET_PASSWORD: `${sliceName}/reset-password`,
 	CHANGE_PROFILE: `${sliceName}/change-profile`,
 	CHANGE_EMAIL: `${sliceName}/change-email`,
+	CHANGE_PASSWORD: `${sliceName}/change-password`,
 }
 
 export const endpoints = {
@@ -16,4 +17,5 @@ export const endpoints = {
 	RESET_PASSWORD: `${operationNames.RESET_PASSWORD}`,
 	CHANGE_PROFILE: `${operationNames.CHANGE_PROFILE}`,
 	CHANGE_EMAIL: `${operationNames.CHANGE_EMAIL}`,
+	CHANGE_PASSWORD: `${operationNames.CHANGE_PASSWORD}`,
 }

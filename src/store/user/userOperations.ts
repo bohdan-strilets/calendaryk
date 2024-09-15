@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
 import api from '@/api/api'
+import { ChangePasswordDto } from '@/types/dto/ChangePasswordDto'
 import { ChangeProfileDto } from '@/types/dto/ChangeProfileDto'
 import { EmailDto } from '@/types/dto/EmailDto'
 import { ResetPasswordDto } from '@/types/dto/ResetPasswordDto'
@@ -84,6 +85,18 @@ const changeEmail = createAsyncThunk<ResponseApi<User>, EmailDto>(
 	}
 )
 
+const changePassword = createAsyncThunk<ResponseApi, ChangePasswordDto>(
+	operationNames.CHANGE_PASSWORD,
+	async (dto, { rejectWithValue }) => {
+		try {
+			const { data } = await api.patch(endpoints.CHANGE_PASSWORD, dto)
+			return data
+		} catch (error: unknown) {
+			return handleApiError(error, rejectWithValue)
+		}
+	}
+)
+
 const operations = {
 	getCurrentUser,
 	requestRepeatActivation,
@@ -91,6 +104,7 @@ const operations = {
 	resetPassword,
 	changeProfile,
 	changeEmail,
+	changePassword,
 }
 
 export default operations
