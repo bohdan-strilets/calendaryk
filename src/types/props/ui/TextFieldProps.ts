@@ -26,6 +26,7 @@ export type TextFieldProps<T extends FieldValues> = {
 	height?: string
 	margin?: string
 	padding?: string
+	defaultValue?: string
 }
 
 export type WrapperProps = Pick<TextFieldProps<FieldValues>, 'margin'>

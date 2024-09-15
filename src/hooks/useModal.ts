@@ -11,6 +11,7 @@ const useModal = () => {
 		WELCOME: 'welcome',
 		RESEND_EMAIL: 'resend-email',
 		CHANGED_PROFILE: 'changed-profile',
+		CHANGED_EMAIL: 'changed-email',
 	}
 
 	const openModal = useCallback(

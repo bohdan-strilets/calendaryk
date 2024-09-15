@@ -16,6 +16,7 @@ const TextField = <T extends FieldValues>({
 	height,
 	margin,
 	padding,
+	defaultValue,
 }: TextFieldProps<T>) => {
 	const error = errors?.[name] as FieldError | undefined
 	const required = rules?.required
@@ -34,6 +35,7 @@ const TextField = <T extends FieldValues>({
 				width={width}
 				height={height}
 				padding={padding}
+				defaultValue={defaultValue}
 			/>
 			{error && <Error>{error.message}</Error>}
 		</Wrapper>

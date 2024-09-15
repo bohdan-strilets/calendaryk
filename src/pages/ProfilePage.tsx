@@ -3,6 +3,7 @@ import { FC } from 'react'
 
 import Modal from '@/components/Modal'
 import Profile from '@/components/Profile'
+import ChangedEmailForm from '@/components/Profile/ChangedEmailForm'
 import ChangedProfileForm from '@/components/Profile/ChangedProfileForm'
 import useModal from '@/hooks/useModal'
 
@@ -16,6 +17,11 @@ const ProfilePage: FC = () => {
 				{checkQueryParam(modalNames.CHANGED_PROFILE) && (
 					<Modal title="Edit user profile">
 						<ChangedProfileForm />
+					</Modal>
+				)}
+				{checkQueryParam(modalNames.CHANGED_EMAIL) && (
+					<Modal title="Edit user email">
+						<ChangedEmailForm />
 					</Modal>
 				)}
 			</AnimatePresence>

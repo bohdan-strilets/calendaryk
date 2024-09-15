@@ -72,12 +72,25 @@ const changeProfile = createAsyncThunk<ResponseApi<User>, ChangeProfileDto>(
 	}
 )
 
+const changeEmail = createAsyncThunk<ResponseApi<User>, EmailDto>(
+	operationNames.CHANGE_EMAIL,
+	async (dto, { rejectWithValue }) => {
+		try {
+			const { data } = await api.patch(endpoints.CHANGE_EMAIL, dto)
+			return data
+		} catch (error: unknown) {
+			return handleApiError(error, rejectWithValue)
+		}
+	}
+)
+
 const operations = {
 	getCurrentUser,
 	requestRepeatActivation,
 	requestResetPassword,
 	resetPassword,
 	changeProfile,
+	changeEmail,
 }
 
 export default operations

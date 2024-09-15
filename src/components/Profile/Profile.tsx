@@ -126,7 +126,10 @@ const Profile: FC = () => {
 							</ControllerBtn>
 						</ControllerItem>
 						<ControllerItem>
-							<ControllerBtn type="button">
+							<ControllerBtn
+								type="button"
+								onClick={() => openModal(modalNames.CHANGED_EMAIL)}
+							>
 								<MdEmail />
 								<ControllerBtnLabel>Changed email</ControllerBtnLabel>
 							</ControllerBtn>
