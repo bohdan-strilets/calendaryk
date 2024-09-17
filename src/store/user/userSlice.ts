@@ -83,6 +83,17 @@ const UserSlice = createSlice({
 			.addCase(operations.changeEmail.rejected, (state) => {
 				state.loading = false
 			})
+
+			.addCase(operations.uploadAvatar.pending, (state) => {
+				state.loading = true
+			})
+			.addCase(operations.uploadAvatar.fulfilled, (state, action) => {
+				state.user = action.payload.data
+				state.loading = false
+			})
+			.addCase(operations.uploadAvatar.rejected, (state) => {
+				state.loading = false
+			})
 	},
 })
 

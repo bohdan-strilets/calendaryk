@@ -13,6 +13,7 @@ const useModal = () => {
 		CHANGED_PROFILE: 'changed-profile',
 		CHANGED_EMAIL: 'changed-email',
 		CHANGED_PASSWORD: 'changed-password',
+		UPLOAD_AVATAR: 'upload-avatar',
 	}
 
 	const openModal = useCallback(

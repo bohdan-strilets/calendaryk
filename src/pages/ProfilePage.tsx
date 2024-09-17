@@ -3,6 +3,7 @@ import { FC } from 'react'
 
 import Modal from '@/components/Modal'
 import Profile from '@/components/Profile'
+import ChangedAvatarForm from '@/components/Profile/ChangedAvatarForm'
 import ChangedEmailForm from '@/components/Profile/ChangedEmailForm'
 import ChangedPasswordForm from '@/components/Profile/ChangedPasswordForm'
 import ChangedProfileForm from '@/components/Profile/ChangedProfileForm'
@@ -28,6 +29,11 @@ const ProfilePage: FC = () => {
 				{checkQueryParam(modalNames.CHANGED_PASSWORD) && (
 					<Modal title="Edit user password">
 						<ChangedPasswordForm />
+					</Modal>
+				)}
+				{checkQueryParam(modalNames.UPLOAD_AVATAR) && (
+					<Modal title="Upload new avatar">
+						<ChangedAvatarForm />
 					</Modal>
 				)}
 			</AnimatePresence>

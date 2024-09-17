@@ -97,6 +97,18 @@ const changePassword = createAsyncThunk<ResponseApi, ChangePasswordDto>(
 	}
 )
 
+const uploadAvatar = createAsyncThunk<ResponseApi<User>, FormData>(
+	operationNames.UPLOAD_AVATAR,
+	async (dto, { rejectWithValue }) => {
+		try {
+			const { data } = await api.post(endpoints.UPLOAD_AVATAR, dto)
+			return data
+		} catch (error: unknown) {
+			return handleApiError(error, rejectWithValue)
+		}
+	}
+)
+
 const operations = {
 	getCurrentUser,
 	requestRepeatActivation,
@@ -105,6 +117,7 @@ const operations = {
 	changeProfile,
 	changeEmail,
 	changePassword,
+	uploadAvatar,
 }
 
 export default operations

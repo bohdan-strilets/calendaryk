@@ -8,6 +8,7 @@ export const operationNames = {
 	CHANGE_PROFILE: `${sliceName}/change-profile`,
 	CHANGE_EMAIL: `${sliceName}/change-email`,
 	CHANGE_PASSWORD: `${sliceName}/change-password`,
+	UPLOAD_AVATAR: `${sliceName}/upload-avatar`,
 }
 
 export const endpoints = {
@@ -18,4 +19,5 @@ export const endpoints = {
 	CHANGE_PROFILE: `${operationNames.CHANGE_PROFILE}`,
 	CHANGE_EMAIL: `${operationNames.CHANGE_EMAIL}`,
 	CHANGE_PASSWORD: `${operationNames.CHANGE_PASSWORD}`,
+	UPLOAD_AVATAR: `${operationNames.UPLOAD_AVATAR}`,
 }

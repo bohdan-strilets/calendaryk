@@ -144,7 +144,10 @@ const Profile: FC = () => {
 							</ControllerBtn>
 						</ControllerItem>
 						<ControllerItem>
-							<ControllerBtn type="button">
+							<ControllerBtn
+								type="button"
+								onClick={() => openModal(modalNames.UPLOAD_AVATAR)}
+							>
 								<RiImage2Fill />
 								<ControllerBtnLabel>Upload new avatar</ControllerBtnLabel>
 							</ControllerBtn>
