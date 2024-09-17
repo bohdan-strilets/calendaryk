@@ -6,6 +6,6 @@ export const operationNames = {
 }
 
 export const endpoints = {
-	REGISTRATION: `${operationNames.REGISTRATION}`,
-	LOGIN: `${operationNames.LOGIN}`,
+	REGISTRATION: operationNames.REGISTRATION,
+	LOGIN: operationNames.LOGIN,
 }
