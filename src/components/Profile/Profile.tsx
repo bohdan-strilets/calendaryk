@@ -11,10 +11,12 @@ import { parseDateTime } from '@/utils/functions/parseDateTime'
 import Avatar from '../UI/Avatar'
 import Title from '../UI/Title'
 import {
+	AvatarButton,
 	ControllerBtn,
 	ControllerBtnLabel,
 	ControllerItem,
 	Controllers,
+	GalleryIcon,
 	Id,
 	Item,
 	LeftSide,
@@ -114,7 +116,10 @@ const Profile: FC = () => {
 				</LeftSide>
 
 				<RightSide>
-					<Avatar imageUrl={avatarUrl ?? ''} width="100%" height="280px" />
+					<AvatarButton onClick={() => openModal(modalNames.AVATARS)}>
+						<GalleryIcon className="gallery-icon" />
+						<Avatar imageUrl={avatarUrl ?? ''} width="100%" height="280px" />
+					</AvatarButton>
 					<Controllers>
 						<ControllerItem>
 							<ControllerBtn
