@@ -1,5 +1,7 @@
 import styled from '@emotion/styled'
 
+import { screenWidth } from '@/utils/data/screenWidth'
+
 export const Wrapper = styled.div`
 	display: flex;
 	align-items: center;
@@ -14,8 +16,8 @@ export const ArrowButton = styled.button`
 	align-items: center;
 	justify-content: center;
 
-	width: 30px;
-	height: 30px;
+	width: 24px;
+	height: 24px;
 
 	background-color: var(--red-color);
 	color: var(--white-color);
@@ -28,6 +30,11 @@ export const ArrowButton = styled.button`
 	:hover,
 	:focus {
 		background-color: var(--black-color);
+	}
+
+	@media screen and (min-width: ${screenWidth.TABLET}) {
+		width: 30px;
+		height: 30px;
 	}
 `
 
