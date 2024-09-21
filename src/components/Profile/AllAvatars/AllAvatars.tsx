@@ -1,19 +1,11 @@
-import { AnimatePresence } from 'framer-motion'
 import { FC, useEffect, useState } from 'react'
-import { BiCollapse } from 'react-icons/bi'
 
-import Avatar from '@/components/UI/Avatar'
 import Pagination from '@/components/UI/Pagination'
 import { useAppSelector } from '@/hooks/useAppSelector'
 import { getAvatars } from '@/store/user/userSelectors'
 
-import {
-	CollapseButton,
-	Image,
-	Item,
-	List,
-	PreviewWrapper,
-} from './AllAvatars.styled'
+import { Image, Item, List } from './AllAvatars.styled'
+import Preview from './Preview'
 
 const AllAvatars: FC = () => {
 	const [selectedImage, setSelectedImage] = useState<null | string>(null)
@@ -59,21 +51,10 @@ const AllAvatars: FC = () => {
 			)}
 		</>
 	) : (
-		<AnimatePresence>
-			{selectedImage && (
-				<PreviewWrapper
-					initial={{ opacity: 0, scale: 0.8, y: '100%' }}
-					animate={{ opacity: 1, scale: 1, y: 0 }}
-					exit={{ opacity: 0, scale: 0.8, y: '100%' }}
-					transition={{ duration: 0.3, ease: 'easeInOut' }}
-				>
-					<CollapseButton type="button" onClick={clearSelectedImage}>
-						<BiCollapse size={24} />
-					</CollapseButton>
-					<Avatar imageUrl={selectedImage ?? ''} height="480px" width="100%" />
-				</PreviewWrapper>
-			)}
-		</AnimatePresence>
+		<Preview
+			selectedImage={selectedImage}
+			clearSelectedImage={clearSelectedImage}
+		/>
 	)
 }
 
