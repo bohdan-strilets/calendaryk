@@ -26,6 +26,8 @@ export const Item = styled(motion.li)`
 `
 
 export const Image = styled.div<ImageProps>`
+	position: relative;
+
 	width: 100%;
 	height: 100%;
 
@@ -38,8 +40,8 @@ export const Image = styled.div<ImageProps>`
 	cursor: pointer;
 	transition: transform var(--hover-effect);
 
-	:hover,
-	:focus {
-		transform: scale(1.02);
+	:hover .actions-dropdown,
+	:focus .actions-dropdown {
+		opacity: 1;
 	}
 `

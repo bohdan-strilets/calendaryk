@@ -9,6 +9,7 @@ export const operationNames = {
 	CHANGE_EMAIL: `${sliceName}/change-email`,
 	CHANGE_PASSWORD: `${sliceName}/change-password`,
 	UPLOAD_AVATAR: `${sliceName}/upload-avatar`,
+	DELETE_AVATAR: `${sliceName}/delete-avatar`,
 }
 
 export const endpoints = {
@@ -20,4 +21,5 @@ export const endpoints = {
 	CHANGE_EMAIL: operationNames.CHANGE_EMAIL,
 	CHANGE_PASSWORD: operationNames.CHANGE_PASSWORD,
 	UPLOAD_AVATAR: operationNames.UPLOAD_AVATAR,
+	DELETE_AVATAR: operationNames.DELETE_AVATAR,
 }
