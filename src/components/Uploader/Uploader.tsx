@@ -1,6 +1,7 @@
 import { FC } from 'react'
 
 import { useAppSelector } from '@/hooks/useAppSelector'
+import useModal from '@/hooks/useModal'
 import useUploadFile from '@/hooks/useUploadFile'
 import { getLoading } from '@/store/user/userSelectors'
 import { UploaderProps } from '@/types/props/uploader/UploaderProps'
@@ -23,6 +24,7 @@ const Uploader: FC<UploaderProps> = ({
 	fileSize,
 	callback,
 }) => {
+	const { closeModal } = useModal()
 	const {
 		handleFileChange,
 		handleSubmit,
@@ -31,7 +33,7 @@ const Uploader: FC<UploaderProps> = ({
 		triggerFileInput,
 		fileInfo,
 		isSelected,
-	} = useUploadFile({ fileName, callback })
+	} = useUploadFile({ fileName, callback, closeModal })
 	const loading = useAppSelector(getLoading)
 
 	const formatFileTypes = fileTypes.split(',').join(' ')

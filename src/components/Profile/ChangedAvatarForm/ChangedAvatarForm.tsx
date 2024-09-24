@@ -10,7 +10,7 @@ const ChangedAvatarForm: FC = () => {
 	const dispatch = useAppDispatch()
 
 	const handleSubmitForm = async ({ file }: FileFormData) => {
-		dispatch(operations.uploadAvatar(file))
+		await dispatch(operations.uploadAvatar(file))
 	}
 
 	return (

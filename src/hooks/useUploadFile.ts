@@ -1,9 +1,10 @@
 import { useRef, useState } from 'react'
+import { toast } from 'react-toastify'
 
 import { UploadFile } from '@/types/params/UploadFile'
 import { FileInformation } from '@/types/types/FileInformation'
 
-const useUploadFile = ({ fileName, callback }: UploadFile) => {
+const useUploadFile = ({ fileName, callback, closeModal }: UploadFile) => {
 	const hiddenFileInput = useRef<HTMLInputElement>(null)
 	const [previewSource, setPreviewSource] = useState('')
 	const [fileInfo, setFileInfo] = useState<FileInformation | null>(null)
@@ -30,6 +31,8 @@ const useUploadFile = ({ fileName, callback }: UploadFile) => {
 			if (callback) {
 				await callback({ file: formData })
 			}
+			closeModal()
+			toast.success('Image uploaded successfully.')
 		}
 	}
 
