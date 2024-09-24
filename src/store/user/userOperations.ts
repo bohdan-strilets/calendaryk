@@ -137,6 +137,18 @@ const selectAvatar = createAsyncThunk<ResponseApi<User>, string>(
 	}
 )
 
+const deleteProfile = createAsyncThunk<ResponseApi>(
+	operationNames.DELETE_PROFILE,
+	async (_, { rejectWithValue }) => {
+		try {
+			const { data } = await api.delete(endpoints.DELETE_PROFILE)
+			return data
+		} catch (error: unknown) {
+			return handleApiError(error, rejectWithValue)
+		}
+	}
+)
+
 const operations = {
 	getCurrentUser,
 	requestRepeatActivation,
@@ -148,6 +160,7 @@ const operations = {
 	uploadAvatar,
 	deleteAvatar,
 	selectAvatar,
+	deleteProfile,
 }
 
 export default operations

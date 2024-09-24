@@ -11,6 +11,7 @@ export const operationNames = {
 	UPLOAD_AVATAR: `${sliceName}/upload-avatar`,
 	DELETE_AVATAR: `${sliceName}/delete-avatar`,
 	SELECT_AVATAR: `${sliceName}/select-avatar`,
+	DELETE_PROFILE: `${sliceName}/delete-profile`,
 }
 
 export const endpoints = {
@@ -24,4 +25,5 @@ export const endpoints = {
 	UPLOAD_AVATAR: operationNames.UPLOAD_AVATAR,
 	DELETE_AVATAR: operationNames.DELETE_AVATAR,
 	SELECT_AVATAR: operationNames.SELECT_AVATAR,
+	DELETE_PROFILE: operationNames.DELETE_PROFILE,
 }

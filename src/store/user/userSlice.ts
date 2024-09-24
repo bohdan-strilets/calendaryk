@@ -116,6 +116,16 @@ const UserSlice = createSlice({
 			.addCase(operations.selectAvatar.rejected, (state) => {
 				state.loading = false
 			})
+
+			.addCase(operations.deleteProfile.pending, (state) => {
+				state.loading = true
+			})
+			.addCase(operations.deleteProfile.fulfilled, (state) => {
+				state.loading = false
+			})
+			.addCase(operations.deleteProfile.rejected, (state) => {
+				state.loading = false
+			})
 	},
 })
 
