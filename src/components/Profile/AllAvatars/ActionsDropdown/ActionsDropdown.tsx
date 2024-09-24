@@ -34,7 +34,7 @@ const ActionsDropdown: FC<ActionsDropdownProps> = ({ url, selectImage }) => {
 	const deleteAvatar = async (url: string) => {
 		const avatarPublicId = getPublicCloudinaryId(url)
 		if (avatarPublicId) {
-			dispatch(operations.deleteAvatar(avatarPublicId))
+			await dispatch(operations.deleteAvatar(avatarPublicId))
 			toast.success('Image successfully deleted')
 		}
 	}
