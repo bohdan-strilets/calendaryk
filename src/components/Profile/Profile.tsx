@@ -158,7 +158,10 @@ const Profile: FC = () => {
 							</ControllerBtn>
 						</ControllerItem>
 						<ControllerItem>
-							<ControllerBtn type="button">
+							<ControllerBtn
+								type="button"
+								onClick={() => openModal(modalNames.DELETE_PROFILE)}
+							>
 								<MdDelete />
 								<ControllerBtnLabel>Delete profile</ControllerBtnLabel>
 							</ControllerBtn>

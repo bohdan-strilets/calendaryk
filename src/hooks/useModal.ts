@@ -15,6 +15,7 @@ const useModal = () => {
 		CHANGED_PASSWORD: 'changed-password',
 		UPLOAD_AVATAR: 'upload-avatar',
 		AVATARS: 'avatars',
+		DELETE_PROFILE: 'delete-profile',
 	}
 
 	const openModal = useCallback(

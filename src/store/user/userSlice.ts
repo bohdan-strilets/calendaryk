@@ -121,6 +121,7 @@ const UserSlice = createSlice({
 				state.loading = true
 			})
 			.addCase(operations.deleteProfile.fulfilled, (state) => {
+				state.user = null
 				state.loading = false
 			})
 			.addCase(operations.deleteProfile.rejected, (state) => {

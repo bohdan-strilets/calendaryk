@@ -139,9 +139,10 @@ const selectAvatar = createAsyncThunk<ResponseApi<User>, string>(
 
 const deleteProfile = createAsyncThunk<ResponseApi>(
 	operationNames.DELETE_PROFILE,
-	async (_, { rejectWithValue }) => {
+	async (_, { rejectWithValue, dispatch }) => {
 		try {
 			const { data } = await api.delete(endpoints.DELETE_PROFILE)
+			dispatch(setIsLoggedIn(false))
 			return data
 		} catch (error: unknown) {
 			return handleApiError(error, rejectWithValue)
