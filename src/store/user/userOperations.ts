@@ -123,6 +123,20 @@ const deleteAvatar = createAsyncThunk<ResponseApi<User>, string>(
 	}
 )
 
+const selectAvatar = createAsyncThunk<ResponseApi<User>, string>(
+	operationNames.SELECT_AVATAR,
+	async (avatarPublicId, { rejectWithValue }) => {
+		try {
+			const { data } = await api.patch(
+				`${endpoints.SELECT_AVATAR}?avatarPublicId=${avatarPublicId}`
+			)
+			return data
+		} catch (error: unknown) {
+			return handleApiError(error, rejectWithValue)
+		}
+	}
+)
+
 const operations = {
 	getCurrentUser,
 	requestRepeatActivation,
@@ -133,6 +147,7 @@ const operations = {
 	changePassword,
 	uploadAvatar,
 	deleteAvatar,
+	selectAvatar,
 }
 
 export default operations

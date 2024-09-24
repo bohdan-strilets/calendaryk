@@ -10,6 +10,7 @@ export const operationNames = {
 	CHANGE_PASSWORD: `${sliceName}/change-password`,
 	UPLOAD_AVATAR: `${sliceName}/upload-avatar`,
 	DELETE_AVATAR: `${sliceName}/delete-avatar`,
+	SELECT_AVATAR: `${sliceName}/select-avatar`,
 }
 
 export const endpoints = {
@@ -22,4 +23,5 @@ export const endpoints = {
 	CHANGE_PASSWORD: operationNames.CHANGE_PASSWORD,
 	UPLOAD_AVATAR: operationNames.UPLOAD_AVATAR,
 	DELETE_AVATAR: operationNames.DELETE_AVATAR,
+	SELECT_AVATAR: operationNames.SELECT_AVATAR,
 }
