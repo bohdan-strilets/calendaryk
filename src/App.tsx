@@ -7,6 +7,7 @@ import AboutUsPage from './pages/AboutUsPage'
 import ActivationSuccessPage from './pages/ActivationSuccessPage'
 import AuthPage from './pages/AuthPage'
 import CalendarPage from './pages/CalendarPage'
+import CompaniesPage from './pages/CompaniesPage'
 import HomePage from './pages/HomePage'
 import ProfilePage from './pages/ProfilePage'
 import ResetPasswordPage from './pages/ResetPasswordPage'
@@ -44,6 +45,7 @@ const App: FC = () => {
 				<Route path={navigationPaths.CALENDAR} element={<CalendarPage />} />
 				<Route path={navigationPaths.TODO_LIST} element={<TodoListPage />} />
 				<Route path={navigationPaths.PROFILE} element={<ProfilePage />} />
+				<Route path={navigationPaths.COMPANIES} element={<CompaniesPage />} />
 				<Route path={navigationPaths.STATISTICS} element={<StatisticsPage />} />
 				<Route path={navigationPaths.USERS} element={<UsersPage />} />
 				<Route path={navigationPaths.ABOUT_US} element={<AboutUsPage />} />

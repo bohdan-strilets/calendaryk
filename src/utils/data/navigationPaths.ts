@@ -9,4 +9,5 @@ export const navigationPaths = {
 	AUTH: 'auth',
 	RESET_PASSWORD: 'auth/reset-password',
 	ACTIVATION_SUCCESS: 'activation-success',
+	COMPANIES: 'companies',
 }

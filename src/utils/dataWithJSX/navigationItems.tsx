@@ -1,5 +1,6 @@
 import { AiFillHome } from 'react-icons/ai'
 import { FaCalendarDays, FaChartLine, FaLightbulb } from 'react-icons/fa6'
+import { HiBuildingOffice2 } from 'react-icons/hi2'
 import { IoSettings } from 'react-icons/io5'
 import { PiListChecksFill, PiUsersThreeFill } from 'react-icons/pi'
 
@@ -32,18 +33,24 @@ export const navigationItems = [
 	},
 	{
 		id: 4,
+		label: 'Companies',
+		icon: <HiBuildingOffice2 size={18} />,
+		path: navigationPaths.COMPANIES,
+	},
+	{
+		id: 5,
 		label: 'Statistics',
 		icon: <FaChartLine size={18} />,
 		path: navigationPaths.STATISTICS,
 	},
 	{
-		id: 5,
+		id: 6,
 		label: 'Users',
 		icon: <PiUsersThreeFill size={18} />,
 		path: navigationPaths.USERS,
 	},
 	{
-		id: 6,
+		id: 7,
 		label: 'About us',
 		icon: <FaLightbulb size={18} />,
 		path: navigationPaths.ABOUT_US,
