@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 
 import { screenWidth } from '@/utils/data/screenWidth'
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.li`
 	padding: 10px;
 
 	margin-bottom: 30px;
