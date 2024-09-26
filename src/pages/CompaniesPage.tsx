@@ -1,7 +1,9 @@
 import { FC } from 'react'
 
+import ListCompanies from '@/components/ListCompanies'
+
 const CompaniesPage: FC = () => {
-	return null
+	return <ListCompanies />
 }
 
 export default CompaniesPage
