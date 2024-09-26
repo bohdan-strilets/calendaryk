@@ -10,6 +10,7 @@ const Avatar: FC<AvatarProps> = ({
 	height,
 	margin,
 	border,
+	backgroundSize,
 }) => {
 	return (
 		<Image
@@ -18,6 +19,7 @@ const Avatar: FC<AvatarProps> = ({
 			height={height}
 			margin={margin}
 			border={border}
+			backgroundSize={backgroundSize}
 		/>
 	)
 }

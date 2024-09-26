@@ -26,7 +26,13 @@ const CompanyInformation: FC<CompanyInformationProps> = ({
 	return (
 		<Wrapper>
 			<CompanyInfoWrapper>
-				<Avatar width="90px" height="90px" border imageUrl={logoUrl} />
+				<Avatar
+					width="90px"
+					height="90px"
+					border
+					imageUrl={logoUrl}
+					backgroundSize="contain"
+				/>
 				<TitleWrapper>
 					<CompanyName>{companyName}</CompanyName>
 					<JobPosition>{position}</JobPosition>

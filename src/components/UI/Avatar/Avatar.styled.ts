@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import { ImageProps } from '@/types/props/ui/AvatarProps'
 
 export const Image = styled.div<ImageProps>`
-	width: ${({ width }) => (width ? width : '40px')};
+	min-width: ${({ width }) => (width ? width : '40px')};
 	height: ${({ height }) => (height ? height : '40px')};
 	margin: ${({ margin }) => (margin ? margin : '')};
 
@@ -14,5 +14,6 @@ export const Image = styled.div<ImageProps>`
 	background: ${({ imageUrl }) => `url(${imageUrl})`};
 	background-position: center;
 	background-repeat: no-repeat;
-	background-size: cover;
+	background-size: ${({ backgroundSize }) =>
+		backgroundSize ? backgroundSize : 'cover'};
 `
