@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 
 import useResponsive from '@/hooks/useResponsive'
 import { parseDateTime } from '@/utils/functions/parseDateTime'
@@ -8,17 +8,24 @@ import Pagination from '../UI/Pagination'
 import CompanyInformation from './CompanyInformation'
 import { companies, Company } from './data'
 import Header from './Header'
+import Statistics from './Statistics'
 
 const ListCompanies: FC = () => {
-	const { isLaptop } = useResponsive()
-
 	const [currentPageData, setCurrentPageData] = useState<Company[]>([])
 
+	const { isLaptop } = useResponsive()
 	const itemsPerPage = 10
 
 	const handlePageChange = (pageData: Company[]) => {
 		setCurrentPageData(pageData)
 	}
+
+	useEffect(() => {
+		if (companies.length > 0) {
+			const initialPageData = companies.slice(0, itemsPerPage)
+			handlePageChange(initialPageData)
+		}
+	}, [companies])
 
 	return (
 		<>
@@ -49,6 +56,7 @@ const ListCompanies: FC = () => {
 					onPageChange={handlePageChange}
 				/>
 			)}
+			<Statistics />
 		</>
 	)
 }
