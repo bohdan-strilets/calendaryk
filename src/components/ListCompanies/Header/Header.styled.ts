@@ -19,7 +19,7 @@ export const Item = styled.li`
 	@media screen and (min-width: ${screenWidth.LAPTOP}) {
 		width: 18%;
 
-		:first-child {
+		:first-of-type {
 			width: 60%;
 		}
 	}
@@ -27,7 +27,7 @@ export const Item = styled.li`
 	@media screen and (min-width: ${screenWidth.DESKTOP}) {
 		width: 25%;
 
-		:first-child {
+		:first-of-type {
 			width: 45%;
 		}
 	}

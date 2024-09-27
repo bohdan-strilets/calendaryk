@@ -33,12 +33,12 @@ const ListCompanies: FC = () => {
 			<ul>
 				{currentPageData.map((company, index) => (
 					<motion.li
+						key={company._id}
 						initial={{ y: '-100%', opacity: 0 }}
 						animate={{ y: '0%', opacity: 1 }}
 						transition={{ duration: 0.3, delay: index * 0.1 }}
 					>
 						<CompanyInformation
-							key={company._id}
 							companyName={company.name}
 							position={company.profession}
 							logoUrl={company.logoUrl}
