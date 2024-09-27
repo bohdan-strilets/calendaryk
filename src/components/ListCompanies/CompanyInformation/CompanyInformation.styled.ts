@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 
 import { screenWidth } from '@/utils/data/screenWidth'
 
-export const Wrapper = styled.li`
+export const Wrapper = styled.div`
 	padding: 10px;
 
 	margin-bottom: 30px;
@@ -12,6 +12,7 @@ export const Wrapper = styled.li`
 		rgba(218, 226, 248, 0.3),
 		rgba(214, 164, 164, 0.3)
 	);
+
 	border: 1px solid #ccc;
 	border-radius: 10px;
 	box-shadow: var(--box-shadow);

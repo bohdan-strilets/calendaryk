@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { FC, useState } from 'react'
 
 import useResponsive from '@/hooks/useResponsive'
@@ -23,16 +24,22 @@ const ListCompanies: FC = () => {
 		<>
 			{isLaptop && <Header />}
 			<ul>
-				{currentPageData.map((company) => (
-					<CompanyInformation
-						key={company._id}
-						companyName={company.name}
-						position={company.profession}
-						logoUrl={company.logoUrl}
-						startJob={parseDateTime(company.startWork).date}
-						endJob={parseDateTime(company.endWork).date}
-						salary={company.salaryPerHour}
-					/>
+				{currentPageData.map((company, index) => (
+					<motion.li
+						initial={{ y: '-100%', opacity: 0 }}
+						animate={{ y: '0%', opacity: 1 }}
+						transition={{ duration: 0.3, delay: index * 0.1 }}
+					>
+						<CompanyInformation
+							key={company._id}
+							companyName={company.name}
+							position={company.profession}
+							logoUrl={company.logoUrl}
+							startJob={parseDateTime(company.startWork).date}
+							endJob={parseDateTime(company.endWork).date}
+							salary={company.salaryPerHour}
+						/>
+					</motion.li>
 				))}
 			</ul>
 			{companies?.length > itemsPerPage && (
