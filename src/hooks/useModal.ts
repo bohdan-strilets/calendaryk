@@ -16,6 +16,7 @@ const useModal = () => {
 		UPLOAD_AVATAR: 'upload-avatar',
 		AVATARS: 'avatars',
 		DELETE_PROFILE: 'delete-profile',
+		NEW_COMPANY: 'new-company',
 	}
 
 	const openModal = useCallback(

@@ -1,7 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 
-import { ContactFormInputs } from '@/types/inputs/ContactFormInputs'
+import { ContactFields } from '@/types/inputs/ContactFields'
 
 export const ContactFormSchema = yup.object().shape({
 	name: yup
@@ -16,5 +16,5 @@ export const ContactFormSchema = yup.object().shape({
 })
 
 export const validation = {
-	resolver: yupResolver<ContactFormInputs>(ContactFormSchema),
+	resolver: yupResolver<ContactFields>(ContactFormSchema),
 }

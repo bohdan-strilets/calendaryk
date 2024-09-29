@@ -8,7 +8,6 @@ import Pagination from '../UI/Pagination'
 import CompanyInformation from './CompanyInformation'
 import { companies, Company } from './data'
 import Header from './Header'
-import Statistics from './Statistics'
 
 const ListCompanies: FC = () => {
 	const [currentPageData, setCurrentPageData] = useState<Company[]>([])
@@ -56,7 +55,6 @@ const ListCompanies: FC = () => {
 					onPageChange={handlePageChange}
 				/>
 			)}
-			<Statistics />
 		</>
 	)
 }
