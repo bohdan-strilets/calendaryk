@@ -79,12 +79,7 @@ const AddedCompanyForm: FC = () => {
 				rules={{ required: true, min: 0, max: 500 }}
 			/>
 			{loading && <Loader margin="25px 0 25px 0" />}
-			<Button
-				type="submit"
-				height="45px"
-				margin="0 0 40px 0"
-				disabled={loading}
-			>
+			<Button type="submit" height="45px" disabled={loading}>
 				Added
 			</Button>
 		</form>

@@ -5,7 +5,7 @@ import { screenWidth } from '@/utils/data/screenWidth'
 export const Wrapper = styled.div`
 	padding: 10px;
 
-	margin-bottom: 30px;
+	margin-bottom: 15px;
 
 	background: linear-gradient(
 		to right,
@@ -23,6 +23,7 @@ export const Wrapper = styled.div`
 		justify-content: space-between;
 
 		padding: 5px;
+		margin-bottom: 30px;
 	}
 `
 
