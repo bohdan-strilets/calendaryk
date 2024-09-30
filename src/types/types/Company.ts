@@ -1,4 +1,5 @@
 export type Company = {
+	_id: string
 	owner: string
 	name: string
 	startWork: string
@@ -6,4 +7,6 @@ export type Company = {
 	profession: string
 	logoUrl: string
 	salaryPerHour: number
+	updatedAt: string
+	createdAt: string
 }

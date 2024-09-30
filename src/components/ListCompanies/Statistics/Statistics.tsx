@@ -1,3 +1,4 @@
+// eslint-disable-next-line simple-import-sort/imports
 import {
 	CategoryScale,
 	Chart as ChartJS,
@@ -12,8 +13,8 @@ import { FC } from 'react'
 import { Line } from 'react-chartjs-2'
 
 import Title from '@/components/UI/Title'
+import { StatisticsProps } from '@/types/props/listCompanies/StatisticsProps'
 
-import { companies } from '../data'
 import { Wrapper } from './Statistics.styled'
 
 ChartJS.register(
@@ -26,13 +27,13 @@ ChartJS.register(
 	Legend
 )
 
-const Statistics: FC = () => {
+const Statistics: FC<StatisticsProps> = ({ companies }) => {
 	const data = {
-		labels: companies.map((company) => company.name),
+		labels: companies?.map((company) => company.name),
 		datasets: [
 			{
 				label: 'Salary per hour',
-				data: companies.map((company) => company.salaryPerHour),
+				data: companies?.map((company) => company.salaryPerHour),
 				fill: false,
 				backgroundColor: '#f00000',
 				borderColor: '#f00000',

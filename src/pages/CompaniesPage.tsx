@@ -7,14 +7,20 @@ import AddedCompanyForm from '@/components/ListCompanies/AddedCompanyForm'
 import Statistics from '@/components/ListCompanies/Statistics'
 import Modal from '@/components/Modal'
 import Button from '@/components/UI/Button'
+import Loader from '@/components/UI/Loader'
 import useModal from '@/hooks/useModal'
 import useResponsive from '@/hooks/useResponsive'
+import { useGetAllQuery } from '@/store/companies/companyApi'
 
 const CompaniesPage: FC = () => {
 	const { checkQueryParam, modalNames, openModal } = useModal()
 	const { isMaxTablet } = useResponsive()
+	const { data, isLoading } = useGetAllQuery()
+	const companies = data?.data
 
-	return (
+	return isLoading ? (
+		<Loader />
+	) : (
 		<>
 			<Button
 				type="button"
@@ -25,8 +31,8 @@ const CompaniesPage: FC = () => {
 			>
 				<TbLayoutGridAdd size={isMaxTablet ? 55 : 80} />
 			</Button>
-			<ListCompanies />
-			<Statistics />
+			<ListCompanies companies={companies} />
+			<Statistics companies={companies} />
 
 			<AnimatePresence mode="wait">
 				{checkQueryParam(modalNames.NEW_COMPANY) && (
