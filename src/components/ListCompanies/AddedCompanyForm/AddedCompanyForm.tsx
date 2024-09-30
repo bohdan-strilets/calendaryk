@@ -1,12 +1,16 @@
 import { FC } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { toast } from 'react-toastify'
 
 import Button from '@/components/UI/Button'
 import DatePicker from '@/components/UI/DatePicker'
 import Loader from '@/components/UI/Loader'
 import NumberField from '@/components/UI/NumberField'
 import TextField from '@/components/UI/TextField'
+import useModal from '@/hooks/useModal'
+import { useCreateMutation } from '@/store/companies/companyApi'
 import { AddedCompanyFields } from '@/types/inputs/AddedCompanyFields'
+import { isApiError } from '@/utils/functions/isApiError'
 import { validation } from '@/validation/AddedCompanySchema'
 
 const AddedCompanyForm: FC = () => {
@@ -16,10 +20,19 @@ const AddedCompanyForm: FC = () => {
 		setValue,
 		formState: { errors },
 	} = useForm<AddedCompanyFields>(validation)
+	const [createCompany, { isLoading }] = useCreateMutation()
+	const { closeModal } = useModal()
 
-	const loading = false
 	const onSubmit: SubmitHandler<AddedCompanyFields> = async (data) => {
-		console.log(data)
+		try {
+			await createCompany(data)
+			closeModal()
+			toast.success('The company has been successfully added')
+		} catch (error) {
+			if (isApiError(error)) {
+				toast.error(error.message)
+			}
+		}
 	}
 
 	const handleStartDateChange = (date: Date) => {
@@ -78,8 +91,8 @@ const AddedCompanyForm: FC = () => {
 				errors={errors}
 				rules={{ required: true, min: 0, max: 500 }}
 			/>
-			{loading && <Loader margin="25px 0 25px 0" />}
-			<Button type="submit" height="45px" disabled={loading}>
+			{isLoading && <Loader margin="25px 0 25px 0" />}
+			<Button type="submit" height="45px" disabled={isLoading}>
 				Added
 			</Button>
 		</form>

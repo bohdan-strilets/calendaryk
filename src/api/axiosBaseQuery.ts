@@ -20,7 +20,7 @@ const axiosBaseQuery =
 	async ({ url, method, data, params, headers }) => {
 		try {
 			const result = await api({
-				url: `${API_URL}api/v1/${endpointName}/${url}`,
+				url: `${API_URL}${endpointName}/${url}`,
 				method,
 				data,
 				params,
