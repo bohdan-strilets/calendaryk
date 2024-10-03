@@ -3,7 +3,9 @@ import { BsCalendarRange } from 'react-icons/bs'
 import { FaMoneyBillWave } from 'react-icons/fa6'
 
 import Avatar from '@/components/UI/Avatar'
+import DropdownMenu from '@/components/UI/DropdownMenu'
 import { CompanyInformationProps } from '@/types/props/listCompanies/CompanyInformationProps'
+import { companyOptionsMenu } from '@/utils/dataWithJSX/companyOptionsMenu'
 
 import {
 	CompanyDetails,
@@ -25,8 +27,19 @@ const CompanyInformation: FC<CompanyInformationProps> = ({
 	salary,
 	...motionProps
 }) => {
+	const editFoo = () => console.log('Edit')
+	const deleteFoo = () => console.log('Delete')
+	const uploadFoo = () => console.log('Upload')
+
 	return (
 		<Item {...motionProps}>
+			<DropdownMenu
+				menuItems={companyOptionsMenu({
+					editCompany: editFoo,
+					deleteCompany: deleteFoo,
+					uploadLogo: uploadFoo,
+				})}
+			/>
 			<Avatar imageUrl={logoUrl} height="100px" backgroundSize="contain" />
 			<CompanyDetails>
 				<CompanyName>{companyName}</CompanyName>
