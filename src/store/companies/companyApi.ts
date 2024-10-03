@@ -2,7 +2,7 @@ import { createApi } from '@reduxjs/toolkit/query/react'
 
 import axiosBaseQuery from '@/api/axiosBaseQuery'
 import { CreateCompanyDto } from '@/types/dto/CreateCompanyDto'
-import { UpdateTodoDto } from '@/types/dto/UpdateTodoDto'
+import { EditCompanyDto } from '@/types/dto/EditCompanyDto'
 import { Company } from '@/types/types/Company'
 import { ResponseApi } from '@/types/types/ResponseApi'
 
@@ -31,7 +31,7 @@ export const companyApi = createApi({
 				invalidatesTags: ['company'],
 			}),
 
-			update: build.mutation<ResponseApi<Company>, UpdateTodoDto>({
+			update: build.mutation<ResponseApi<Company>, EditCompanyDto>({
 				query: ({ companyId, dto }) => ({
 					url: `update/${companyId}`,
 					method: 'PATCH',

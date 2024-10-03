@@ -7,4 +7,5 @@ export interface CompanyInformationProps extends MotionProps {
 	startJob: string
 	endJob: string
 	salary: number
+	onClick?: () => void
 }

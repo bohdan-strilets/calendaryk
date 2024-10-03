@@ -9,7 +9,7 @@ import Pagination from '../UI/Pagination'
 import CompanyInformation from './CompanyInformation'
 import { List } from './ListCompanies.styled'
 
-const ListCompanies: FC<ListCompanyProps> = ({ companies }) => {
+const ListCompanies: FC<ListCompanyProps> = ({ companies, getCurrentId }) => {
 	const [currentPageData, setCurrentPageData] = useState<Company[]>([])
 
 	const { isDesktop } = useResponsive()
@@ -42,6 +42,7 @@ const ListCompanies: FC<ListCompanyProps> = ({ companies }) => {
 							startJob={parseDateTime(company.startWork).date}
 							endJob={parseDateTime(company.endWork).date}
 							salary={company.salaryPerHour}
+							onClick={() => getCurrentId(company._id)}
 						/>
 					))}
 				</List>

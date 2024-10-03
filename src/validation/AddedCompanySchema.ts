@@ -6,12 +6,12 @@ import { AddedCompanyFields } from '@/types/inputs/AddedCompanyFields'
 export const AddedCompanySchema = yup.object().shape({
 	name: yup
 		.string()
-		.min(20, 'Name should be at least 20 characters')
+		.min(5, 'Name should be at least 5 characters')
 		.max(50, 'Name should not exceed 50 characters')
 		.required('Company name is required'),
 
 	startWork: yup.string().required('Start work date is required'),
-	endWork: yup.string().required('End work date is required'),
+	endWork: yup.string(),
 	salaryPerHour: yup
 		.number()
 		.typeError('Salary must be a number')
@@ -22,7 +22,7 @@ export const AddedCompanySchema = yup.object().shape({
 
 	profession: yup
 		.string()
-		.min(20, 'Profession should be at least 20 characters')
+		.min(5, 'Profession should be at least 5 characters')
 		.max(60, 'Profession should not exceed 60 characters')
 		.required('Profession is required'),
 })

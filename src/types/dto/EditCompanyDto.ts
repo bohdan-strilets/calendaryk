@@ -6,7 +6,7 @@ type Dto = {
 	salaryPerHour?: number
 }
 
-export type UpdateTodoDto = {
+export type EditCompanyDto = {
 	companyId: string
 	dto: Dto
 }

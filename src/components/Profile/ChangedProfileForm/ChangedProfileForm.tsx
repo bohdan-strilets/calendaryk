@@ -16,6 +16,7 @@ import { getLoading, getUser } from '@/store/user/userSelectors'
 import { ProfileEditFormFields } from '@/types/inputs/ProfileEditFormFields'
 import { genderOptions } from '@/utils/dropdownOptions/genderOptions'
 import { isApiError } from '@/utils/functions/isApiError'
+import { normalizeDateForDatepicker } from '@/utils/functions/normalizeDateForDatepicker'
 import { validation } from '@/validation/EditProfileFormSchema'
 
 const ChangedProfileForm: FC = () => {
@@ -51,19 +52,11 @@ const ChangedProfileForm: FC = () => {
 
 	const onSubmit: SubmitHandler<ProfileEditFormFields> = async (data) => {
 		try {
-			const normalizedDate = data.dateBirth
-				? new Date(data.dateBirth)
-				: new Date()
-
-			const year = normalizedDate.getFullYear()
-			const month = String(normalizedDate.getMonth() + 1).padStart(2, '0')
-			const day = String(normalizedDate.getDate()).padStart(2, '0')
-
-			const formattedDate = `${year}-${month}-${day}`
+			const dateBirth = normalizeDateForDatepicker(data.dateBirth)
 
 			const dto = {
 				...data,
-				dateBirth: formattedDate,
+				dateBirth,
 			}
 
 			const result = await dispatch(operations.changeProfile(dto))

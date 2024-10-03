@@ -1,7 +1,7 @@
 export type AddedCompanyFields = {
 	name: string
 	startWork: string
-	endWork: string
+	endWork?: string
 	salaryPerHour: number
 	profession: string
 }

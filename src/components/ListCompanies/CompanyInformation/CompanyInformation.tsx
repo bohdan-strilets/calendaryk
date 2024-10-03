@@ -4,6 +4,7 @@ import { FaMoneyBillWave } from 'react-icons/fa6'
 
 import Avatar from '@/components/UI/Avatar'
 import DropdownMenu from '@/components/UI/DropdownMenu'
+import useModal from '@/hooks/useModal'
 import { CompanyInformationProps } from '@/types/props/listCompanies/CompanyInformationProps'
 import { companyOptionsMenu } from '@/utils/dataWithJSX/companyOptionsMenu'
 
@@ -25,9 +26,13 @@ const CompanyInformation: FC<CompanyInformationProps> = ({
 	startJob,
 	endJob,
 	salary,
+
 	...motionProps
 }) => {
-	const editFoo = () => console.log('Edit')
+	const { openModal, modalNames } = useModal()
+
+	const handlerOpenEditForm = () => openModal(modalNames.EDIT_COMPANY)
+
 	const deleteFoo = () => console.log('Delete')
 	const uploadFoo = () => console.log('Upload')
 
@@ -35,7 +40,7 @@ const CompanyInformation: FC<CompanyInformationProps> = ({
 		<Item {...motionProps}>
 			<DropdownMenu
 				menuItems={companyOptionsMenu({
-					editCompany: editFoo,
+					editCompany: handlerOpenEditForm,
 					deleteCompany: deleteFoo,
 					uploadLogo: uploadFoo,
 				})}
