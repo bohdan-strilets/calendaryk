@@ -1,18 +1,19 @@
 import { FC } from 'react'
 import { BsCalendarRange } from 'react-icons/bs'
-import { TbCoins } from 'react-icons/tb'
+import { FaMoneyBillWave } from 'react-icons/fa6'
 
 import Avatar from '@/components/UI/Avatar'
 import { CompanyInformationProps } from '@/types/props/listCompanies/CompanyInformationProps'
 
 import {
-	CompanyInfoWrapper,
+	CompanyDetails,
 	CompanyName,
-	DetailsWrapper,
-	JobPosition,
-	Label,
-	TitleWrapper,
-	Wrapper,
+	EmploymentDates,
+	HourlyRate,
+	Item,
+	Position,
+	RateUnit,
+	SalaryDetails,
 } from './CompanyInformation.styled'
 
 const CompanyInformation: FC<CompanyInformationProps> = ({
@@ -22,33 +23,26 @@ const CompanyInformation: FC<CompanyInformationProps> = ({
 	startJob,
 	endJob,
 	salary,
+	...motionProps
 }) => {
 	return (
-		<Wrapper>
-			<CompanyInfoWrapper>
-				<Avatar
-					width="90px"
-					height="90px"
-					border
-					imageUrl={logoUrl}
-					backgroundSize="contain"
-				/>
-				<TitleWrapper>
-					<CompanyName>{companyName}</CompanyName>
-					<JobPosition>{position}</JobPosition>
-				</TitleWrapper>
-			</CompanyInfoWrapper>
-			<DetailsWrapper>
-				<BsCalendarRange size={18} />
-				<Label>
-					{startJob} - {endJob}
-				</Label>
-			</DetailsWrapper>
-			<DetailsWrapper>
-				<TbCoins size={20} />
-				<Label>{salary} PLN</Label>
-			</DetailsWrapper>
-		</Wrapper>
+		<Item {...motionProps}>
+			<Avatar imageUrl={logoUrl} height="100px" backgroundSize="contain" />
+			<CompanyDetails>
+				<CompanyName>{companyName}</CompanyName>
+				<Position>{position}</Position>
+				<EmploymentDates>
+					<p>{startJob}</p>
+					<BsCalendarRange size={18} color="var(--green-color)" />
+					<p>{endJob}</p>
+				</EmploymentDates>
+				<SalaryDetails>
+					<FaMoneyBillWave size={18} color="var(--green-color)" />
+					<HourlyRate>{salary}</HourlyRate>
+					<RateUnit>PLN/H</RateUnit>
+				</SalaryDetails>
+			</CompanyDetails>
+		</Item>
 	)
 }
 

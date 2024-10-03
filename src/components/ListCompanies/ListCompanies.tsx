@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { FC, useEffect, useState } from 'react'
 
 import useResponsive from '@/hooks/useResponsive'
@@ -8,13 +7,13 @@ import { parseDateTime } from '@/utils/functions/parseDateTime'
 
 import Pagination from '../UI/Pagination'
 import CompanyInformation from './CompanyInformation'
-import Header from './Header'
+import { List } from './ListCompanies.styled'
 
 const ListCompanies: FC<ListCompanyProps> = ({ companies }) => {
 	const [currentPageData, setCurrentPageData] = useState<Company[]>([])
 
-	const { isLaptop } = useResponsive()
-	const itemsPerPage = 10
+	const { isDesktop } = useResponsive()
+	const itemsPerPage = isDesktop ? 8 : 6
 
 	const handlePageChange = (pageData: Company[]) => {
 		setCurrentPageData(pageData)
@@ -25,31 +24,27 @@ const ListCompanies: FC<ListCompanyProps> = ({ companies }) => {
 			const initialPageData = companies.slice(0, itemsPerPage)
 			handlePageChange(initialPageData)
 		}
-	}, [companies])
+	}, [companies, itemsPerPage, isDesktop])
 
 	return (
 		companies && (
 			<>
-				{isLaptop && <Header />}
-				<ul>
+				<List>
 					{currentPageData.map((company, index) => (
-						<motion.li
+						<CompanyInformation
 							key={company._id}
 							initial={{ y: '-100%', opacity: 0 }}
 							animate={{ y: '0%', opacity: 1 }}
 							transition={{ duration: 0.3, delay: index * 0.1 }}
-						>
-							<CompanyInformation
-								companyName={company.name}
-								position={company.profession}
-								logoUrl={company.logoUrl}
-								startJob={parseDateTime(company.startWork).date}
-								endJob={parseDateTime(company.endWork).date}
-								salary={company.salaryPerHour}
-							/>
-						</motion.li>
+							companyName={company.name}
+							position={company.profession}
+							logoUrl={company.logoUrl}
+							startJob={parseDateTime(company.startWork).date}
+							endJob={parseDateTime(company.endWork).date}
+							salary={company.salaryPerHour}
+						/>
 					))}
-				</ul>
+				</List>
 				{companies?.length > itemsPerPage && (
 					<Pagination<Company>
 						data={companies}

@@ -1,4 +1,6 @@
-export type CompanyInformationProps = {
+import { MotionProps } from 'framer-motion'
+
+export interface CompanyInformationProps extends MotionProps {
 	logoUrl: string
 	companyName: string
 	position: string
