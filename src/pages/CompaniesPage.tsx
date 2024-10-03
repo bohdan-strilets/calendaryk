@@ -1,6 +1,7 @@
 import { AnimatePresence } from 'framer-motion'
 import { FC, useState } from 'react'
 import { TbLayoutGridAdd } from 'react-icons/tb'
+import { toast } from 'react-toastify'
 
 import ListCompanies from '@/components/ListCompanies'
 import AddedCompanyForm from '@/components/ListCompanies/AddedCompanyForm'
@@ -8,25 +9,35 @@ import EditCompanyForm from '@/components/ListCompanies/EditCompanyForm'
 import Statistics from '@/components/ListCompanies/Statistics'
 import Modal from '@/components/Modal'
 import Button from '@/components/UI/Button'
+import Dialog from '@/components/UI/Dialog'
 import Loader from '@/components/UI/Loader'
 import { useAppSelector } from '@/hooks/useAppSelector'
 import useModal from '@/hooks/useModal'
 import useResponsive from '@/hooks/useResponsive'
 import { getIsLoggedIn } from '@/store/auth/authSelectors'
-import { useGetAllQuery } from '@/store/companies/companyApi'
+import { useDeleteMutation, useGetAllQuery } from '@/store/companies/companyApi'
 
 const CompaniesPage: FC = () => {
 	const [currentCompanyId, setCurrentCompanyId] = useState<string | null>(null)
 
-	const { checkQueryParam, modalNames, openModal } = useModal()
+	const { checkQueryParam, modalNames, openModal, closeModal } = useModal()
 	const isLoggedIn = useAppSelector(getIsLoggedIn)
 	const { isMaxTablet } = useResponsive()
-	const { data, isLoading } = useGetAllQuery()
+	const [deleteCompany, { isLoading: isDeleteLoading }] = useDeleteMutation()
+	const { data, isLoading: isQueryLoading } = useGetAllQuery()
 	const companies = data?.data
 
 	const getCurrentId = (id: string) => setCurrentCompanyId(id)
 
-	return isLoading ? (
+	const handleDeleteCompany = async () => {
+		if (currentCompanyId) {
+			await deleteCompany(currentCompanyId)
+			closeModal()
+			toast.success('Company information successfully removed')
+		}
+	}
+
+	return isQueryLoading ? (
 		<Loader />
 	) : (
 		<>
@@ -53,6 +64,17 @@ const CompaniesPage: FC = () => {
 				{checkQueryParam(modalNames.EDIT_COMPANY) && (
 					<Modal title="Update company information">
 						<EditCompanyForm companyId={currentCompanyId} />
+					</Modal>
+				)}
+				{checkQueryParam(modalNames.DELETE_COMPANY) && (
+					<Modal title="Delete company">
+						<Dialog
+							successButtonLabel="Delete"
+							successCallback={handleDeleteCompany}
+							negativeCallback={closeModal}
+							isLoading={isDeleteLoading}
+							message="Deleting the company will result in the removal of all associated data. Please note that once this process is completed, it will not be possible to recover the information."
+						/>
 					</Modal>
 				)}
 			</AnimatePresence>

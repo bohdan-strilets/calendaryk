@@ -32,8 +32,8 @@ const CompanyInformation: FC<CompanyInformationProps> = ({
 	const { openModal, modalNames } = useModal()
 
 	const handlerOpenEditForm = () => openModal(modalNames.EDIT_COMPANY)
+	const handleOpedDeleteForm = () => openModal(modalNames.DELETE_COMPANY)
 
-	const deleteFoo = () => console.log('Delete')
 	const uploadFoo = () => console.log('Upload')
 
 	return (
@@ -41,7 +41,7 @@ const CompanyInformation: FC<CompanyInformationProps> = ({
 			<DropdownMenu
 				menuItems={companyOptionsMenu({
 					editCompany: handlerOpenEditForm,
-					deleteCompany: deleteFoo,
+					deleteCompany: handleOpedDeleteForm,
 					uploadLogo: uploadFoo,
 				})}
 			/>

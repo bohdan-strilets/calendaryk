@@ -18,6 +18,7 @@ const useModal = () => {
 		DELETE_PROFILE: 'delete-profile',
 		NEW_COMPANY: 'new-company',
 		EDIT_COMPANY: 'edit-company',
+		DELETE_COMPANY: 'delete-company',
 	}
 
 	const openModal = useCallback(
