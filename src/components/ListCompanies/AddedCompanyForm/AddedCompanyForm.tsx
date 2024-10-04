@@ -1,8 +1,9 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 
 import Button from '@/components/UI/Button'
+import Checkbox from '@/components/UI/Checkbox'
 import DatePicker from '@/components/UI/DatePicker'
 import Loader from '@/components/UI/Loader'
 import NumberField from '@/components/UI/NumberField'
@@ -11,21 +12,32 @@ import useModal from '@/hooks/useModal'
 import { useCreateMutation } from '@/store/companies/companyApi'
 import { AddedCompanyFields } from '@/types/inputs/AddedCompanyFields'
 import { isApiError } from '@/utils/functions/isApiError'
+import { normalizeDateForDatepicker } from '@/utils/functions/normalizeDateForDatepicker'
 import { validation } from '@/validation/AddedCompanySchema'
 
 const AddedCompanyForm: FC = () => {
+	const [isStillWorking, setIsStillWorking] = useState(false)
+
 	const {
 		register,
 		handleSubmit,
 		setValue,
+		watch,
 		formState: { errors },
 	} = useForm<AddedCompanyFields>(validation)
 	const [createCompany, { isLoading }] = useCreateMutation()
 	const { closeModal } = useModal()
 
 	const onSubmit: SubmitHandler<AddedCompanyFields> = async (data) => {
+		const startWork = normalizeDateForDatepicker(data.startWork)
+		const endWork = data.isStillWorking
+			? normalizeDateForDatepicker(new Date().toLocaleDateString())
+			: normalizeDateForDatepicker(data.endWork)
+
+		const dto = { ...data, endWork, startWork }
+
 		try {
-			await createCompany(data)
+			await createCompany(dto)
 			closeModal()
 			toast.success('The company has been successfully added')
 		} catch (error) {
@@ -41,6 +53,10 @@ const AddedCompanyForm: FC = () => {
 
 	const handleEndDateChange = (date: Date) => {
 		setValue('endWork', date.toISOString())
+	}
+
+	const handleCheckboxChange = () => {
+		setIsStillWorking(!isStillWorking)
 	}
 
 	return (
@@ -74,12 +90,27 @@ const AddedCompanyForm: FC = () => {
 				margin="0 0 20px 0"
 				defaultValue={new Date()}
 			/>
-			<DatePicker
-				onDateChange={handleEndDateChange}
-				placeholder="End"
-				label="End of work in"
+			{!isStillWorking && (
+				<DatePicker
+					onDateChange={handleEndDateChange}
+					placeholder="End"
+					label="End of work in"
+					margin="0 0 20px 0"
+					defaultValue={new Date()}
+				/>
+			)}
+			<Checkbox
+				name="isStillWorking"
+				register={register}
+				setValue={(name, value) => {
+					setValue(name, value)
+					handleCheckboxChange()
+				}}
+				watch={watch}
+				rules={{ isChecked: isStillWorking }}
+				errors={errors}
+				label="Please indicate if you are currently working at this company."
 				margin="0 0 20px 0"
-				defaultValue={new Date()}
 			/>
 			<NumberField
 				register={register}
