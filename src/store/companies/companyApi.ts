@@ -3,6 +3,7 @@ import { createApi } from '@reduxjs/toolkit/query/react'
 import axiosBaseQuery from '@/api/axiosBaseQuery'
 import { CreateCompanyDto } from '@/types/dto/CreateCompanyDto'
 import { EditCompanyDto } from '@/types/dto/EditCompanyDto'
+import { UploadCompanyLogoDto } from '@/types/dto/UploadCompanyLogoDto'
 import { Company } from '@/types/types/Company'
 import { ResponseApi } from '@/types/types/ResponseApi'
 
@@ -55,6 +56,15 @@ export const companyApi = createApi({
 				}),
 				invalidatesTags: ['company'],
 			}),
+
+			uploadLogo: build.mutation<ResponseApi, UploadCompanyLogoDto>({
+				query: (dto) => ({
+					url: `upload-logo?companyId=${dto.companyId}`,
+					method: 'POST',
+					data: dto.logo,
+				}),
+				invalidatesTags: ['company'],
+			}),
 		}
 	},
 })
@@ -66,4 +76,5 @@ export const {
 	useUpdateMutation,
 	useDeleteMutation,
 	useDeleteAllMutation,
+	useUploadLogoMutation,
 } = companyApi

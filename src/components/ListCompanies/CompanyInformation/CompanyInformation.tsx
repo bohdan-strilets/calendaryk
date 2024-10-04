@@ -33,8 +33,7 @@ const CompanyInformation: FC<CompanyInformationProps> = ({
 
 	const handlerOpenEditForm = () => openModal(modalNames.EDIT_COMPANY)
 	const handleOpedDeleteForm = () => openModal(modalNames.DELETE_COMPANY)
-
-	const uploadFoo = () => console.log('Upload')
+	const handleOpenUploadForm = () => openModal(modalNames.UPLOAD_COMPANY_LOGO)
 
 	return (
 		<Item {...motionProps}>
@@ -42,7 +41,7 @@ const CompanyInformation: FC<CompanyInformationProps> = ({
 				menuItems={companyOptionsMenu({
 					editCompany: handlerOpenEditForm,
 					deleteCompany: handleOpedDeleteForm,
-					uploadLogo: uploadFoo,
+					uploadLogo: handleOpenUploadForm,
 				})}
 			/>
 			<Avatar imageUrl={logoUrl} height="100px" backgroundSize="contain" />

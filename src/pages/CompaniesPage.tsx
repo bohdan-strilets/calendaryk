@@ -7,6 +7,7 @@ import ListCompanies from '@/components/ListCompanies'
 import AddedCompanyForm from '@/components/ListCompanies/AddedCompanyForm'
 import EditCompanyForm from '@/components/ListCompanies/EditCompanyForm'
 import Statistics from '@/components/ListCompanies/Statistics'
+import UploadLogoForm from '@/components/ListCompanies/UploadLogoForm'
 import Modal from '@/components/Modal'
 import Button from '@/components/UI/Button'
 import Dialog from '@/components/UI/Dialog'
@@ -75,6 +76,11 @@ const CompaniesPage: FC = () => {
 							isLoading={isDeleteLoading}
 							message="Deleting the company will result in the removal of all associated data. Please note that once this process is completed, it will not be possible to recover the information."
 						/>
+					</Modal>
+				)}
+				{checkQueryParam(modalNames.UPLOAD_COMPANY_LOGO) && (
+					<Modal title="Update company logo">
+						<UploadLogoForm companyId={currentCompanyId} />
 					</Modal>
 				)}
 			</AnimatePresence>
