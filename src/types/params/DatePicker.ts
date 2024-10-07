@@ -1,6 +1,3 @@
-import { DatePickerProps } from '../props/ui/DatePickerProps'
+import { DatePickerProps } from '../props/ui/datePicker/DatePickerProps'
 
-export type DatePicker = Pick<
-	DatePickerProps,
-	'defaultValue' | 'onDateChange' | 'placeholder'
->
+export type DatePicker = Pick<DatePickerProps, 'initialDate' | 'onDateChange'>

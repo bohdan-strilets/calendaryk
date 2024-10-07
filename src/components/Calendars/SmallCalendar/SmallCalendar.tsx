@@ -19,6 +19,7 @@ const SmallCalendar: FC<SmallCalendarProps> = ({
 	isCurrentDay,
 	selectedDay,
 	isInteractive,
+	isHeader,
 }) => {
 	const date = selectedDate ? selectedDate : new Date()
 
@@ -37,7 +38,7 @@ const SmallCalendar: FC<SmallCalendarProps> = ({
 
 	return (
 		<div>
-			<Header>{currentMonthName}</Header>
+			{isHeader && <Header>{currentMonthName}</Header>}
 			<WeekDays
 				currentDay={currentDay}
 				cellWidth={cellWidth}

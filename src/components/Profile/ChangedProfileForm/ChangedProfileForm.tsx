@@ -47,7 +47,9 @@ const ChangedProfileForm: FC = () => {
 	}, [user, reset])
 
 	const handleDateChange = (date: Date) => {
-		setValue('dateBirth', date.toISOString())
+		const isoDate = date.toISOString()
+		const normalizeDate = normalizeDateForDatepicker(isoDate)
+		setValue('dateBirth', normalizeDate)
 	}
 
 	const onSubmit: SubmitHandler<ProfileEditFormFields> = async (data) => {
@@ -96,10 +98,9 @@ const ChangedProfileForm: FC = () => {
 			/>
 			<DatePicker
 				onDateChange={handleDateChange}
-				placeholder="Select date"
 				label="Date of birth"
 				margin="0 0 20px 0"
-				defaultValue={dateBirth}
+				initialDate={dateBirth}
 			/>
 			<DropdownList
 				options={genderOptions}

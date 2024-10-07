@@ -1,137 +1,79 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
-import { useForm } from 'react-hook-form'
+import { useEffect, useState } from 'react'
 
-import { DatePickerFields } from '@/types/inputs/DatePickerFields'
 import { DatePicker } from '@/types/params/DatePicker'
 import { MonthsOfYear } from '@/utils/data/monthsOfYear'
 
-import useCalendar from './useCalendar'
-import useClickOutside from './useClickOutside'
+import useRenderCalendar from './useRenderCalendar'
 
 export const useDatePicker = ({
-	defaultValue,
+	initialDate: date,
 	onDateChange,
-	placeholder,
 }: DatePicker) => {
-	const { selectedDate, selectDate } = useCalendar()
-	const { isOpen, toggle, divRef } = useClickOutside()
+	const [initialDate, setInitialDate] = useState(date)
+	const [isOpenOptions, setIsOpenOptions] = useState(false)
 
-	const [selectedDay, setSelectedDay] = useState(selectedDate.getDate())
-	const [selectedMonth, setSelectedMonth] = useState(selectedDate.getMonth())
-	const [selectedYear, setSelectedYear] = useState(selectedDate.getFullYear())
-	const [defaultLabel, setDefaultLabel] = useState('')
+	const { getDaysOfMonth, getMonthYear } = useRenderCalendar(initialDate)
 
-	const selectedMonthName = useMemo(
-		() => MonthsOfYear[selectedMonth]?.name,
-		[selectedMonth]
-	)
-	const formattedSelectedDate = useMemo(
-		() => `${selectedDay} ${selectedMonthName} ${selectedYear}`,
-		[selectedDay, selectedMonthName, selectedYear]
-	)
+	const monthYear = getMonthYear()
+	const monthName = MonthsOfYear[monthYear.month].name
+	const day = initialDate.getDate()
 
-	const initializeDefaultDate = useCallback(() => {
-		if (defaultValue) {
-			const formattedDefaultDate = defaultValue.toISOString().split('T')[0]
-			const date = new Date(formattedDefaultDate)
-			selectDate(date)
-		}
-	}, [defaultValue, selectDate])
+	const daysOfMonth = getDaysOfMonth()
+	const dateLabel = `${initialDate.getDate().toString().padStart(2, '0')} ${monthName} ${initialDate.getFullYear()}`
 
 	useEffect(() => {
-		initializeDefaultDate()
-	}, [defaultValue])
+		onDateChange(initialDate)
+	}, [initialDate])
 
-	useEffect(() => {
-		setSelectedDay(selectedDate.getDate())
-		setSelectedMonth(selectedDate.getMonth())
-		setSelectedYear(selectedDate.getFullYear())
-	}, [selectedDate])
+	const toggleOptions = () => setIsOpenOptions((state) => !state)
 
-	const {
-		register,
-		setValue,
-		watch,
-		reset,
-		formState: { errors },
-	} = useForm<DatePickerFields>()
+	const handleNextMonth = () => {
+		const newDate = new Date(initialDate)
+		newDate.setMonth(initialDate.getMonth() + 1)
+		setInitialDate(newDate)
+	}
 
-	useEffect(() => {
-		if (selectedDate) {
-			reset({
-				yearList: selectedYear.toString(),
-				monthList: selectedMonth.toString(),
-			})
-		}
-	}, [selectedDate, reset, selectedYear, selectedMonth])
+	const handlePrevMonth = () => {
+		const newDate = new Date(initialDate)
+		newDate.setMonth(initialDate.getMonth() - 1)
+		setInitialDate(newDate)
+	}
 
-	const selectedMonthFromForm = Number(watch('monthList'))
-	const selectedYearFromForm = Number(watch('yearList'))
+	const getDateFromCalendar = (date: Date) => {
+		setInitialDate(date)
+	}
 
-	useEffect(() => {
-		if (!isNaN(selectedMonthFromForm) && !isNaN(selectedYearFromForm)) {
-			if (
-				selectedMonthFromForm !== selectedMonth ||
-				selectedYearFromForm !== selectedYear
-			) {
-				setSelectedMonth(selectedMonthFromForm)
-				setSelectedYear(selectedYearFromForm)
+	const getMonth = (month: string) => {
+		const newDate = new Date(
+			initialDate.getFullYear(),
+			Number(month),
+			initialDate.getDate()
+		)
+		setInitialDate(newDate)
+	}
 
-				const newSelectedDate = new Date(
-					selectedYearFromForm,
-					selectedMonthFromForm,
-					selectedDay
-				)
-				selectDate(newSelectedDate)
-			}
-		}
-	}, [selectedMonthFromForm, selectedYearFromForm])
-
-	const handleDateSelection = useCallback(() => {
-		const date = new Date(selectedYear, selectedMonth, selectedDay)
-		onDateChange(date)
-		setDefaultLabel(formattedSelectedDate)
-		toggle()
-	}, [
-		onDateChange,
-		selectedYear,
-		selectedMonth,
-		selectedDay,
-		formattedSelectedDate,
-		toggle,
-	])
-
-	useEffect(() => {
-		if (defaultValue) {
-			const formattedDefaultDate = defaultValue.toISOString().split('T')[0]
-			const date = new Date(formattedDefaultDate)
-
-			const day = date?.getDate()
-			const numberMonth = date?.getMonth()
-			const monthName = MonthsOfYear[numberMonth].name
-			const year = date.getFullYear()
-
-			setDefaultLabel(`${day} ${monthName} ${year}`)
-		} else {
-			setDefaultLabel(placeholder)
-		}
-	}, [defaultValue])
+	const getYear = (year: string) => {
+		const newDate = new Date(
+			Number(year),
+			initialDate.getMonth(),
+			initialDate.getDate()
+		)
+		setInitialDate(newDate)
+	}
 
 	return {
-		divRef,
-		toggle,
-		defaultLabel,
-		isOpen,
-		selectDate,
-		selectedDate,
-		selectedDay,
-		formattedSelectedDate,
-		register,
-		setValue,
-		watch,
-		errors,
-		initializeDefaultDate,
-		handleDateSelection,
+		handleNextMonth,
+		handlePrevMonth,
+		daysOfMonth,
+		getDateFromCalendar,
+		monthName,
+		day,
+		getMonth,
+		getYear,
+		monthYear,
+		isOpenOptions,
+		toggleOptions,
+		dateLabel,
 	}
 }
 

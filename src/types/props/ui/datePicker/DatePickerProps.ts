@@ -1,7 +1,6 @@
 export type DatePickerProps = {
 	onDateChange: (date: Date) => void
-	placeholder: string
-	defaultValue: Date
+	initialDate: Date
 	label?: string
 	margin?: string
 }

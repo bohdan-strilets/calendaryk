@@ -9,4 +9,5 @@ export type SmallCalendarProps = {
 	isCurrentDay?: boolean
 	selectedDay?: number
 	isInteractive?: boolean
+	isHeader?: boolean
 }

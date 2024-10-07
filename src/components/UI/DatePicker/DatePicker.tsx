@@ -1,135 +1,87 @@
 import { AnimatePresence } from 'framer-motion'
 import { FC } from 'react'
-import { ImCalendar } from 'react-icons/im'
 
-import SmallCalendar from '@/components/Calendars/SmallCalendar'
+import Month from '@/components/Calendars/Month'
+import useClickOutside from '@/hooks/useClickOutside'
 import useDatePicker from '@/hooks/useDatePicker'
-import useResponsive from '@/hooks/useResponsive'
-import { DatePickerProps } from '@/types/props/ui/DatePickerProps'
-import { monthOptions } from '@/utils/dropdownOptions/monthOptions'
-import { yearOptions } from '@/utils/dropdownOptions/yearOptions'
+import { DatePickerProps } from '@/types/props/ui/datePicker/DatePickerProps'
 
-import Button from '../Button'
-import DropdownList from '../DropdownList'
-import {
-	ControllersList,
-	CurrentSelect,
-	Group,
-	Input,
-	Label,
-	Picker,
-	Wrapper,
-} from './DatePicker.styled'
+import AdditionalOptions from './AdditionalOptions'
+import Controllers from './Controllers'
+import { Picker, Wrapper } from './DatePicker.styled'
+import DateSelector from './DateSelector'
 
 const DatePicker: FC<DatePickerProps> = ({
 	onDateChange,
-	placeholder,
-	defaultValue,
+	initialDate,
 	label,
 	margin,
 }) => {
-	const { isTablet, isMaxLaptop } = useResponsive()
 	const {
-		divRef,
-		toggle,
-		defaultLabel,
-		isOpen,
-		selectDate,
-		selectedDate,
-		selectedDay,
-		formattedSelectedDate,
-		register,
-		setValue,
-		watch,
-		errors,
-		initializeDefaultDate,
-		handleDateSelection,
-	} = useDatePicker({ defaultValue, onDateChange, placeholder })
+		handleNextMonth,
+		handlePrevMonth,
+		daysOfMonth,
+		getDateFromCalendar,
+		monthName,
+		day,
+		getMonth,
+		getYear,
+		monthYear,
+		isOpenOptions,
+		toggleOptions,
+		dateLabel,
+	} = useDatePicker({ initialDate, onDateChange })
+
+	const {
+		isOpen: isOpenPicker,
+		toggle: togglePicker,
+		divRef: divRefPicker,
+	} = useClickOutside()
 
 	return (
-		<Wrapper ref={divRef} margin={margin}>
-			{label && <Label>{label}</Label>}
-			<Input>
-				<Group onClick={toggle}>
-					<p>{defaultLabel}</p>
-					<ImCalendar className="calendar-icon" />
-				</Group>
-				<AnimatePresence mode="wait">
-					{isOpen && (
-						<Picker
-							key="picker"
-							initial={{ opacity: 0, y: -10 }}
-							animate={{ opacity: 1, y: 0 }}
-							exit={{ opacity: 0, y: -10 }}
-							transition={{ duration: 0.3, ease: 'easeInOut' }}
-						>
-							<SmallCalendar
-								cellHeight="40px"
-								cellWidth={isMaxLaptop ? '40px' : '45px'}
-								borderRadius={true}
-								selectDate={selectDate}
-								selectedDate={selectedDate}
-								selectedDay={selectedDay}
-								isInteractive={true}
+		<Wrapper ref={divRefPicker} margin={margin}>
+			<DateSelector
+				label={label}
+				dateLabel={dateLabel}
+				handleTogglePicker={togglePicker}
+			/>
+			<AnimatePresence mode="wait">
+				{isOpenPicker && (
+					<Picker
+						key="picker"
+						initial={{ opacity: 0, y: -10 }}
+						animate={{ opacity: 1, y: 0 }}
+						exit={{ opacity: 0, y: -10 }}
+						transition={{ duration: 0.3, ease: 'easeInOut' }}
+					>
+						<Controllers
+							handleNextMonth={handleNextMonth}
+							handlePrevMonth={handlePrevMonth}
+							handleOpenAdditionalOptions={toggleOptions}
+							monthName={monthName}
+							year={monthYear.year}
+							isOpen={isOpenOptions}
+						/>
+						<Month
+							month={daysOfMonth}
+							cellHeight="40px"
+							cellWidth="80px"
+							borderRadius={true}
+							isInteractive={true}
+							selectDate={getDateFromCalendar}
+							selectedDay={day}
+						/>
+
+						{isOpenOptions && (
+							<AdditionalOptions
+								getMonth={getMonth}
+								getYear={getYear}
+								monthYear={monthYear}
 							/>
-							<div>
-								<CurrentSelect>{formattedSelectedDate}</CurrentSelect>
-								<DropdownList
-									options={yearOptions}
-									register={register}
-									name="yearList"
-									setValue={setValue}
-									watch={watch}
-									placeholder="Year"
-									errors={errors}
-									width={isTablet ? '260px' : '100%'}
-									listHeight="230px"
-									label="Select year"
-									listPosition="top"
-									margin="0 0 20px 0"
-								/>
-								<DropdownList
-									options={monthOptions}
-									register={register}
-									name="monthList"
-									setValue={setValue}
-									watch={watch}
-									placeholder="Month"
-									errors={errors}
-									width={isTablet ? '260px' : '100%'}
-									listHeight="230px"
-									label="Select month"
-									listPosition="top"
-									margin="0 0 20px 0"
-								/>
-								<ControllersList>
-									<li>
-										<Button
-											type="button"
-											variant="red"
-											onClick={initializeDefaultDate}
-											width={isTablet ? '125px' : '100%'}
-											margin={isTablet ? '' : '0 0 15px 0'}
-										>
-											Reset
-										</Button>
-									</li>
-									<li>
-										<Button
-											type="button"
-											variant="green"
-											onClick={handleDateSelection}
-											width={isTablet ? '125px' : '100%'}
-										>
-											Choose
-										</Button>
-									</li>
-								</ControllersList>
-							</div>
-						</Picker>
-					)}
-				</AnimatePresence>
-			</Input>
+						)}
+					</Picker>
+				)}
+			</AnimatePresence>
 		</Wrapper>
 	)
 }

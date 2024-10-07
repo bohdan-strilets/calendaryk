@@ -1,13 +1,9 @@
-import { useState } from 'react'
-
 import { MonthYear } from '@/types/types/MonthYear'
 
 const useRenderCalendar = (date: Date) => {
-	const [currentDate, setCurrentDate] = useState(date)
-
 	const getMonthYear = (): MonthYear => {
-		const year = currentDate.getFullYear()
-		const month = currentDate.getMonth()
+		const year = date.getFullYear()
+		const month = date.getMonth()
 		return { year, month }
 	}
 
@@ -26,31 +22,10 @@ const useRenderCalendar = (date: Date) => {
 	}
 
 	const getCurrentDay = (): number => {
-		const currentDay = new Date(currentDate).getDay() - 1
+		const currentDay = new Date(date).getDay() - 1
 
 		if (currentDay === -1) return 6
 		return currentDay
-	}
-
-	const nextMonth = () => {
-		const monthYear = getMonthYear()
-		const next = monthYear.month + 1
-		const nextMonth = new Date(monthYear.year, next)
-		setCurrentDate(nextMonth)
-	}
-
-	const prevMonth = () => {
-		const monthYear = getMonthYear()
-		const prev = monthYear.month - 1
-		const prevMonth = new Date(monthYear.year, prev)
-		setCurrentDate(prevMonth)
-	}
-
-	const setSelectedDate = () => {
-		const month = date.getMonth()
-		const year = date.getFullYear()
-		const newDate = new Date(year, month)
-		setCurrentDate(newDate)
 	}
 
 	const getDaysOfMonth = (): (undefined[] | Date[])[] => {
@@ -118,10 +93,6 @@ const useRenderCalendar = (date: Date) => {
 		getMonthYear,
 		getCurrentDay,
 		getDaysOfMonthInRange,
-		nextMonth,
-		prevMonth,
-		setSelectedDate,
-		currentDate,
 	}
 }
 
