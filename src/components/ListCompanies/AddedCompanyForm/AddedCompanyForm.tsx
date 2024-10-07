@@ -29,15 +29,10 @@ const AddedCompanyForm: FC = () => {
 	const { closeModal } = useModal()
 
 	const onSubmit: SubmitHandler<AddedCompanyFields> = async (data) => {
-		const startWork = normalizeDateForDatepicker(data.startWork)
-		const endWork = data.isStillWorking
-			? normalizeDateForDatepicker(new Date().toLocaleDateString())
-			: normalizeDateForDatepicker(data.endWork)
-
-		const dto = { ...data, endWork, startWork }
+		console.log(data)
 
 		try {
-			await createCompany(dto)
+			await createCompany(data)
 			closeModal()
 			toast.success('The company has been successfully added')
 		} catch (error) {
@@ -48,11 +43,15 @@ const AddedCompanyForm: FC = () => {
 	}
 
 	const handleStartDateChange = (date: Date) => {
-		setValue('startWork', date.toISOString())
+		const isoDate = date.toISOString()
+		const normalizeDate = normalizeDateForDatepicker(isoDate)
+		setValue('startWork', normalizeDate)
 	}
 
 	const handleEndDateChange = (date: Date) => {
-		setValue('endWork', date.toISOString())
+		const isoDate = date.toISOString()
+		const normalizeDate = normalizeDateForDatepicker(isoDate)
+		setValue('endWork', normalizeDate)
 	}
 
 	const handleCheckboxChange = () => {
@@ -85,18 +84,16 @@ const AddedCompanyForm: FC = () => {
 			/>
 			<DatePicker
 				onDateChange={handleStartDateChange}
-				placeholder="Start"
 				label="Start of work in"
 				margin="0 0 20px 0"
-				defaultValue={new Date()}
+				initialDate={new Date()}
 			/>
 			{!isStillWorking && (
 				<DatePicker
 					onDateChange={handleEndDateChange}
-					placeholder="End"
 					label="End of work in"
 					margin="0 0 20px 0"
-					defaultValue={new Date()}
+					initialDate={new Date()}
 				/>
 			)}
 			<Checkbox

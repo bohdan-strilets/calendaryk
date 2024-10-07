@@ -80,11 +80,15 @@ const EditCompanyForm: FC<EditCompanyProps> = ({ companyId }) => {
 	}
 
 	const handleStartDateChange = (date: Date) => {
-		setValue('startWork', date.toISOString())
+		const isoDate = date.toISOString()
+		const normalizeDate = normalizeDateForDatepicker(isoDate)
+		setValue('startWork', normalizeDate)
 	}
 
 	const handleEndDateChange = (date: Date) => {
-		setValue('endWork', date.toISOString())
+		const isoDate = date.toISOString()
+		const normalizeDate = normalizeDateForDatepicker(isoDate)
+		setValue('endWork', normalizeDate)
 	}
 
 	return !isQueryLoading ? (
@@ -113,17 +117,15 @@ const EditCompanyForm: FC<EditCompanyProps> = ({ companyId }) => {
 			/>
 			<DatePicker
 				onDateChange={handleStartDateChange}
-				placeholder="Start"
 				label="Start of work in"
 				margin="0 0 20px 0"
-				defaultValue={startWorkAtCompany}
+				initialDate={startWorkAtCompany}
 			/>
 			<DatePicker
 				onDateChange={handleEndDateChange}
-				placeholder="End"
 				label="End of work in"
 				margin="0 0 20px 0"
-				defaultValue={endWorkAtCompany}
+				initialDate={endWorkAtCompany}
 			/>
 			<NumberField
 				register={register}
