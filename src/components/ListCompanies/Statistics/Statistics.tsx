@@ -56,7 +56,13 @@ const Statistics: FC<StatisticsProps> = ({ companies }) => {
 			<Title fontSize={28} textAlign="center">
 				Salary growth chart
 			</Title>
-			<Line data={data} options={options} />
+			{companies && companies?.length > 1 ? (
+				<Line data={data} options={options} />
+			) : (
+				<p style={{ textAlign: 'center' }}>
+					To display the statistics, you need to add two or more companies.
+				</p>
+			)}
 		</Wrapper>
 	)
 }
