@@ -1,8 +1,9 @@
-import { FC, useEffect } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 
 import Button from '@/components/UI/Button'
+import Checkbox from '@/components/UI/Checkbox'
 import DatePicker from '@/components/UI/DatePicker'
 import Loader from '@/components/UI/Loader'
 import NumberField from '@/components/UI/NumberField'
@@ -14,16 +15,20 @@ import {
 } from '@/store/companies/companyApi'
 import { EditCompanyFields } from '@/types/inputs/EditCompanyFields'
 import { EditCompanyProps } from '@/types/props/listCompanies/EditCompanyProps'
+import { compareDates } from '@/utils/functions/compareDates'
 import { isApiError } from '@/utils/functions/isApiError'
 import { normalizeDateForDatepicker } from '@/utils/functions/normalizeDateForDatepicker'
 import { validation } from '@/validation/EditCompanySchema'
 
 const EditCompanyForm: FC<EditCompanyProps> = ({ companyId }) => {
+	const [isStillWorking, setIsStillWorking] = useState(false)
+
 	const {
 		register,
 		handleSubmit,
 		setValue,
 		reset,
+		watch,
 		formState: { errors },
 	} = useForm<EditCompanyFields>(validation)
 	const [updateCompany, { isLoading: isUpdateLoading }] = useUpdateMutation()
@@ -44,20 +49,34 @@ const EditCompanyForm: FC<EditCompanyProps> = ({ companyId }) => {
 		: new Date()
 
 	useEffect(() => {
-		const defaultValue = {
-			name: company?.name,
-			startWork: company?.startWork,
-			endWork: company?.endWork,
-			salaryPerHour: company?.salaryPerHour,
-			profession: company?.profession,
-		}
+		if (company) {
+			const isStillWorking = compareDates(
+				company?.endWork,
+				new Date().toISOString()
+			)
 
-		if (company) reset(defaultValue)
+			const defaultValue = {
+				name: company?.name,
+				startWork: company?.startWork,
+				endWork: company?.endWork,
+				salaryPerHour: company?.salaryPerHour,
+				profession: company?.profession,
+				isStillWorking: isStillWorking && true,
+			}
+
+			if (isStillWorking) {
+				setIsStillWorking(true)
+			}
+
+			reset(defaultValue)
+		}
 	}, [company, reset])
 
 	const onSubmit: SubmitHandler<EditCompanyFields> = async (data) => {
 		const startWork = normalizeDateForDatepicker(data.startWork)
-		const endWork = normalizeDateForDatepicker(data.endWork)
+		const endWork = data.isStillWorking
+			? new Date().toISOString()
+			: normalizeDateForDatepicker(data.endWork)
 
 		if (companyId) {
 			const dto = {
@@ -91,6 +110,10 @@ const EditCompanyForm: FC<EditCompanyProps> = ({ companyId }) => {
 		setValue('endWork', normalizeDate)
 	}
 
+	const handleCheckboxChange = () => {
+		setIsStillWorking(!isStillWorking)
+	}
+
 	return !isQueryLoading ? (
 		<form onSubmit={handleSubmit(onSubmit)}>
 			<TextField<EditCompanyFields>
@@ -121,11 +144,26 @@ const EditCompanyForm: FC<EditCompanyProps> = ({ companyId }) => {
 				margin="0 0 20px 0"
 				initialDate={startWorkAtCompany}
 			/>
-			<DatePicker
-				onDateChange={handleEndDateChange}
-				label="End of work in"
+			{!isStillWorking && (
+				<DatePicker
+					onDateChange={handleEndDateChange}
+					label="End of work in"
+					margin="0 0 20px 0"
+					initialDate={endWorkAtCompany}
+				/>
+			)}
+			<Checkbox
+				name="isStillWorking"
+				register={register}
+				setValue={(name, value) => {
+					setValue(name, value)
+					handleCheckboxChange()
+				}}
+				watch={watch}
+				rules={{ isChecked: isStillWorking }}
+				errors={errors}
+				label="Please indicate if you are currently working at this company."
 				margin="0 0 20px 0"
-				initialDate={endWorkAtCompany}
 			/>
 			<NumberField
 				register={register}

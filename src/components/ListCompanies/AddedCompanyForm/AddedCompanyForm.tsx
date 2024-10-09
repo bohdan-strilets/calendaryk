@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 
@@ -16,23 +16,31 @@ import { normalizeDateForDatepicker } from '@/utils/functions/normalizeDateForDa
 import { validation } from '@/validation/AddedCompanySchema'
 
 const AddedCompanyForm: FC = () => {
-	const [isStillWorking, setIsStillWorking] = useState(false)
+	const [isStillWorking, setIsStillWorking] = useState(true)
 
 	const {
 		register,
 		handleSubmit,
 		setValue,
 		watch,
+		reset,
 		formState: { errors },
 	} = useForm<AddedCompanyFields>(validation)
 	const [createCompany, { isLoading }] = useCreateMutation()
 	const { closeModal } = useModal()
 
-	const onSubmit: SubmitHandler<AddedCompanyFields> = async (data) => {
-		console.log(data)
+	useEffect(() => {
+		reset({ isStillWorking })
+	}, [])
 
+	const onSubmit: SubmitHandler<AddedCompanyFields> = async (data) => {
 		try {
-			await createCompany(data)
+			const isStillWorking = data.isStillWorking
+				? new Date().toISOString()
+				: data.endWork
+
+			const dto = { ...data, endWork: isStillWorking }
+			await createCompany(dto)
 			closeModal()
 			toast.success('The company has been successfully added')
 		} catch (error) {

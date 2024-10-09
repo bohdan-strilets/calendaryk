@@ -3,7 +3,6 @@ import { FC, useEffect, useState } from 'react'
 import useResponsive from '@/hooks/useResponsive'
 import { ListCompanyProps } from '@/types/props/listCompanies/ListCompanyProps'
 import { Company } from '@/types/types/Company'
-import { parseDateTime } from '@/utils/functions/parseDateTime'
 
 import Pagination from '../UI/Pagination'
 import CompanyInformation from './CompanyInformation'
@@ -39,8 +38,8 @@ const ListCompanies: FC<ListCompanyProps> = ({ companies, getCurrentId }) => {
 							companyName={company.name}
 							position={company.profession}
 							logoUrl={company.logoUrl}
-							startJob={parseDateTime(company.startWork).date}
-							endJob={parseDateTime(company.endWork).date}
+							startJob={company.startWork}
+							endJob={company.endWork}
 							salary={company.salaryPerHour}
 							onClick={() => getCurrentId(company._id)}
 						/>

@@ -7,6 +7,8 @@ import DropdownMenu from '@/components/UI/DropdownMenu'
 import useModal from '@/hooks/useModal'
 import { CompanyInformationProps } from '@/types/props/listCompanies/CompanyInformationProps'
 import { companyOptionsMenu } from '@/utils/dataWithJSX/companyOptionsMenu'
+import { compareDates } from '@/utils/functions/compareDates'
+import { parseDateTime } from '@/utils/functions/parseDateTime'
 
 import {
 	CompanyDetails,
@@ -35,6 +37,8 @@ const CompanyInformation: FC<CompanyInformationProps> = ({
 	const handleOpedDeleteForm = () => openModal(modalNames.DELETE_COMPANY)
 	const handleOpenUploadForm = () => openModal(modalNames.UPLOAD_COMPANY_LOGO)
 
+	const isStillWorking = compareDates(endJob, new Date().toISOString())
+
 	return (
 		<Item {...motionProps}>
 			<DropdownMenu
@@ -49,9 +53,9 @@ const CompanyInformation: FC<CompanyInformationProps> = ({
 				<CompanyName>{companyName}</CompanyName>
 				<Position>{position}</Position>
 				<EmploymentDates>
-					<p>{startJob}</p>
+					<p>{parseDateTime(startJob).date}</p>
 					<BsCalendarRange size={18} color="var(--green-color)" />
-					<p>{endJob}</p>
+					<p>{isStillWorking ? '---' : parseDateTime(endJob).date}</p>
 				</EmploymentDates>
 				<SalaryDetails>
 					<FaMoneyBillWave size={18} color="var(--green-color)" />
