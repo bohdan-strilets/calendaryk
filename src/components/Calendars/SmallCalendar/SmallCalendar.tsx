@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react'
+import { FC } from 'react'
 
 import useRenderCalendar from '@/hooks/useRenderCalendar'
 import { SmallCalendarProps } from '@/types/props/calendars/SmallCalendarProps'
@@ -23,12 +23,7 @@ const SmallCalendar: FC<SmallCalendarProps> = ({
 }) => {
 	const date = selectedDate ? selectedDate : new Date()
 
-	const { getDaysOfMonth, getCurrentDay, setSelectedDate } =
-		useRenderCalendar(date)
-
-	useEffect(() => {
-		setSelectedDate()
-	}, [date])
+	const { getDaysOfMonth, getCurrentDay } = useRenderCalendar(date)
 
 	const weeksFromSelectedMonth = getDaysOfMonth()
 	const currentDay = isCurrentDay ? getCurrentDay() : undefined
