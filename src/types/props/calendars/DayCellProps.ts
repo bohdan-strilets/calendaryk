@@ -9,6 +9,8 @@ export type DeyCellProps = {
 	selectDate?: (date: Date) => void
 	selectedDay?: number
 	isInteractive?: boolean
+	isBorder?: boolean
+	textPosition?: 'center' | 'topLeft'
 }
 
 export type DayProps = Pick<
@@ -19,6 +21,8 @@ export type DayProps = Pick<
 	| 'color'
 	| 'isBorderRadius'
 	| 'isInteractive'
+	| 'isBorder'
+	| 'textPosition'
 > & {
 	currentDay?: boolean
 	selectedDay?: boolean

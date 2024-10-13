@@ -4,13 +4,27 @@ import { DayProps } from '@/types/props/calendars/DayCellProps'
 
 export const Day = styled.li<DayProps>`
 	display: flex;
-	align-items: center;
-	justify-content: center;
+	align-items: ${({ textPosition }) => {
+		if (textPosition === 'topLeft') {
+			return 'start'
+		}
+		return 'center'
+	}};
+	justify-content: ${({ textPosition }) => {
+		if (textPosition === 'topLeft') {
+			return 'start'
+		}
+		return 'center'
+	}};
 
 	width: ${({ width }) => (width ? width : '')};
 	height: ${({ height }) => (height ? height : '')};
+	padding: 5px;
+	margin: 5px;
 
 	border-radius: ${({ isBorderRadius }) => (isBorderRadius ? '3px' : '')};
+	border: ${({ isBorder }) => (isBorder ? '1px solid #ccc' : 'none')};
+	box-shadow: ${({ isBorder }) => (isBorder ? 'var(--box-shadow)' : '')};
 
 	background-color: ${({ background, currentDay, selectedDay }) => {
 		if (background) {

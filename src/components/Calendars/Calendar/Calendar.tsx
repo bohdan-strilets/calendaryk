@@ -47,6 +47,9 @@ const Calendar: FC = () => {
 				cellWidth="100%"
 				cellHeight={isMaxMobile ? '40px' : '130px'}
 				borderRadius={true}
+				isInteractive={true}
+				isBorder={true}
+				textPosition="topLeft"
 			/>
 		</div>
 	)

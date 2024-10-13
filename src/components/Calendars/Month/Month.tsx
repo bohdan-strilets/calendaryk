@@ -16,6 +16,8 @@ const Month: FC<MonthProps> = ({
 	selectDate,
 	selectedDay,
 	isInteractive,
+	isBorder,
+	textPosition,
 }) => {
 	return (
 		<div>
@@ -39,6 +41,8 @@ const Month: FC<MonthProps> = ({
 							selectDate={selectDate}
 							selectedDay={selectedDay}
 							isInteractive={isInteractive}
+							isBorder={isBorder}
+							textPosition={textPosition}
 						/>
 					))}
 				</Week>

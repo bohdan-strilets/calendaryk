@@ -15,6 +15,8 @@ const DayCell: FC<DeyCellProps> = ({
 	selectDate,
 	selectedDay,
 	isInteractive,
+	isBorder,
+	textPosition,
 }) => {
 	const dayNumberMonth = day?.getDate()
 
@@ -36,6 +38,8 @@ const DayCell: FC<DeyCellProps> = ({
 			style={day === undefined ? { background: 'transparent' } : {}}
 			selectedDay={selectedDay === dayNumberMonth}
 			isInteractive={isInteractive}
+			isBorder={isBorder}
+			textPosition={textPosition}
 		>
 			<p>{day?.getDate()}</p>
 		</Day>

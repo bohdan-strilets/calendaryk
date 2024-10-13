@@ -1,3 +1,5 @@
+import { DeyCellProps } from './DayCellProps'
+
 export type MonthProps = {
 	month: (undefined[] | Date[])[]
 	currentDate?: number
@@ -9,4 +11,4 @@ export type MonthProps = {
 	selectDate?: (date: Date) => void
 	selectedDay?: number
 	isInteractive?: boolean
-}
+} & Pick<DeyCellProps, 'isBorder' | 'textPosition'>
