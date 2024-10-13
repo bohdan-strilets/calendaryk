@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 
 import useRenderCalendar from '@/hooks/useRenderCalendar'
 import { MonthsOfYear } from '@/utils/data/monthsOfYear'
@@ -8,8 +8,8 @@ import Month from '../Month'
 import WeekDays from '../WeekDays'
 
 const Calendar: FC = () => {
-	const { getDaysOfMonth, nextMonth, prevMonth, currentDate } =
-		useRenderCalendar(new Date())
+	const [currentDate, setCurrentDate] = useState(new Date())
+	const { getDaysOfMonth } = useRenderCalendar(currentDate)
 
 	const weeksFromSelectedMonth = getDaysOfMonth()
 	const currentDay = currentDate.getDate()
@@ -17,11 +17,23 @@ const Calendar: FC = () => {
 	const currentYear = currentDate.getFullYear()
 	const currentMonthName = MonthsOfYear[currentMonth].name
 
+	const handleNextMonth = () => {
+		const newDate = new Date(currentDate)
+		newDate.setMonth(currentDate.getMonth() + 1)
+		setCurrentDate(newDate)
+	}
+
+	const handlePrevMonth = () => {
+		const newDate = new Date(currentDate)
+		newDate.setMonth(currentDate.getMonth() - 1)
+		setCurrentDate(newDate)
+	}
+
 	return (
 		<div>
 			<Controllers
-				handlePrevMonth={prevMonth}
-				handleNextMonth={nextMonth}
+				handlePrevMonth={handlePrevMonth}
+				handleNextMonth={handleNextMonth}
 				currentMonthName={currentMonthName}
 				currentYear={currentYear}
 			/>
