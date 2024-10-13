@@ -1,6 +1,7 @@
 import { FC, useState } from 'react'
 
 import useRenderCalendar from '@/hooks/useRenderCalendar'
+import useResponsive from '@/hooks/useResponsive'
 import { MonthsOfYear } from '@/utils/data/monthsOfYear'
 
 import Controllers from '../Controllers'
@@ -9,7 +10,9 @@ import WeekDays from '../WeekDays'
 
 const Calendar: FC = () => {
 	const [currentDate, setCurrentDate] = useState(new Date())
+
 	const { getDaysOfMonth } = useRenderCalendar(currentDate)
+	const { isMaxMobile } = useResponsive()
 
 	const weeksFromSelectedMonth = getDaysOfMonth()
 	const currentDay = currentDate.getDate()
@@ -42,7 +45,7 @@ const Calendar: FC = () => {
 				month={weeksFromSelectedMonth}
 				currentDate={currentDay}
 				cellWidth="100%"
-				cellHeight="130px"
+				cellHeight={isMaxMobile ? '40px' : '130px'}
 				borderRadius={true}
 			/>
 		</div>
