@@ -11,4 +11,4 @@ export type MonthProps = {
 	selectDate?: (date: Date) => void
 	selectedDay?: number
 	isInteractive?: boolean
-} & Pick<DeyCellProps, 'isBorder' | 'textPosition'>
+} & Pick<DeyCellProps, 'isBorder' | 'textPosition' | 'callback'>

@@ -18,6 +18,7 @@ const Month: FC<MonthProps> = ({
 	isInteractive,
 	isBorder,
 	textPosition,
+	callback,
 }) => {
 	return (
 		<div>
@@ -43,6 +44,7 @@ const Month: FC<MonthProps> = ({
 							isInteractive={isInteractive}
 							isBorder={isBorder}
 							textPosition={textPosition}
+							callback={callback}
 						/>
 					))}
 				</Week>

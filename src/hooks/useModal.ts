@@ -20,6 +20,7 @@ const useModal = () => {
 		EDIT_COMPANY: 'edit-company',
 		DELETE_COMPANY: 'delete-company',
 		UPLOAD_COMPANY_LOGO: 'upload-company-logo',
+		CREATE_DAY_INFORMATION: 'create-day-information',
 	}
 
 	const openModal = useCallback(

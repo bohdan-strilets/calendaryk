@@ -11,6 +11,7 @@ export type DeyCellProps = {
 	isInteractive?: boolean
 	isBorder?: boolean
 	textPosition?: 'center' | 'topLeft'
+	callback?: () => void
 }
 
 export type DayProps = Pick<

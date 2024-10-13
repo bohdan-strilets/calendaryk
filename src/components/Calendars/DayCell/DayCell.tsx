@@ -17,12 +17,16 @@ const DayCell: FC<DeyCellProps> = ({
 	isInteractive,
 	isBorder,
 	textPosition,
+	callback,
 }) => {
 	const dayNumberMonth = day?.getDate()
 
 	const onCellClick = (date?: Date) => {
 		if (date && selectDate) {
 			selectDate(date)
+		}
+		if (callback) {
+			callback()
 		}
 	}
 
