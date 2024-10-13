@@ -2,6 +2,7 @@ import { FC } from 'react'
 import { HiArrowLeft, HiArrowRight } from 'react-icons/hi'
 
 import Button from '@/components/UI/Button'
+import useResponsive from '@/hooks/useResponsive'
 import { ControllersProps } from '@/types/props/calendars/ControllersProps'
 
 import { Header, MonthName } from './Controllers.styled'
@@ -12,12 +13,14 @@ const Controllers: FC<ControllersProps> = ({
 	currentMonthName,
 	currentYear,
 }) => {
+	const { isMaxMobile } = useResponsive()
+
 	return (
 		<Header>
 			<Button
 				type="button"
-				width="150px"
-				height="45px"
+				width={isMaxMobile ? '50px' : '150px'}
+				height={isMaxMobile ? '35px' : '45px'}
 				variant="black"
 				onClick={handlePrevMonth}
 			>
@@ -28,8 +31,8 @@ const Controllers: FC<ControllersProps> = ({
 			</MonthName>
 			<Button
 				type="button"
-				width="150px"
-				height="45px"
+				width={isMaxMobile ? '50px' : '150px'}
+				height={isMaxMobile ? '35px' : '45px'}
 				variant="black"
 				onClick={handleNextMonth}
 			>
