@@ -85,6 +85,8 @@ export const useCalculateHours = () => {
 		calculateNightHours,
 		calculateAdditionalHours,
 		determineShift,
+		parsedTimeRange,
+		START_NIGHT_TIME,
 	}
 }
 
