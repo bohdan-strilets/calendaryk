@@ -1,16 +1,18 @@
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 
 import useModal from '@/hooks/useModal'
 import useRenderCalendar from '@/hooks/useRenderCalendar'
 import useResponsive from '@/hooks/useResponsive'
+import { CalendarProps } from '@/types/props/calendars/CalendarProps'
 import { MonthsOfYear } from '@/utils/data/monthsOfYear'
 
 import Controllers from '../Controllers'
 import Month from '../Month'
 import WeekDays from '../WeekDays'
 
-const Calendar: FC = () => {
+const Calendar: FC<CalendarProps> = ({ getDate }) => {
 	const [currentDate, setCurrentDate] = useState(new Date())
+	const [clickedDay, setClickedDay] = useState(new Date())
 
 	const { getDaysOfMonth } = useRenderCalendar(currentDate)
 	const { isMaxMobile } = useResponsive()
@@ -21,6 +23,10 @@ const Calendar: FC = () => {
 	const currentMonth = currentDate.getMonth()
 	const currentYear = currentDate.getFullYear()
 	const currentMonthName = MonthsOfYear[currentMonth].name
+
+	useEffect(() => {
+		getDate(new Date(currentYear, currentMonth, clickedDay.getDate()))
+	}, [clickedDay])
 
 	const handleNextMonth = () => {
 		const newDate = new Date(currentDate)
@@ -36,6 +42,10 @@ const Calendar: FC = () => {
 
 	const handleCreateDayInfo = () => {
 		openModal(modalNames.CREATE_DAY_INFORMATION)
+	}
+
+	const getClickedDay = (date: Date) => {
+		setClickedDay(date)
 	}
 
 	return (
@@ -57,6 +67,7 @@ const Calendar: FC = () => {
 				isBorder={true}
 				textPosition="topLeft"
 				callback={handleCreateDayInfo}
+				selectDate={getClickedDay}
 			/>
 		</div>
 	)

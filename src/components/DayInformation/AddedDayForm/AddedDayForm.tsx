@@ -6,13 +6,15 @@ import Checkbox from '@/components/UI/Checkbox'
 import DropdownList from '@/components/UI/DropdownList'
 import Loader from '@/components/UI/Loader'
 import QuickTimeLapse from '@/components/UI/QuickTimeLapse'
+import useCalculateEarnings from '@/hooks/useCalculateEarnings'
 import { useCalculateHours } from '@/hooks/useCalculateHours'
 import { AddedDayFields } from '@/types/inputs/AddedDayFields'
+import { AddedDayProps } from '@/types/props/dayInformation/AddedDayProps'
 import { dayStatusOptions } from '@/utils/dropdownOptions/dayStatusOptions'
 import { hoursOptions } from '@/utils/dropdownOptions/hoursOptions'
 import { validation } from '@/validation/AddedDaySchema'
 
-const AddedDayForm: FC = () => {
+const AddedDayForm: FC<AddedDayProps> = ({ selectedDate }) => {
 	const [quickStartTime, setQuickStartTime] = useState<null | string>(null)
 	const [quickFinishTime, setQuickFinishTime] = useState<null | string>(null)
 
@@ -26,7 +28,10 @@ const AddedDayForm: FC = () => {
 		watch,
 		formState: { errors },
 	} = useForm<AddedDayFields>(validation)
-	const { calculateHours } = useCalculateHours()
+
+	const { calculateHours, determineShift, calculateAdditionalHours } =
+		useCalculateHours()
+	const { calculateEarningsDay, calculateNetSalary } = useCalculateEarnings()
 
 	useEffect(() => {
 		if (quickStartTime) {
@@ -39,16 +44,27 @@ const AddedDayForm: FC = () => {
 
 	const onSubmit: SubmitHandler<AddedDayFields> = async (data) => {
 		const timeRange = `${data.start}-${data.end}`
+		const shiftNumber = determineShift(timeRange)
+		const additionalHours = calculateAdditionalHours(timeRange)
+		const grossEarning = calculateEarningsDay(
+			timeRange,
+			data.dayStatus,
+			10,
+			data.isAdditional,
+			additionalHours.fiftyPercent.numberHours,
+			additionalHours.oneHundredPercent.numberHours
+		)
+		const netEarning = calculateNetSalary(grossEarning)
 
 		const dto = {
-			date: new Date(),
+			date: selectedDate,
 			status: data.dayStatus,
 			numberHours: calculateHours(timeRange),
 			timeRange: timeRange,
-			shiftNumber: 1,
+			shiftNumber,
 			isAdditional: data.isAdditional,
-			grossEarning: 0,
-			netEarning: 0,
+			grossEarning,
+			netEarning,
 		}
 		console.log(dto)
 	}

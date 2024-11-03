@@ -5,13 +5,8 @@ import useCalculateHours from './useCalculateHours'
 import useCalculateTaxes from './useCalculateTaxes'
 
 export const useCalculateEarnings = () => {
-	const {
-		calculateHours,
-		calculateNightHours,
-		determineShift,
-		parsedTimeRange,
-		START_NIGHT_TIME,
-	} = useCalculateHours()
+	const { calculateHours, calculateNightHours, determineShift } =
+		useCalculateHours()
 	const { calculateExtraNightHourRate } = useCalculateTaxes()
 
 	const {
@@ -30,10 +25,8 @@ export const useCalculateEarnings = () => {
 		isAdditionalHours: boolean,
 		fiftyPercentHours?: number,
 		oneHundredPercentHours?: number
-	) => {
+	): number => {
 		const numberHours = calculateHours(timeRange)
-		const [start] = parsedTimeRange(timeRange)
-
 		const dailyEarnings = numberHours * grossHourlyRate
 		const numberNightHours = calculateNightHours(timeRange)
 		const shiftNumber = determineShift(timeRange)
@@ -41,86 +34,59 @@ export const useCalculateEarnings = () => {
 		const nightBonus = numberNightHours * nightHourlyBonus
 
 		if (
-			shiftNumber === ShiftNumber.SHIFT_2 &&
-			isAdditionalHours &&
-			fiftyPercentHours &&
-			oneHundredPercentHours
-		) {
-			const fiftyPercentSupplement = fiftyPercentHours * (grossHourlyRate / 2)
-			const hundredPercentSupplement = oneHundredPercentHours * grossHourlyRate
-			return (
-				dailyEarnings +
-				nightBonus +
-				fiftyPercentSupplement +
-				hundredPercentSupplement
-			)
-		}
-
-		if (
-			shiftNumber === ShiftNumber.SHIFT_2 &&
-			!isAdditionalHours &&
-			start >= START_NIGHT_TIME
-		) {
-			return dailyEarnings + nightBonus
-		}
-
-		if (
-			shiftNumber === ShiftNumber.SHIFT_2 &&
-			!isAdditionalHours &&
-			start < START_NIGHT_TIME
-		) {
-			return dailyEarnings
-		}
-
-		if (
-			shiftNumber === ShiftNumber.SHIFT_2 &&
-			isAdditionalHours &&
-			start >= START_NIGHT_TIME &&
-			oneHundredPercentHours
-		) {
-			const hundredPercentSupplement = oneHundredPercentHours * grossHourlyRate
-			return dailyEarnings + nightBonus + hundredPercentSupplement
-		}
-
-		if (
-			shiftNumber === ShiftNumber.SHIFT_2 &&
-			isAdditionalHours &&
-			start < START_NIGHT_TIME &&
-			fiftyPercentHours
-		) {
-			const fiftyPercentSupplement = fiftyPercentHours * (grossHourlyRate / 2)
-			return dailyEarnings + nightBonus + fiftyPercentSupplement
-		}
-
-		if (shiftNumber === ShiftNumber.SHIFT_1 && !isAdditionalHours) {
-			return dailyEarnings
-		}
-
-		if (
+			dayStatus === DayStatus.WORK &&
 			shiftNumber === ShiftNumber.SHIFT_1 &&
 			isAdditionalHours &&
 			fiftyPercentHours
 		) {
 			const fiftyPercentSupplement = fiftyPercentHours * (grossHourlyRate / 2)
-			return dailyEarnings + fiftyPercentSupplement
+			const amount = dailyEarnings + fiftyPercentSupplement
+			return normalizeNumber(amount)
 		}
 
-		if (shiftNumber === ShiftNumber.SHIFT_2 && !isAdditionalHours) {
-			return dailyEarnings + nightBonus
-		}
-
-		if (
-			shiftNumber === ShiftNumber.SHIFT_0 &&
-			dayStatus === DayStatus.VACATION
-		) {
-			return dailyEarnings
+		if (dayStatus === DayStatus.WORK && shiftNumber === ShiftNumber.SHIFT_1) {
+			return normalizeNumber(dailyEarnings)
 		}
 
 		if (
-			shiftNumber === ShiftNumber.SHIFT_0 &&
-			dayStatus === DayStatus.SICK_LEAVE
+			dayStatus === DayStatus.WORK &&
+			shiftNumber === ShiftNumber.SHIFT_2 &&
+			isAdditionalHours &&
+			(fiftyPercentHours || oneHundredPercentHours)
 		) {
-			return (dailyEarnings * 80) / 100
+			const fiftyPercentSupplement = fiftyPercentHours
+				? fiftyPercentHours * (grossHourlyRate / 2)
+				: 0
+			const hundredPercentSupplement = oneHundredPercentHours
+				? oneHundredPercentHours * grossHourlyRate
+				: 0
+			const amount =
+				dailyEarnings +
+				nightBonus +
+				fiftyPercentSupplement +
+				hundredPercentSupplement
+
+			return normalizeNumber(amount)
+		}
+
+		if (dayStatus === DayStatus.WORK && shiftNumber === ShiftNumber.SHIFT_2) {
+			const amount = dailyEarnings + nightBonus
+			return normalizeNumber(amount)
+		}
+
+		if (
+			dayStatus === DayStatus.VACATION &&
+			shiftNumber === ShiftNumber.SHIFT_0
+		) {
+			return normalizeNumber(dailyEarnings)
+		}
+
+		if (
+			dayStatus === DayStatus.SICK_LEAVE &&
+			shiftNumber === ShiftNumber.SHIFT_0
+		) {
+			const amount = (dailyEarnings * 80) / 100
+			return normalizeNumber(amount)
 		}
 
 		return 0
