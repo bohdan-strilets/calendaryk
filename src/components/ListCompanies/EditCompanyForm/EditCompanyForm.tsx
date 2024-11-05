@@ -17,7 +17,7 @@ import { EditCompanyFields } from '@/types/inputs/EditCompanyFields'
 import { EditCompanyProps } from '@/types/props/listCompanies/EditCompanyProps'
 import { compareDates } from '@/utils/functions/compareDates'
 import { isApiError } from '@/utils/functions/isApiError'
-import { normalizeDateForDatepicker } from '@/utils/functions/normalizeDateForDatepicker'
+import { normalizeDate } from '@/utils/functions/normalizeDate'
 import { validation } from '@/validation/EditCompanySchema'
 
 const EditCompanyForm: FC<EditCompanyProps> = ({ companyId }) => {
@@ -73,10 +73,10 @@ const EditCompanyForm: FC<EditCompanyProps> = ({ companyId }) => {
 	}, [company, reset])
 
 	const onSubmit: SubmitHandler<EditCompanyFields> = async (data) => {
-		const startWork = normalizeDateForDatepicker(data.startWork)
+		const startWork = normalizeDate(data.startWork)
 		const endWork = data.isStillWorking
 			? new Date().toISOString()
-			: normalizeDateForDatepicker(data.endWork)
+			: normalizeDate(data.endWork)
 
 		if (companyId) {
 			const dto = {
@@ -100,14 +100,14 @@ const EditCompanyForm: FC<EditCompanyProps> = ({ companyId }) => {
 
 	const handleStartDateChange = (date: Date) => {
 		const isoDate = date.toISOString()
-		const normalizeDate = normalizeDateForDatepicker(isoDate)
-		setValue('startWork', normalizeDate)
+		const start = normalizeDate(isoDate)
+		setValue('startWork', start)
 	}
 
 	const handleEndDateChange = (date: Date) => {
 		const isoDate = date.toISOString()
-		const normalizeDate = normalizeDateForDatepicker(isoDate)
-		setValue('endWork', normalizeDate)
+		const end = normalizeDate(isoDate)
+		setValue('endWork', end)
 	}
 
 	const handleCheckboxChange = () => {

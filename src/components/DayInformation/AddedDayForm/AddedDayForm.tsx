@@ -15,7 +15,6 @@ import { AddedDayFields } from '@/types/inputs/AddedDayFields'
 import { AddedDayProps } from '@/types/props/dayInformation/AddedDayProps'
 import { dayStatusOptions } from '@/utils/dropdownOptions/dayStatusOptions'
 import { hoursOptions } from '@/utils/dropdownOptions/hoursOptions'
-import { normalizeDateForDatepicker as normalizeDate } from '@/utils/functions/normalizeDateForDatepicker'
 import { validation } from '@/validation/AddedDaySchema'
 
 const AddedDayForm: FC<AddedDayProps> = ({ selectedDate }) => {
@@ -62,7 +61,7 @@ const AddedDayForm: FC<AddedDayProps> = ({ selectedDate }) => {
 		const companyId = currentCompany ? currentCompany : ''
 
 		const dto = {
-			date: normalizeDate(selectedDate.toString()),
+			date: selectedDate,
 			status: data.dayStatus,
 			companyId,
 			numberHours: calculateHours(timeRange),

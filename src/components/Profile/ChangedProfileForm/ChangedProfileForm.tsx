@@ -16,7 +16,7 @@ import { getLoading, getUser } from '@/store/user/userSelectors'
 import { ProfileEditFormFields } from '@/types/inputs/ProfileEditFormFields'
 import { genderOptions } from '@/utils/dropdownOptions/genderOptions'
 import { isApiError } from '@/utils/functions/isApiError'
-import { normalizeDateForDatepicker } from '@/utils/functions/normalizeDateForDatepicker'
+import { normalizeDate } from '@/utils/functions/normalizeDate'
 import { validation } from '@/validation/EditProfileFormSchema'
 
 const ChangedProfileForm: FC = () => {
@@ -48,13 +48,13 @@ const ChangedProfileForm: FC = () => {
 
 	const handleDateChange = (date: Date) => {
 		const isoDate = date.toISOString()
-		const normalizeDate = normalizeDateForDatepicker(isoDate)
-		setValue('dateBirth', normalizeDate)
+		const dateBirth = normalizeDate(isoDate)
+		setValue('dateBirth', dateBirth)
 	}
 
 	const onSubmit: SubmitHandler<ProfileEditFormFields> = async (data) => {
 		try {
-			const dateBirth = normalizeDateForDatepicker(data.dateBirth)
+			const dateBirth = normalizeDate(data.dateBirth)
 
 			const dto = {
 				...data,

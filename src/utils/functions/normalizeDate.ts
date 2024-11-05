@@ -1,4 +1,4 @@
-export const normalizeDateForDatepicker = (date?: string) => {
+export const normalizeDate = (date?: string) => {
 	const normalizedDate = date ? new Date(date) : new Date()
 
 	const year = normalizedDate.getFullYear()

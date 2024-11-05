@@ -1,3 +1,3 @@
 export type AddedDayProps = {
-	selectedDate: Date
+	selectedDate: string
 }

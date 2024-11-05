@@ -12,7 +12,7 @@ import useModal from '@/hooks/useModal'
 import { useCreateMutation } from '@/store/companies/companyApi'
 import { AddedCompanyFields } from '@/types/inputs/AddedCompanyFields'
 import { isApiError } from '@/utils/functions/isApiError'
-import { normalizeDateForDatepicker } from '@/utils/functions/normalizeDateForDatepicker'
+import { normalizeDate } from '@/utils/functions/normalizeDate'
 import { validation } from '@/validation/AddedCompanySchema'
 
 const AddedCompanyForm: FC = () => {
@@ -52,14 +52,14 @@ const AddedCompanyForm: FC = () => {
 
 	const handleStartDateChange = (date: Date) => {
 		const isoDate = date.toISOString()
-		const normalizeDate = normalizeDateForDatepicker(isoDate)
-		setValue('startWork', normalizeDate)
+		const start = normalizeDate(isoDate)
+		setValue('startWork', start)
 	}
 
 	const handleEndDateChange = (date: Date) => {
 		const isoDate = date.toISOString()
-		const normalizeDate = normalizeDateForDatepicker(isoDate)
-		setValue('endWork', normalizeDate)
+		const end = normalizeDate(isoDate)
+		setValue('endWork', end)
 	}
 
 	const handleCheckboxChange = () => {
