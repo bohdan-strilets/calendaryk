@@ -46,7 +46,8 @@ export const Day = styled.li<DayProps>`
 		return 'var(--gray-color)'
 	}};
 
-	cursor: ${({ isInteractive }) => (isInteractive ? 'pointer' : '')};
+	pointer-events: ${({ dayNumberMonth }) => (dayNumberMonth ? '' : 'none')};
+	cursor: ${({ isInteractive }) => (isInteractive ? 'pointer' : 'default')};
 	transition: background-color var(--hover-effect);
 
 	:hover,

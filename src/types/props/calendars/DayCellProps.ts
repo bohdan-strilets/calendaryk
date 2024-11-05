@@ -27,4 +27,5 @@ export type DayProps = Pick<
 > & {
 	currentDay?: boolean
 	selectedDay?: boolean
+	dayNumberMonth?: number
 }

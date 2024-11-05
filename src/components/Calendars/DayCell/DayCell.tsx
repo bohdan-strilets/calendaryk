@@ -44,8 +44,9 @@ const DayCell: FC<DeyCellProps> = ({
 			isInteractive={isInteractive}
 			isBorder={isBorder}
 			textPosition={textPosition}
+			dayNumberMonth={dayNumberMonth}
 		>
-			<p>{day?.getDate()}</p>
+			<p>{dayNumberMonth}</p>
 		</Day>
 	)
 }
