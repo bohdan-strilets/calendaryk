@@ -9,6 +9,7 @@ export type User = {
 	gender: Gender
 	avatarUrls: string[]
 	isActivated: boolean
+	currentPlaceWork: null | string
 	createdAt: Date
 	updatedAt: Date
 }

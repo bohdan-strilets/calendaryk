@@ -6,20 +6,22 @@ import Checkbox from '@/components/UI/Checkbox'
 import DropdownList from '@/components/UI/DropdownList'
 import Loader from '@/components/UI/Loader'
 import QuickTimeLapse from '@/components/UI/QuickTimeLapse'
+import { useAppSelector } from '@/hooks/useAppSelector'
 import useCalculateEarnings from '@/hooks/useCalculateEarnings'
 import { useCalculateHours } from '@/hooks/useCalculateHours'
+import { useCreateMutation } from '@/store/calendars/calendarApi'
+import { getCurrentPlaceWork } from '@/store/user/userSelectors'
 import { AddedDayFields } from '@/types/inputs/AddedDayFields'
 import { AddedDayProps } from '@/types/props/dayInformation/AddedDayProps'
 import { dayStatusOptions } from '@/utils/dropdownOptions/dayStatusOptions'
 import { hoursOptions } from '@/utils/dropdownOptions/hoursOptions'
+import { normalizeDateForDatepicker as normalizeDate } from '@/utils/functions/normalizeDateForDatepicker'
 import { validation } from '@/validation/AddedDaySchema'
 
 const AddedDayForm: FC<AddedDayProps> = ({ selectedDate }) => {
 	const [quickStartTime, setQuickStartTime] = useState<null | string>(null)
 	const [quickFinishTime, setQuickFinishTime] = useState<null | string>(null)
-
 	const [isAdditional, setIsAdditional] = useState(false)
-	const loading = false
 
 	const {
 		register,
@@ -32,6 +34,8 @@ const AddedDayForm: FC<AddedDayProps> = ({ selectedDate }) => {
 	const { calculateHours, determineShift, calculateAdditionalHours } =
 		useCalculateHours()
 	const { calculateEarningsDay, calculateNetSalary } = useCalculateEarnings()
+	const currentCompany = useAppSelector(getCurrentPlaceWork)
+	const [createNewDay, { isLoading }] = useCreateMutation()
 
 	useEffect(() => {
 		if (quickStartTime) {
@@ -55,10 +59,12 @@ const AddedDayForm: FC<AddedDayProps> = ({ selectedDate }) => {
 			additionalHours.oneHundredPercent.numberHours
 		)
 		const netEarning = calculateNetSalary(grossEarning)
+		const companyId = currentCompany ? currentCompany : ''
 
 		const dto = {
-			date: selectedDate,
+			date: normalizeDate(selectedDate.toString()),
 			status: data.dayStatus,
+			companyId,
 			numberHours: calculateHours(timeRange),
 			timeRange: timeRange,
 			shiftNumber,
@@ -66,7 +72,7 @@ const AddedDayForm: FC<AddedDayProps> = ({ selectedDate }) => {
 			grossEarning,
 			netEarning,
 		}
-		console.log(dto)
+		createNewDay(dto)
 	}
 
 	const handleCheckboxChange = () => {
@@ -129,8 +135,8 @@ const AddedDayForm: FC<AddedDayProps> = ({ selectedDate }) => {
 				label="Please indicate if this is an additional working day."
 				margin="0 0 20px 0"
 			/>
-			{loading && <Loader margin="25px 0 25px 0" />}
-			<Button type="submit" height="45px" disabled={loading}>
+			{isLoading && <Loader margin="25px 0 25px 0" />}
+			<Button type="submit" height="45px" disabled={isLoading}>
 				Added
 			</Button>
 		</form>

@@ -2,7 +2,7 @@ import { DayStatus } from '../enums/DayStatus'
 import { ShiftNumber } from '../enums/ShiftNumber'
 
 export type AddedDayDto = {
-	date: Date
+	date: string
 	status: DayStatus
 	companyId: string
 	numberHours?: number

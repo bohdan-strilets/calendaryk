@@ -24,7 +24,7 @@ export const calendarApi = createApi({
 
 			create: build.mutation<ResponseApi<Day>, AddedDayDto>({
 				query: (dto) => ({
-					url: 'create',
+					url: 'added',
 					method: 'POST',
 					data: dto,
 				}),
