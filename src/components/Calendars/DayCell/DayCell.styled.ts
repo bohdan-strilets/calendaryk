@@ -26,6 +26,8 @@ export const Day = styled.li<DayProps>`
 	border: ${({ isBorder }) => (isBorder ? '1px solid #ccc' : 'none')};
 	box-shadow: ${({ isBorder }) => (isBorder ? 'var(--box-shadow)' : '')};
 
+	background-size: cover;
+	background-position: center;
 	background-color: ${({ background, currentDay, selectedDay }) => {
 		if (background) {
 			return background

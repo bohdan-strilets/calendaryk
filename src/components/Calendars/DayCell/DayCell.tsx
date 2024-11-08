@@ -1,5 +1,6 @@
 import { FC } from 'react'
 
+import EventSummaryCell from '@/components/DayInformation/EventSummaryCell'
 import { DeyCellProps } from '@/types/props/calendars/DayCellProps'
 
 import { Day } from './DayCell.styled'
@@ -46,7 +47,11 @@ const DayCell: FC<DeyCellProps> = ({
 			textPosition={textPosition}
 			dayNumberMonth={dayNumberMonth}
 		>
-			<p>{dayNumberMonth}</p>
+			{dayNumberMonth && (
+				<EventSummaryCell>
+					<p>{dayNumberMonth}</p>
+				</EventSummaryCell>
+			)}
 		</Day>
 	)
 }
