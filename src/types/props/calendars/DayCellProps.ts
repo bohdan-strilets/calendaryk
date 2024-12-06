@@ -1,3 +1,5 @@
+import { Day } from '@/types/types/Day'
+
 export type DeyCellProps = {
 	currentDate?: number
 	day?: Date
@@ -12,6 +14,7 @@ export type DeyCellProps = {
 	isBorder?: boolean
 	textPosition?: 'center' | 'topLeft'
 	callback?: () => void
+	dayInformation?: Day
 }
 
 export type DayProps = Pick<

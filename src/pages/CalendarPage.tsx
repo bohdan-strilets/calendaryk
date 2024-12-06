@@ -44,16 +44,31 @@ const CalendarPage: FC = () => {
 
 	const getDate = (date: Date) => setSelectedDate(date)
 	const formateSelectedDate = normalizeDate(selectedDate.toString())
+	const monthIndex = selectedDate.getMonth()
+
+	const getDaysByMonthIndex = (monthIndex: number): Day[] | [] => {
+		const days = allDays?.filter(
+			(day) => new Date(day.date).getMonth() === monthIndex
+		)
+
+		return days ? days : []
+	}
+
+	const daysByMonthIndex = getDaysByMonthIndex(monthIndex)
 
 	return (
 		<>
-			{isLoading ? <Loader /> : <Calendar getDate={getDate} />}
+			{isLoading ? (
+				<Loader />
+			) : (
+				<Calendar getDate={getDate} daysForCurrentMonth={daysByMonthIndex} />
+			)}
 
 			<AnimatePresence mode="wait">
 				{checkQueryParam(modalNames.CREATE_DAY_INFORMATION) && (
 					<Modal title={`Add a new day ${formateSelectedDate}`}>
 						{dayByDate ? (
-							<DayInformation />
+							<DayInformation day={dayByDate} />
 						) : (
 							<AddedDayForm selectedDate={formateSelectedDate} />
 						)}

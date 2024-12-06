@@ -7,10 +7,10 @@ export type Day = {
 	companyId: string
 	date: Date
 	status: DayStatus
+	isAdditional: boolean
 	numberHours?: number
 	timeRange?: string
 	shiftNumber?: ShiftNumber
-	isAdditional?: boolean
 	grossEarning?: number
 	netEarning?: number
 	updatedAt: string

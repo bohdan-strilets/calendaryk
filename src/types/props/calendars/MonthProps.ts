@@ -1,3 +1,5 @@
+import { Day } from '@/types/types/Day'
+
 import { DeyCellProps } from './DayCellProps'
 
 export type MonthProps = {
@@ -11,4 +13,5 @@ export type MonthProps = {
 	selectDate?: (date: Date) => void
 	selectedDay?: number
 	isInteractive?: boolean
+	daysForCurrentMonth?: Day[] | []
 } & Pick<DeyCellProps, 'isBorder' | 'textPosition' | 'callback'>

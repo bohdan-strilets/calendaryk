@@ -19,9 +19,10 @@ const Month: FC<MonthProps> = ({
 	isBorder,
 	textPosition,
 	callback,
+	daysForCurrentMonth,
 }) => {
 	return (
-		<div>
+		<>
 			{month.map((week, index) => (
 				<Week
 					key={index}
@@ -29,27 +30,34 @@ const Month: FC<MonthProps> = ({
 					animate={{ y: '0%', opacity: 1 }}
 					transition={{ duration: 0.3, delay: index * 0.1 }}
 				>
-					{week.map((day, index) => (
-						<DayCell
-							key={index}
-							currentDate={currentDate}
-							day={day}
-							width={cellWidth}
-							height={cellHeight}
-							background={background}
-							color={color}
-							isBorderRadius={borderRadius}
-							selectDate={selectDate}
-							selectedDay={selectedDay}
-							isInteractive={isInteractive}
-							isBorder={isBorder}
-							textPosition={textPosition}
-							callback={callback}
-						/>
-					))}
+					{week.map((day, index) => {
+						const dayInformation = daysForCurrentMonth?.filter(
+							(item) => new Date(item.date).getDate() === day?.getDate()
+						)[0]
+
+						return (
+							<DayCell
+								key={index}
+								currentDate={currentDate}
+								day={day}
+								width={cellWidth}
+								height={cellHeight}
+								background={background}
+								color={color}
+								isBorderRadius={borderRadius}
+								selectDate={selectDate}
+								selectedDay={selectedDay}
+								isInteractive={isInteractive}
+								isBorder={isBorder}
+								textPosition={textPosition}
+								callback={callback}
+								dayInformation={dayInformation}
+							/>
+						)
+					})}
 				</Week>
 			))}
-		</div>
+		</>
 	)
 }
 

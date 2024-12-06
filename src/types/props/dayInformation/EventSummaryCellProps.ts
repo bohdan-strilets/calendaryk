@@ -4,8 +4,8 @@ import { ShiftNumber } from '@/types/enums/ShiftNumber'
 
 export type EventSummaryCellProps = {
 	children: ReactNode
-	shiftNumber: ShiftNumber
-	numberHours: number
-	isAdditionalHours: boolean
-	numberTodo: number
+	shiftNumber?: ShiftNumber
+	numberHours?: number
+	isAdditionalHours?: boolean
+	numberTodo?: number
 }

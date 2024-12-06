@@ -1,7 +1,8 @@
 import { FC } from 'react'
 
-import { DayStatus } from '@/types/enums/DayStatus'
 import { ShiftNumber } from '@/types/enums/ShiftNumber'
+import { DayInformationProps } from '@/types/props/dayInformation/DayInformationProps'
+import { normalizeDate } from '@/utils/functions/normalizeDate'
 
 import Controllers from './Controllers'
 import { Footer } from './DayInformation.styled'
@@ -10,21 +11,27 @@ import Information from './Information'
 import TaxList from './TaxList'
 import TotalAmount from './TotalAmount'
 
-const DayInformation: FC = () => {
+const DayInformation: FC<DayInformationProps> = ({ day }) => {
+	const date = normalizeDate(day.date.toString())
+
 	return (
 		<>
 			<Information
-				dayStatus={DayStatus.WORK}
-				date="29 October 2024"
-				numberHours={12}
-				numberShift={ShiftNumber.SHIFT_1}
-				timeRange="06:00 - 18:00"
-				isAdditionalHours={true}
+				dayStatus={day.status}
+				date={date}
+				numberHours={day.numberHours ?? 0}
+				numberShift={day.shiftNumber ?? ShiftNumber.SHIFT_0}
+				timeRange={day.timeRange ?? '-'}
+				isAdditionalHours={day.isAdditional}
 			/>
 
-			<EarningList />
-			<TotalAmount amount={900} color="var(--red-color)" />
-			<TaxList />
+			{day.grossEarning && (
+				<>
+					<EarningList />
+					<TotalAmount amount={day.grossEarning} color="var(--red-color)" />
+					<TaxList />
+				</>
+			)}
 
 			<Footer
 				initial={{ y: '100%' }}
@@ -32,7 +39,9 @@ const DayInformation: FC = () => {
 				transition={{ duration: 0.3 }}
 			>
 				<Controllers />
-				<TotalAmount amount={570.72} color="var(--green-color)" />
+				{day.netEarning && (
+					<TotalAmount amount={day.netEarning} color="var(--green-color)" />
+				)}
 			</Footer>
 		</>
 	)

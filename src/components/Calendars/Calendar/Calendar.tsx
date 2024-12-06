@@ -10,7 +10,7 @@ import Controllers from '../Controllers'
 import Month from '../Month'
 import WeekDays from '../WeekDays'
 
-const Calendar: FC<CalendarProps> = ({ getDate }) => {
+const Calendar: FC<CalendarProps> = ({ getDate, daysForCurrentMonth }) => {
 	const [currentDate, setCurrentDate] = useState(new Date())
 	const [clickedDay, setClickedDay] = useState(new Date())
 
@@ -68,6 +68,7 @@ const Calendar: FC<CalendarProps> = ({ getDate }) => {
 				textPosition="topLeft"
 				callback={handleCreateDayInfo}
 				selectDate={getClickedDay}
+				daysForCurrentMonth={daysForCurrentMonth}
 			/>
 		</div>
 	)

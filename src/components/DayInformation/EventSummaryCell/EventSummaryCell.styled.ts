@@ -4,7 +4,6 @@ export const List = styled.ul`
 	display: flex;
 	align-items: end;
 	flex-direction: column;
-	justify-content: space-between;
 
 	width: 100%;
 	height: 100%;
@@ -20,6 +19,7 @@ export const Item = styled.li`
 	width: 25px;
 	height: 25px;
 	padding: 4px;
+	margin-bottom: 10px;
 
 	box-shadow: var(--box-shadow);
 	border-radius: 5px;
@@ -32,6 +32,10 @@ export const Item = styled.li`
 	&:hover p {
 		transform: translateX(0);
 		opacity: 1;
+	}
+
+	:last-child {
+		margin-bottom: 0;
 	}
 `
 

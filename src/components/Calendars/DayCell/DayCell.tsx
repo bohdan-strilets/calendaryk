@@ -19,6 +19,7 @@ const DayCell: FC<DeyCellProps> = ({
 	isBorder,
 	textPosition,
 	callback,
+	dayInformation,
 }) => {
 	const dayNumberMonth = day?.getDate()
 
@@ -48,7 +49,12 @@ const DayCell: FC<DeyCellProps> = ({
 			dayNumberMonth={dayNumberMonth}
 		>
 			{dayNumberMonth && (
-				<EventSummaryCell>
+				<EventSummaryCell
+					numberHours={dayInformation?.numberHours}
+					isAdditionalHours={dayInformation?.isAdditional}
+					// numberTodo={2}
+					shiftNumber={dayInformation?.shiftNumber}
+				>
 					<p>{dayNumberMonth}</p>
 				</EventSummaryCell>
 			)}
