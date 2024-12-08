@@ -11,6 +11,7 @@ import useCalculateEarnings from '@/hooks/useCalculateEarnings'
 import { useCalculateHours } from '@/hooks/useCalculateHours'
 import { useCreateMutation } from '@/store/calendars/calendarApi'
 import { getCurrentPlaceWork } from '@/store/user/userSelectors'
+import { DayStatus } from '@/types/enums/DayStatus'
 import { AddedDayFields } from '@/types/inputs/AddedDayFields'
 import { AddedDayProps } from '@/types/props/dayInformation/AddedDayProps'
 import { dayStatusOptions } from '@/utils/dropdownOptions/dayStatusOptions'
@@ -29,6 +30,8 @@ const AddedDayForm: FC<AddedDayProps> = ({ selectedDate }) => {
 		watch,
 		formState: { errors },
 	} = useForm<AddedDayFields>(validation)
+
+	const dayStatus = watch('dayStatus')
 
 	const { calculateHours, determineShift, calculateAdditionalHours } =
 		useCalculateHours()
@@ -93,47 +96,57 @@ const AddedDayForm: FC<AddedDayProps> = ({ selectedDate }) => {
 				listPosition="bottom"
 				margin="0 0 20px 0"
 			/>
-			<DropdownList
-				options={hoursOptions}
-				register={register}
-				name="start"
-				setValue={setValue}
-				watch={watch}
-				placeholder="Start time"
-				errors={errors}
-				listHeight="230px"
-				label="Select start shift time"
-				listPosition="bottom"
-				margin="0 0 10px 0"
-			/>
-			<QuickTimeLapse getTime={setQuickStartTime} margin="0 0 20px 0" />
-			<DropdownList
-				options={hoursOptions}
-				register={register}
-				name="end"
-				setValue={setValue}
-				watch={watch}
-				placeholder="End time"
-				errors={errors}
-				listHeight="230px"
-				label="Select end shift time"
-				listPosition="bottom"
-				margin="0 0 10px 0"
-			/>
-			<QuickTimeLapse getTime={setQuickFinishTime} margin="0 0 20px 0" />
-			<Checkbox
-				name="isAdditional"
-				register={register}
-				setValue={(name, value) => {
-					setValue(name, value)
-					handleCheckboxChange()
-				}}
-				watch={watch}
-				rules={{ isChecked: isAdditional }}
-				errors={errors}
-				label="Please indicate if this is an additional working day."
-				margin="0 0 20px 0"
-			/>
+			{dayStatus && dayStatus !== DayStatus.DAY_OFF && (
+				<>
+					<DropdownList
+						options={hoursOptions}
+						register={register}
+						name="start"
+						setValue={setValue}
+						watch={watch}
+						placeholder="Start time"
+						errors={errors}
+						listHeight="230px"
+						label="Select start shift time"
+						listPosition="bottom"
+						margin="0 0 10px 0"
+					/>
+					<QuickTimeLapse getTime={setQuickStartTime} margin="0 0 20px 0" />
+				</>
+			)}
+			{dayStatus && dayStatus !== DayStatus.DAY_OFF && (
+				<>
+					<DropdownList
+						options={hoursOptions}
+						register={register}
+						name="end"
+						setValue={setValue}
+						watch={watch}
+						placeholder="End time"
+						errors={errors}
+						listHeight="230px"
+						label="Select end shift time"
+						listPosition="bottom"
+						margin="0 0 10px 0"
+					/>
+					<QuickTimeLapse getTime={setQuickFinishTime} margin="0 0 20px 0" />
+				</>
+			)}
+			{dayStatus && dayStatus !== DayStatus.DAY_OFF && (
+				<Checkbox
+					name="isAdditional"
+					register={register}
+					setValue={(name, value) => {
+						setValue(name, value)
+						handleCheckboxChange()
+					}}
+					watch={watch}
+					rules={{ isChecked: isAdditional }}
+					errors={errors}
+					label="Please indicate if this is an additional working day."
+					margin="0 0 20px 0"
+				/>
+			)}
 			{isLoading && <Loader margin="25px 0 25px 0" />}
 			<Button type="submit" height="45px" disabled={isLoading}>
 				Added
