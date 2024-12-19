@@ -1,8 +1,9 @@
 import styled from '@emotion/styled'
 import { motion } from 'framer-motion'
 
-import { ImageProps } from '@/types/props/allAvatars/GalleryProps'
 import { screenWidth } from '@/utils/data/screenWidth'
+
+import { ImageProps } from '@/types/props/allAvatars/GalleryProps'
 
 export const List = styled.ul`
 	display: flex;

@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 
-import { DatePicker } from '@/types/params/DatePicker'
 import { MonthsOfYear } from '@/utils/data/monthsOfYear'
+
+import { DatePicker } from '@/types/params/DatePicker'
 
 import useRenderCalendar from './useRenderCalendar'
 

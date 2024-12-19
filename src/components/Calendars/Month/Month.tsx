@@ -3,6 +3,7 @@ import { FC } from 'react'
 import { MonthProps } from '@/types/props/calendars/MonthProps'
 
 import DayCell from '../DayCell'
+
 import { Week } from './Month.styled'
 
 const Month: FC<MonthProps> = ({

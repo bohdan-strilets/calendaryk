@@ -2,7 +2,9 @@ import { FC } from 'react'
 import { HiArrowLeft, HiArrowRight } from 'react-icons/hi'
 
 import Button from '@/components/UI/Button'
+
 import useResponsive from '@/hooks/useResponsive'
+
 import { ControllersProps } from '@/types/props/calendars/ControllersProps'
 
 import { Header, MonthName } from './Controllers.styled'

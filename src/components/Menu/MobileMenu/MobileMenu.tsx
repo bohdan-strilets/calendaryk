@@ -7,16 +7,21 @@ import Button from '@/components/UI/Button'
 import CloseButton from '@/components/UI/CloseButton'
 import Copyright from '@/components/UI/Copyright'
 import Logo from '@/components/UI/Logo'
+
 import { useAppDispatch } from '@/hooks/useAppDispatch'
 import { useAppSelector } from '@/hooks/useAppSelector'
+
 import { getIsLoggedIn } from '@/store/auth/authSelectors'
 import { logout } from '@/store/auth/authSlice'
 import { getUser } from '@/store/user/userSelectors'
-import { MenuProps } from '@/types/props/menu/MenuProps'
+
 import { navigationPaths } from '@/utils/data/navigationPaths'
+
+import { MenuProps } from '@/types/props/menu/MenuProps'
 
 import Navigation from '../Navigation'
 import UserBar from '../UserBar'
+
 import { LogoWrapper, Wrapper } from './MobileMenu.styled'
 
 const menuPortal = document.getElementById('menu') as HTMLDivElement

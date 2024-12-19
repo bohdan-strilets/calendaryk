@@ -12,9 +12,11 @@ import Modal from '@/components/Modal'
 import Button from '@/components/UI/Button'
 import Dialog from '@/components/UI/Dialog'
 import Loader from '@/components/UI/Loader'
+
 import { useAppSelector } from '@/hooks/useAppSelector'
 import useModal from '@/hooks/useModal'
 import useResponsive from '@/hooks/useResponsive'
+
 import { getIsLoggedIn } from '@/store/auth/authSelectors'
 import { useDeleteMutation, useGetAllQuery } from '@/store/companies/companyApi'
 

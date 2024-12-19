@@ -2,6 +2,7 @@ import { FC } from 'react'
 import { IoLocationSharp } from 'react-icons/io5'
 
 import villagePng from '@/assets/village/village.png'
+
 import { LocationInfoProps } from '@/types/props/weather/LocationInfoProps'
 
 import {

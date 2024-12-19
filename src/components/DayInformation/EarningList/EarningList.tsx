@@ -3,6 +3,7 @@ import { FC } from 'react'
 import { Coordinates } from '@/types/types/Coordinates'
 
 import Superscript from '../../UI/Superscript'
+
 import { Item, List, Wrapper } from './EarningList.styled'
 
 const EarningList: FC = () => {

@@ -4,12 +4,16 @@ import { MdDeleteSweep, MdOutlineViewInAr } from 'react-icons/md'
 import { toast } from 'react-toastify'
 
 import Loader from '@/components/UI/Loader'
+
 import { useAppDispatch } from '@/hooks/useAppDispatch'
 import { useAppSelector } from '@/hooks/useAppSelector'
+
 import operations from '@/store/user/userOperations'
 import { getAvatars, getLoading } from '@/store/user/userSelectors'
-import { ActionsDropdownProps } from '@/types/props/allAvatars/ActionsDropdownProps'
+
 import { getPublicCloudinaryId } from '@/utils/functions/getPublicCloudinaryId'
+
+import { ActionsDropdownProps } from '@/types/props/allAvatars/ActionsDropdownProps'
 
 import { Button, Item, Label, List, Wrapper } from './ActionsDropdown.styled'
 

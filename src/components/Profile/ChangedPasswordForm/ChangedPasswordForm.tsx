@@ -6,13 +6,18 @@ import { toast } from 'react-toastify'
 import Button from '@/components/UI/Button'
 import Loader from '@/components/UI/Loader'
 import PasswordField from '@/components/UI/PasswordField'
+
 import { useAppDispatch } from '@/hooks/useAppDispatch'
 import { useAppSelector } from '@/hooks/useAppSelector'
 import useModal from '@/hooks/useModal'
+
 import operations from '@/store/user/userOperations'
 import { getLoading } from '@/store/user/userSelectors'
-import { PasswordUpdateFields } from '@/types/inputs/PasswordUpdateFields'
+
 import { isApiError } from '@/utils/functions/isApiError'
+
+import { PasswordUpdateFields } from '@/types/inputs/PasswordUpdateFields'
+
 import { validation } from '@/validation/UpdatePasswordSchema'
 
 const ChangedPasswordForm: FC = () => {

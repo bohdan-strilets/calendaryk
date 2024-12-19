@@ -2,8 +2,10 @@ import { AnimatePresence } from 'framer-motion'
 import { FC } from 'react'
 
 import useTimer from '@/hooks/useTimer'
-import { SmallTimerProps } from '@/types/props/ui/SmallTimerProps'
+
 import { formatTime } from '@/utils/functions/formatTime'
+
+import { SmallTimerProps } from '@/types/props/ui/SmallTimerProps'
 
 import { Message, Time, Wrapper } from './SmallTimer.styled'
 

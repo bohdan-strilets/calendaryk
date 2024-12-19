@@ -1,8 +1,9 @@
 import styled from '@emotion/styled'
 import { motion } from 'framer-motion'
 
-import { WrapperProps } from '@/types/props/todoList/TodoItemProps'
 import { screenWidth } from '@/utils/data/screenWidth'
+
+import { WrapperProps } from '@/types/props/todoList/TodoItemProps'
 
 export const Wrapper = styled(motion.li)<WrapperProps>`
 	margin-bottom: 10px;

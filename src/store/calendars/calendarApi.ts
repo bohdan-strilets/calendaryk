@@ -1,6 +1,7 @@
 import { createApi } from '@reduxjs/toolkit/query/react'
 
 import axiosBaseQuery from '@/api/axiosBaseQuery'
+
 import { AddedDayDto } from '@/types/dto/AddedDayDto'
 import { UpdateDayDto } from '@/types/dto/UpdateDayDto'
 import { Day } from '@/types/types/Day'

@@ -1,6 +1,7 @@
 import { FC } from 'react'
 
 import useQuickTimeLapse from '@/hooks/useQuickTimeLapse'
+
 import { QuickTimeLapseProps } from '@/types/props/ui/QuickTimeLapseProps'
 
 import { Button, Item, Label, List } from './QuickTimeLapse.styled'

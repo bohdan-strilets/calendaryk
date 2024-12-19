@@ -4,11 +4,14 @@ import { FaMoneyBillWave } from 'react-icons/fa6'
 
 import Avatar from '@/components/UI/Avatar'
 import DropdownMenu from '@/components/UI/DropdownMenu'
+
 import useModal from '@/hooks/useModal'
-import { CompanyInformationProps } from '@/types/props/listCompanies/CompanyInformationProps'
+
 import { companyOptionsMenu } from '@/utils/dataWithJSX/companyOptionsMenu'
 import { compareDates } from '@/utils/functions/compareDates'
 import { parseDateTime } from '@/utils/functions/parseDateTime'
+
+import { CompanyInformationProps } from '@/types/props/listCompanies/CompanyInformationProps'
 
 import {
 	CompanyDetails,

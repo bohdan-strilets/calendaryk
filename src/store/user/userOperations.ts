@@ -1,15 +1,18 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
 import api from '@/api/api'
+
+import { handleApiError } from '@/utils/functions/handleApiError'
+
 import { ChangePasswordDto } from '@/types/dto/ChangePasswordDto'
 import { ChangeProfileDto } from '@/types/dto/ChangeProfileDto'
 import { EmailDto } from '@/types/dto/EmailDto'
 import { ResetPasswordDto } from '@/types/dto/ResetPasswordDto'
 import { ResponseApi } from '@/types/types/ResponseApi'
 import { User } from '@/types/types/User'
-import { handleApiError } from '@/utils/functions/handleApiError'
 
 import { setIsLoggedIn } from '../auth/authSlice'
+
 import { endpoints, operationNames } from './config'
 
 const getCurrentUser = createAsyncThunk<ResponseApi<User>>(

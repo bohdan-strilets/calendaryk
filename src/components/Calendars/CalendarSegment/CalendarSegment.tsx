@@ -1,10 +1,12 @@
 import { FC } from 'react'
 
 import useRenderCalendar from '@/hooks/useRenderCalendar'
+
 import { CalendarSegmentProps } from '@/types/props/calendars/CalendarSegmentProps'
 
 import Month from '../Month'
 import WeekDays from '../WeekDays'
+
 import { Wrapper } from './CalendarSegment.styled'
 
 const CalendarSegment: FC<CalendarSegmentProps> = ({

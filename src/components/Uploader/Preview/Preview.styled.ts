@@ -1,8 +1,9 @@
 import styled from '@emotion/styled'
 import { motion } from 'framer-motion'
 
-import { ImageSizeProps } from '@/types/props/uploader/PreviewProps'
 import { screenWidth } from '@/utils/data/screenWidth'
+
+import { ImageSizeProps } from '@/types/props/uploader/PreviewProps'
 
 export const Wrapper = styled(motion.div)`
 	display: flex;

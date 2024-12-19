@@ -1,9 +1,11 @@
 import { FC } from 'react'
 
-import vacationPng from '@/assets/vacation/vacation.png'
 import useResponsive from '@/hooks/useResponsive'
 
+import vacationPng from '@/assets/vacation/vacation.png'
+
 import CalendarSegment from '../Calendars/CalendarSegment'
+
 import {
 	AccentText,
 	DataWrapper,

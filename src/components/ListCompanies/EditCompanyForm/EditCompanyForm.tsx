@@ -8,16 +8,21 @@ import DatePicker from '@/components/UI/DatePicker'
 import Loader from '@/components/UI/Loader'
 import NumberField from '@/components/UI/NumberField'
 import TextField from '@/components/UI/TextField'
+
 import useModal from '@/hooks/useModal'
+
 import {
 	useGetByIdQuery,
 	useUpdateMutation,
 } from '@/store/companies/companyApi'
-import { EditCompanyFields } from '@/types/inputs/EditCompanyFields'
-import { EditCompanyProps } from '@/types/props/listCompanies/EditCompanyProps'
+
 import { compareDates } from '@/utils/functions/compareDates'
 import { isApiError } from '@/utils/functions/isApiError'
 import { normalizeDate } from '@/utils/functions/normalizeDate'
+
+import { EditCompanyFields } from '@/types/inputs/EditCompanyFields'
+import { EditCompanyProps } from '@/types/props/listCompanies/EditCompanyProps'
+
 import { validation } from '@/validation/EditCompanySchema'
 
 const EditCompanyForm: FC<EditCompanyProps> = ({ companyId }) => {

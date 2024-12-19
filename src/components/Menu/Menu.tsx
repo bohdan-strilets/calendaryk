@@ -5,16 +5,20 @@ import { useNavigate } from 'react-router-dom'
 
 import { useAppDispatch } from '@/hooks/useAppDispatch'
 import { useAppSelector } from '@/hooks/useAppSelector'
+
 import { getIsLoggedIn } from '@/store/auth/authSelectors'
 import { logout } from '@/store/auth/authSlice'
 import { getUser } from '@/store/user/userSelectors'
-import { MenuProps } from '@/types/props/menu/MenuProps'
+
 import { navigationPaths } from '@/utils/data/navigationPaths'
+
+import { MenuProps } from '@/types/props/menu/MenuProps'
 
 import Button from '../UI/Button'
 import CloseButton from '../UI/CloseButton'
 import Copyright from '../UI/Copyright'
 import Logo from '../UI/Logo'
+
 import { Backdrop, Wrapper } from './Menu.styled'
 import Navigation from './Navigation'
 import UserBar from './UserBar'

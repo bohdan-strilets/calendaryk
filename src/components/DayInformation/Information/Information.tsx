@@ -4,6 +4,7 @@ import { FaCalendarDays, FaClock, FaGears } from 'react-icons/fa6'
 import { MdWork } from 'react-icons/md'
 
 import StatusIndicator from '@/components/UI/StatusIndicator'
+
 import { InformationProps } from '@/types/props/dayInformation/InformationProps'
 
 import {

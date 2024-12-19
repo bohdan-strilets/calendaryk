@@ -6,12 +6,16 @@ import { GoGoal } from 'react-icons/go'
 import { MdCreate } from 'react-icons/md'
 
 import Checkbox from '@/components/UI/Checkbox'
+
 import useResponsive from '@/hooks/useResponsive'
-import { TodoItemProps } from '@/types/props/todoList/TodoItemProps'
+
 import { getRandomColorRGBA } from '@/utils/functions/getRandomColorRGBA'
 import { parseDateTime } from '@/utils/functions/parseDateTime'
 
+import { TodoItemProps } from '@/types/props/todoList/TodoItemProps'
+
 import Priority from '../Priority'
+
 import {
 	CreatedDateText,
 	CreatedDateWrapper,

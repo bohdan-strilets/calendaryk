@@ -1,11 +1,15 @@
 import { FC, useEffect, useState } from 'react'
 
 import Pagination from '@/components/UI/Pagination'
+
 import { useAppSelector } from '@/hooks/useAppSelector'
+
 import { getAvatars } from '@/store/user/userSelectors'
+
 import { GalleryProps } from '@/types/props/allAvatars/GalleryProps'
 
 import ActionsDropdown from '../ActionsDropdown'
+
 import { Image, Item, List } from './Gallery.styled'
 
 const Gallery: FC<GalleryProps> = ({ selectImage }) => {

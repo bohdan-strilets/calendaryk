@@ -1,7 +1,6 @@
-import 'react-toastify/dist/ReactToastify.css'
-
 import { FC } from 'react'
 import { Slide, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const ToastifyWrapper: FC = () => {
 	return (

@@ -10,11 +10,14 @@ import ChangedEmailForm from '@/components/Profile/ChangedEmailForm'
 import ChangedPasswordForm from '@/components/Profile/ChangedPasswordForm'
 import ChangedProfileForm from '@/components/Profile/ChangedProfileForm'
 import Dialog from '@/components/UI/Dialog'
+
 import { useAppDispatch } from '@/hooks/useAppDispatch'
 import { useAppSelector } from '@/hooks/useAppSelector'
 import useModal from '@/hooks/useModal'
+
 import operations from '@/store/user/userOperations'
 import { getLoading } from '@/store/user/userSelectors'
+
 import { navigationPaths } from '@/utils/data/navigationPaths'
 
 const ProfilePage: FC = () => {

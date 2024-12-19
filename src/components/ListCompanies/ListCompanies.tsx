@@ -1,10 +1,12 @@
 import { FC, useEffect, useState } from 'react'
 
 import useResponsive from '@/hooks/useResponsive'
+
 import { ListCompanyProps } from '@/types/props/listCompanies/ListCompanyProps'
 import { Company } from '@/types/types/Company'
 
 import Pagination from '../UI/Pagination'
+
 import CompanyInformation from './CompanyInformation'
 import { List } from './ListCompanies.styled'
 

@@ -2,10 +2,12 @@ import { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import useModal from '@/hooks/useModal'
+
 import { navigationPaths } from '@/utils/data/navigationPaths'
 
 import ButtonLink from '../../UI/ButtonLink'
 import Title from '../../UI/Title'
+
 import { List } from './Welcome.styled'
 
 const Welcome: FC = () => {

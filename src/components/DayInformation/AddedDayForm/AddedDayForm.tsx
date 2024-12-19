@@ -6,16 +6,21 @@ import Checkbox from '@/components/UI/Checkbox'
 import DropdownList from '@/components/UI/DropdownList'
 import Loader from '@/components/UI/Loader'
 import QuickTimeLapse from '@/components/UI/QuickTimeLapse'
+
 import { useAppSelector } from '@/hooks/useAppSelector'
 import useCalculateEarnings from '@/hooks/useCalculateEarnings'
 import { useCalculateHours } from '@/hooks/useCalculateHours'
+
 import { useCreateMutation } from '@/store/calendars/calendarApi'
 import { getCurrentPlaceWork } from '@/store/user/userSelectors'
+
+import { dayStatusOptions } from '@/utils/dropdownOptions/dayStatusOptions'
+import { hoursOptions } from '@/utils/dropdownOptions/hoursOptions'
+
 import { DayStatus } from '@/types/enums/DayStatus'
 import { AddedDayFields } from '@/types/inputs/AddedDayFields'
 import { AddedDayProps } from '@/types/props/dayInformation/AddedDayProps'
-import { dayStatusOptions } from '@/utils/dropdownOptions/dayStatusOptions'
-import { hoursOptions } from '@/utils/dropdownOptions/hoursOptions'
+
 import { validation } from '@/validation/AddedDaySchema'
 
 const AddedDayForm: FC<AddedDayProps> = ({ selectedDate }) => {

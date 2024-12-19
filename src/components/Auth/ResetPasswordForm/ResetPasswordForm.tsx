@@ -9,13 +9,18 @@ import Loader from '@/components/UI/Loader'
 import PasswordField from '@/components/UI/PasswordField'
 import TextField from '@/components/UI/TextField'
 import Title from '@/components/UI/Title'
+
 import { useAppDispatch } from '@/hooks/useAppDispatch'
 import { useAppSelector } from '@/hooks/useAppSelector'
+
 import operations from '@/store/user/userOperations'
 import { getLoading } from '@/store/user/userSelectors'
-import { PasswordResetFields } from '@/types/inputs/PasswordResetFields'
+
 import { navigationPaths } from '@/utils/data/navigationPaths'
 import { isApiError } from '@/utils/functions/isApiError'
+
+import { PasswordResetFields } from '@/types/inputs/PasswordResetFields'
+
 import { validation } from '@/validation/ResetPasswordSchema '
 
 import { FormWrapper } from './ResetPasswordForm.styled'

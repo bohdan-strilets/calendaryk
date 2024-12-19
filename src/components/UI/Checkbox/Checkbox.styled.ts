@@ -1,11 +1,12 @@
 import styled from '@emotion/styled'
 import { motion } from 'framer-motion'
 
+import { screenWidth } from '@/utils/data/screenWidth'
+
 import {
 	CustomCheckboxProps,
 	WrapperProps,
 } from '@/types/props/ui/CheckboxProps'
-import { screenWidth } from '@/utils/data/screenWidth'
 
 export const Wrapper = styled.div<WrapperProps>`
 	margin: ${({ margin }) => (margin ? margin : '')};

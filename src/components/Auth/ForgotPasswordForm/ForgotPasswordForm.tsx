@@ -7,13 +7,18 @@ import Button from '@/components/UI/Button'
 import Loader from '@/components/UI/Loader'
 import SmallTimer from '@/components/UI/SmallTimer'
 import TextField from '@/components/UI/TextField'
+
 import { useAppDispatch } from '@/hooks/useAppDispatch'
 import { useAppSelector } from '@/hooks/useAppSelector'
 import useTimer from '@/hooks/useTimer'
+
 import operations from '@/store/user/userOperations'
 import { getLoading } from '@/store/user/userSelectors'
-import { PasswordRecoveryFields } from '@/types/inputs/PasswordRecoveryFields'
+
 import { isApiError } from '@/utils/functions/isApiError'
+
+import { PasswordRecoveryFields } from '@/types/inputs/PasswordRecoveryFields'
+
 import { validation } from '@/validation/PasswordRecoverySchema'
 
 import { List, TextWrapper } from './ForgotPasswordForm.styled'

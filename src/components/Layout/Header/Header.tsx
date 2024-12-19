@@ -8,14 +8,18 @@ import UserBar from '@/components/Menu/UserBar'
 import Button from '@/components/UI/Button'
 import Logo from '@/components/UI/Logo'
 import MenuButton from '@/components/UI/MenuButton'
+
 import { useAppSelector } from '@/hooks/useAppSelector'
 import useMenu from '@/hooks/useMenu'
 import useResponsive from '@/hooks/useResponsive'
+
 import { getIsLoggedIn } from '@/store/auth/authSelectors'
 import { getUser } from '@/store/user/userSelectors'
+
 import { navigationPaths } from '@/utils/data/navigationPaths'
 
 import Container from '../Container'
+
 import { Line, Wrapper } from './Header.styled'
 
 const Header: FC = () => {

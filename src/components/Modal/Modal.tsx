@@ -3,10 +3,12 @@ import { createPortal } from 'react-dom'
 
 import useModal from '@/hooks/useModal'
 import useResponsive from '@/hooks/useResponsive'
+
 import { ModalProps } from '@/types/props/modal/ModalProps'
 
 import Button from '../UI/Button'
 import CloseButton from '../UI/CloseButton'
+
 import {
 	Backdrop,
 	Content,

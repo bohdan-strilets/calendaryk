@@ -1,6 +1,7 @@
 import { FC } from 'react'
 
 import EventSummaryCell from '@/components/DayInformation/EventSummaryCell'
+
 import { DeyCellProps } from '@/types/props/calendars/DayCellProps'
 
 import { Day } from './DayCell.styled'

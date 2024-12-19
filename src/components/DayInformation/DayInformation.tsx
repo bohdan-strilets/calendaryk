@@ -1,8 +1,9 @@
 import { FC } from 'react'
 
+import { normalizeDate } from '@/utils/functions/normalizeDate'
+
 import { ShiftNumber } from '@/types/enums/ShiftNumber'
 import { DayInformationProps } from '@/types/props/dayInformation/DayInformationProps'
-import { normalizeDate } from '@/utils/functions/normalizeDate'
 
 import Controllers from './Controllers'
 import { Footer } from './DayInformation.styled'

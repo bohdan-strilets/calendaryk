@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
@@ -6,6 +6,7 @@ import { AuthSliceState } from '@/types/redux/AuthSliceState'
 
 import operations from './authOperations'
 import { sliceName } from './config'
+
 const initialState: AuthSliceState = {
 	token: null,
 	isLoggedIn: false,

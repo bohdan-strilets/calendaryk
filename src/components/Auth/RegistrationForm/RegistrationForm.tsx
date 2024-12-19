@@ -9,15 +9,20 @@ import Loader from '@/components/UI/Loader'
 import PasswordField from '@/components/UI/PasswordField'
 import TextField from '@/components/UI/TextField'
 import Title from '@/components/UI/Title'
+
 import { useAppDispatch } from '@/hooks/useAppDispatch'
 import { useAppSelector } from '@/hooks/useAppSelector'
 import useModal from '@/hooks/useModal'
 import useResponsive from '@/hooks/useResponsive'
+
 import operations from '@/store/auth/authOperations'
 import { getLoading } from '@/store/auth/authSelectors'
-import { UserRegistrationFields } from '@/types/inputs/UserRegistrationFields'
+
 import { navigationPaths } from '@/utils/data/navigationPaths'
 import { isApiError } from '@/utils/functions/isApiError'
+
+import { UserRegistrationFields } from '@/types/inputs/UserRegistrationFields'
+
 import { validation } from '@/validation/RegistrationFormSchema'
 
 const RegistrationForm: FC = () => {

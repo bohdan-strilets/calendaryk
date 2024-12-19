@@ -6,13 +6,18 @@ import { toast } from 'react-toastify'
 import Button from '@/components/UI/Button'
 import Loader from '@/components/UI/Loader'
 import TextField from '@/components/UI/TextField'
+
 import { useAppDispatch } from '@/hooks/useAppDispatch'
 import { useAppSelector } from '@/hooks/useAppSelector'
 import useModal from '@/hooks/useModal'
+
 import operations from '@/store/user/userOperations'
 import { getEmail, getLoading } from '@/store/user/userSelectors'
-import { EmailUpdateFields } from '@/types/inputs/EmailUpdateFields'
+
 import { isApiError } from '@/utils/functions/isApiError'
+
+import { EmailUpdateFields } from '@/types/inputs/EmailUpdateFields'
+
 import { validation } from '@/validation/EmailUpdateSchema'
 
 const ChangedEmailForm: FC = () => {

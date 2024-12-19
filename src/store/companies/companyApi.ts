@@ -1,6 +1,7 @@
 import { createApi } from '@reduxjs/toolkit/query/react'
 
 import axiosBaseQuery from '@/api/axiosBaseQuery'
+
 import { CreateCompanyDto } from '@/types/dto/CreateCompanyDto'
 import { EditCompanyDto } from '@/types/dto/EditCompanyDto'
 import { UploadCompanyLogoDto } from '@/types/dto/UploadCompanyLogoDto'

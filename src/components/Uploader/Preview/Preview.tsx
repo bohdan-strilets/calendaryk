@@ -1,7 +1,8 @@
 import { FC, useEffect, useState } from 'react'
 
-import { PreviewProps } from '@/types/props/uploader/PreviewProps'
 import { bytesToMegabytes } from '@/utils/functions/bytesToMegabytes'
+
+import { PreviewProps } from '@/types/props/uploader/PreviewProps'
 
 import {
 	Image,

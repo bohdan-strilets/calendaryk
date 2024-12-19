@@ -9,13 +9,18 @@ import ButtonGoBack from '@/components/UI/ButtonGoBack'
 import Loader from '@/components/UI/Loader'
 import SmallTimer from '@/components/UI/SmallTimer'
 import TextField from '@/components/UI/TextField'
+
 import { useAppDispatch } from '@/hooks/useAppDispatch'
 import { useAppSelector } from '@/hooks/useAppSelector'
 import useTimer from '@/hooks/useTimer'
+
 import operations from '@/store/user/userOperations'
 import { getLoading } from '@/store/user/userSelectors'
-import { VerificationEmailFields } from '@/types/inputs/VerificationEmailFields'
+
 import { isApiError } from '@/utils/functions/isApiError'
+
+import { VerificationEmailFields } from '@/types/inputs/VerificationEmailFields'
+
 import { validation } from '@/validation/ResendEmailDataSchema'
 
 import { TextWrapper } from './ResendEmailForm.styled'

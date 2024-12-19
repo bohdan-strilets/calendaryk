@@ -6,11 +6,15 @@ import DayInformation from '@/components/DayInformation'
 import AddedDayForm from '@/components/DayInformation/AddedDayForm'
 import Modal from '@/components/Modal'
 import Loader from '@/components/UI/Loader'
+
 import useCalendar from '@/hooks/useCalendar'
 import useModal from '@/hooks/useModal'
+
 import { useGetAllQuery } from '@/store/calendars/calendarApi'
-import { Day } from '@/types/types/Day'
+
 import { normalizeDate } from '@/utils/functions/normalizeDate'
+
+import { Day } from '@/types/types/Day'
 
 const CalendarPage: FC = () => {
 	const [selectedDate, setSelectedDate] = useState(new Date())

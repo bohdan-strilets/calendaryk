@@ -1,9 +1,12 @@
 import { FC } from 'react'
 
 import Uploader from '@/components/Uploader'
+
 import { useUploadLogoMutation } from '@/store/companies/companyApi'
+
 import { UploadLogoProps } from '@/types/props/listCompanies/UploadLogoProps'
 import { FileFormData } from '@/types/types/FileFormData'
+
 import { CompanyLogoSchema } from '@/validation/CompanyLogoSchema'
 
 const UploadLogoForm: FC<UploadLogoProps> = ({ companyId }) => {

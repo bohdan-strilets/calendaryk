@@ -6,6 +6,7 @@ import ForgotPasswordForm from '@/components/Auth/ForgotPasswordForm'
 import ResendEmailForm from '@/components/Auth/ResendEmailForm'
 import Welcome from '@/components/Auth/Welcome'
 import Modal from '@/components/Modal'
+
 import useModal from '@/hooks/useModal'
 
 const AuthPage: FC = () => {

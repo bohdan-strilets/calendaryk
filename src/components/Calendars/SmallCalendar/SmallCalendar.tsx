@@ -1,11 +1,14 @@
 import { FC } from 'react'
 
 import useRenderCalendar from '@/hooks/useRenderCalendar'
-import { SmallCalendarProps } from '@/types/props/calendars/SmallCalendarProps'
+
 import { MonthsOfYear } from '@/utils/data/monthsOfYear'
+
+import { SmallCalendarProps } from '@/types/props/calendars/SmallCalendarProps'
 
 import Month from '../Month'
 import WeekDays from '../WeekDays'
+
 import { Header } from './SmallCalendar.styled'
 
 const SmallCalendar: FC<SmallCalendarProps> = ({

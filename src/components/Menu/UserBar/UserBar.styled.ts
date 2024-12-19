@@ -1,7 +1,8 @@
 import styled from '@emotion/styled'
 
-import { NameProps } from '@/types/props/menu/UserBarProps'
 import { screenWidth } from '@/utils/data/screenWidth'
+
+import { NameProps } from '@/types/props/menu/UserBarProps'
 
 export const Wrapper = styled.div`
 	cursor: pointer;

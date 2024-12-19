@@ -2,8 +2,8 @@ import { FC } from 'react'
 
 import { MenuButtonProps } from '@/types/props/ui/MenuButtonProps'
 
-import { animationProperty, bounce } from './animation'
 import { Button, Line } from './MenuButton.styled'
+import { animationProperty, bounce } from './animation'
 
 const MenuButton: FC<MenuButtonProps> = ({ open }) => {
 	return (

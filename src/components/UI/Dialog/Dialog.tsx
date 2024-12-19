@@ -4,6 +4,7 @@ import { DialogProps } from '@/types/props/ui/DialogProps'
 
 import Button from '../Button'
 import Loader from '../Loader'
+
 import { Item, List } from './Dialog.styled'
 
 const Dialog: FC<DialogProps> = ({

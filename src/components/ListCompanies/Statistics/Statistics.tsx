@@ -2,17 +2,18 @@
 import {
 	CategoryScale,
 	Chart as ChartJS,
-	Title as chartTitle,
 	Legend,
-	LinearScale,
 	LineElement,
+	LinearScale,
 	PointElement,
 	Tooltip,
+	Title as chartTitle,
 } from 'chart.js'
 import { FC } from 'react'
 import { Line } from 'react-chartjs-2'
 
 import Title from '@/components/UI/Title'
+
 import { StatisticsProps } from '@/types/props/listCompanies/StatisticsProps'
 
 import { Wrapper } from './Statistics.styled'

@@ -3,11 +3,14 @@ import { FC } from 'react'
 import { useAppSelector } from '@/hooks/useAppSelector'
 import useModal from '@/hooks/useModal'
 import useUploadFile from '@/hooks/useUploadFile'
+
 import { getLoading } from '@/store/user/userSelectors'
+
 import { UploaderProps } from '@/types/props/uploader/UploaderProps'
 
 import Button from '../UI/Button'
 import Loader from '../UI/Loader'
+
 import Preview from './Preview'
 import {
 	AccentText,

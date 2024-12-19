@@ -5,11 +5,14 @@ import { RiImage2Fill, RiLockPasswordFill } from 'react-icons/ri'
 
 import { useAppSelector } from '@/hooks/useAppSelector'
 import useModal from '@/hooks/useModal'
+
 import { getUser } from '@/store/user/userSelectors'
+
 import { parseDateTime } from '@/utils/functions/parseDateTime'
 
 import Avatar from '../UI/Avatar'
 import Title from '../UI/Title'
+
 import {
 	AvatarButton,
 	ControllerBtn,

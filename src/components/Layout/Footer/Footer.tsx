@@ -6,6 +6,7 @@ import Logo from '@/components/UI/Logo'
 import StudioLogo from '@/components/UI/StudioLogo'
 
 import Container from '../Container'
+
 import {
 	Content,
 	CopyrightWrapper,

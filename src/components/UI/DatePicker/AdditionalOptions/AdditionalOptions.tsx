@@ -1,9 +1,10 @@
 import { FC } from 'react'
 import { MdOutlineCheck } from 'react-icons/md'
 
-import { AdditionalOptionsProps } from '@/types/props/ui/datePicker/AdditionalOptionsProps'
 import { monthOptions } from '@/utils/dropdownOptions/monthOptions'
 import { yearOptions } from '@/utils/dropdownOptions/yearOptions'
+
+import { AdditionalOptionsProps } from '@/types/props/ui/datePicker/AdditionalOptionsProps'
 
 import { Button, Item, List, Wrapper } from './AdditionalOptions.styled'
 

@@ -8,11 +8,16 @@ import DatePicker from '@/components/UI/DatePicker'
 import Loader from '@/components/UI/Loader'
 import NumberField from '@/components/UI/NumberField'
 import TextField from '@/components/UI/TextField'
+
 import useModal from '@/hooks/useModal'
+
 import { useCreateMutation } from '@/store/companies/companyApi'
-import { AddedCompanyFields } from '@/types/inputs/AddedCompanyFields'
+
 import { isApiError } from '@/utils/functions/isApiError'
 import { normalizeDate } from '@/utils/functions/normalizeDate'
+
+import { AddedCompanyFields } from '@/types/inputs/AddedCompanyFields'
+
 import { validation } from '@/validation/AddedCompanySchema'
 
 const AddedCompanyForm: FC = () => {

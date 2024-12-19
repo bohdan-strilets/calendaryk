@@ -1,6 +1,7 @@
 import { RiArrowLeftSFill, RiArrowRightSFill } from 'react-icons/ri'
 
 import usePagination from '@/hooks/usePagination'
+
 import { PaginationProps } from '@/types/props/ui/PaginationProps'
 
 import { ArrowButton, Button, Wrapper } from './Pagination.styled'

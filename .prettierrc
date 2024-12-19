@@ -15,7 +15,6 @@
 		"^@/api/(.*)$",
 		"^@/store/(.*)$",
 		"^@/utils/(.*)$",
-		"^@/default-data/(.*)$",
 		"^@/types/(.*)$",
 		"^@/validation/(.*)$",
 		"^@/styles/(.*)$",

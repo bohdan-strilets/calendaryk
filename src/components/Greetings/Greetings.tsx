@@ -1,9 +1,11 @@
 import { FC } from 'react'
 
 import useResponsive from '@/hooks/useResponsive'
+
 import { GreetingsProps } from '@/types/props/greetings/GreetingsProps'
 
 import SmallCalendar from '../Calendars/SmallCalendar'
+
 import {
 	Accent,
 	DateGroup,

@@ -3,10 +3,10 @@ import {
 	FLUSH,
 	PAUSE,
 	PERSIST,
-	persistStore,
 	PURGE,
 	REGISTER,
 	REHYDRATE,
+	persistStore,
 } from 'redux-persist'
 
 import { authReducer } from './auth/authSlice'

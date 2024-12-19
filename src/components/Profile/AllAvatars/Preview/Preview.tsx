@@ -3,6 +3,7 @@ import { FC } from 'react'
 import { BiCollapse } from 'react-icons/bi'
 
 import Avatar from '@/components/UI/Avatar'
+
 import { PreviewProps } from '@/types/props/allAvatars/PreviewProps'
 
 import { Button, Wrapper } from './Preview.styled'

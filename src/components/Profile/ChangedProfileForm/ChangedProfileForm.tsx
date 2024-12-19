@@ -8,15 +8,20 @@ import DatePicker from '@/components/UI/DatePicker'
 import DropdownList from '@/components/UI/DropdownList'
 import Loader from '@/components/UI/Loader'
 import TextField from '@/components/UI/TextField'
+
 import { useAppDispatch } from '@/hooks/useAppDispatch'
 import { useAppSelector } from '@/hooks/useAppSelector'
 import useModal from '@/hooks/useModal'
+
 import operations from '@/store/user/userOperations'
 import { getLoading, getUser } from '@/store/user/userSelectors'
-import { ProfileEditFormFields } from '@/types/inputs/ProfileEditFormFields'
+
 import { genderOptions } from '@/utils/dropdownOptions/genderOptions'
 import { isApiError } from '@/utils/functions/isApiError'
 import { normalizeDate } from '@/utils/functions/normalizeDate'
+
+import { ProfileEditFormFields } from '@/types/inputs/ProfileEditFormFields'
+
 import { validation } from '@/validation/EditProfileFormSchema'
 
 const ChangedProfileForm: FC = () => {

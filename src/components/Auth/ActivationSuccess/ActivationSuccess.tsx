@@ -1,10 +1,13 @@
 import { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import medalPng from '@/assets/medal/medal.png'
 import Button from '@/components/UI/Button'
 import Title from '@/components/UI/Title'
+
 import useResponsive from '@/hooks/useResponsive'
+
+import medalPng from '@/assets/medal/medal.png'
+
 import { navigationPaths } from '@/utils/data/navigationPaths'
 
 import { Image, List, Text } from './ActivationSuccess.styled'

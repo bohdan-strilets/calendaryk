@@ -2,8 +2,10 @@ import { AnimatePresence } from 'framer-motion'
 import { FC } from 'react'
 
 import Month from '@/components/Calendars/Month'
+
 import useClickOutside from '@/hooks/useClickOutside'
 import useDatePicker from '@/hooks/useDatePicker'
+
 import { DatePickerProps } from '@/types/props/ui/datePicker/DatePickerProps'
 
 import AdditionalOptions from './AdditionalOptions'

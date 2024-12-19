@@ -1,7 +1,8 @@
 import styled from '@emotion/styled'
 
-import { DayNameProps } from '@/types/props/calendars/WeekDaysProps'
 import { screenWidth } from '@/utils/data/screenWidth'
+
+import { DayNameProps } from '@/types/props/calendars/WeekDaysProps'
 
 export const Wrapper = styled.ul`
 	display: flex;

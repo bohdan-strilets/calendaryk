@@ -2,8 +2,10 @@ import { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import Avatar from '@/components/UI/Avatar'
-import { UserBarProps } from '@/types/props/menu/UserBarProps'
+
 import { navigationPaths } from '@/utils/data/navigationPaths'
+
+import { UserBarProps } from '@/types/props/menu/UserBarProps'
 
 import { Email, Group, Name, Wrapper } from './UserBar.styled'
 

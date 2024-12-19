@@ -1,8 +1,9 @@
 import { css, keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
 
-import { WrapperProps } from '@/types/props/todoList/PriorityProps'
 import { screenWidth } from '@/utils/data/screenWidth'
+
+import { WrapperProps } from '@/types/props/todoList/PriorityProps'
 
 const pulse = keyframes`
   0% {
