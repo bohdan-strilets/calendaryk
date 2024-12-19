@@ -3,8 +3,10 @@ import { FC, useEffect, useState } from 'react'
 import useModal from '@/hooks/useModal'
 import useRenderCalendar from '@/hooks/useRenderCalendar'
 import useResponsive from '@/hooks/useResponsive'
-import { CalendarProps } from '@/types/props/calendars/CalendarProps'
+
 import { MonthsOfYear } from '@/utils/data/monthsOfYear'
+
+import { CalendarProps } from '@/types/props/calendars/CalendarProps'
 
 import Controllers from '../Controllers'
 import Month from '../Month'
