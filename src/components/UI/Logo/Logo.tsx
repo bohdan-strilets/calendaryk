@@ -1,25 +1,45 @@
 import { FC } from 'react'
-import { useNavigate } from 'react-router-dom'
 
-import darkLogoPng from '@/assets/logo/logo-dark.png'
-import lightLogoPng from '@/assets/logo/logo-light.png'
+import useResponsive from '@/hooks/useResponsive'
 
+import { Bounce } from '@/utils/animations/Bounce'
 import { navigationPaths } from '@/utils/data/navigationPaths'
 
 import { LogoProps } from '@/types/props/ui/LogoProps'
 
-import { Button, Image } from './Logo.styled'
+import {
+	AccentLetter,
+	Body,
+	FirstText,
+	Header,
+	Icon,
+	Line,
+	SecondText,
+	StyledLink,
+} from './Logo.styled'
 
 const Logo: FC<LogoProps> = ({ variant }) => {
-	const navigate = useNavigate()
+	const { isMaxTablet } = useResponsive()
 
 	return (
-		<Button type="button" onClick={() => navigate(navigationPaths.HOME)}>
-			<Image
-				src={variant === 'dark' ? darkLogoPng : lightLogoPng}
-				alt="Your schedule - logo"
-			/>
-		</Button>
+		<StyledLink to={navigationPaths.HOME} variant={variant}>
+			<FirstText variant={variant}>Your</FirstText>
+			<SecondText className="second-text">
+				Sched
+				<AccentLetter variant={variant} {...Bounce()}>
+					u
+				</AccentLetter>
+				le
+			</SecondText>
+			<Icon>
+				<Header>
+					<Line left={isMaxTablet ? '12px' : '15px'} bg="#3f3f3f" />
+					<Line left={isMaxTablet ? '24px' : '30px'} bg="#262626" />
+					<Line left={isMaxTablet ? '36px' : '45px'} bg="#000000" />
+				</Header>
+				<Body />
+			</Icon>
+		</StyledLink>
 	)
 }
 

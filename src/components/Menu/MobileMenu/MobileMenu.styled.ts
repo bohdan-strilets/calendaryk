@@ -8,6 +8,7 @@ export const Wrapper = styled(motion.div)`
 	top: 0;
 	left: 0;
 	overflow-y: scroll;
+	z-index: 1;
 
 	display: flex;
 	flex-direction: column;

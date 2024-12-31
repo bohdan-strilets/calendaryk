@@ -44,7 +44,7 @@ const Menu: FC<MenuProps> = ({ onClose, onBackdropClick }) => {
 			>
 				<CloseButton close={onClose} position={true} top="35px" right="35px" />
 				<div>
-					<Logo variant="light" />
+					<Logo variant="dark" />
 					<Navigation onClose={onClose} margin="0 0 35px 0" />
 				</div>
 				<div>

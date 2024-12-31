@@ -22,7 +22,7 @@ const Footer: FC = () => {
 				<Content>
 					<Group>
 						<LogoWrapper>
-							<Logo variant="light" />
+							<Logo variant="dark" />
 						</LogoWrapper>
 						<CopyrightWrapper>
 							<StudioLogo />

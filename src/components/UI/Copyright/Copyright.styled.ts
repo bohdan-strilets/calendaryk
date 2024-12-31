@@ -13,10 +13,6 @@ export const Text = styled.p`
 		margin-top: 10px;
 	}
 
-	@media screen and (min-width: ${screenWidth.LAPTOP}) {
-		margin-top: 0;
-	}
-
 	@media screen and (min-width: ${screenWidth.DESKTOP}) {
 		margin-top: 30px;
 	}

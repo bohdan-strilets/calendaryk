@@ -45,7 +45,7 @@ const MobileMenu: FC<MenuProps> = ({ onClose }) => {
 			<CloseButton close={onClose} position={true} top="35px" right="35px" />
 			<div>
 				<LogoWrapper>
-					<Logo variant="light" />
+					<Logo variant="dark" />
 				</LogoWrapper>
 				<Navigation onClose={onClose} margin="0 0 35px 0" />
 			</div>

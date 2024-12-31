@@ -20,9 +20,10 @@ export const Group = styled.div`
 	@media screen and (min-width: ${screenWidth.LAPTOP}) {
 		display: flex;
 		align-items: center;
-		justify-content: space-around;
+		justify-content: space-between;
 
-		width: 100%;
+		width: 50%;
+		padding: 0 20px;
 	}
 `
 
@@ -45,12 +46,6 @@ export const CopyrightWrapper = styled.div`
 		flex-direction: column;
 		justify-content: center;
 		margin-bottom: 0;
-	}
-
-	@media screen and (min-width: ${screenWidth.LAPTOP}) {
-		flex-direction: row;
-		justify-content: space-evenly;
-		width: 100%;
 	}
 
 	@media screen and (min-width: ${screenWidth.DESKTOP}) {

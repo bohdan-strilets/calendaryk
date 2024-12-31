@@ -38,7 +38,7 @@ const Header: FC = () => {
 				<Container>
 					<Wrapper>
 						<MenuButton open={onOpen} />
-						<Logo variant="dark" />
+						<Logo variant="light" />
 						{isLoggedIn && user ? (
 							isMaxMobile ? (
 								<UserBar
